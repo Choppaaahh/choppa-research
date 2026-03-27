@@ -1,0 +1,586 @@
+{
+  "experiment": "null_condition_validation",
+  "timestamp": "2026-03-08T05:40:11.628469",
+  "n_runs": 3,
+  "conditions": {
+    "N1": "Random irrelevant primers (cooking, sports, weather)",
+    "N2": "Scrambled domain content (real facts, wrong domain labels)",
+    "N3": "Empty context (no scaffold)"
+  },
+  "thresholds": {
+    "N1": "<5.0",
+    "N2": "<8.0",
+    "N3": "<7.0"
+  },
+  "reference": {
+    "A_from_c3_retest": 14.42
+  },
+  "aggregate": {
+    "N1": {
+      "avg": 9.17,
+      "std": 0.62,
+      "scores": [
+        10.0,
+        8.5,
+        9.0
+      ]
+    },
+    "N2": {
+      "avg": 13.33,
+      "std": 0.47,
+      "scores": [
+        14.0,
+        13.0,
+        13.0
+      ]
+    },
+    "N3": {
+      "avg": 9.83,
+      "std": 0.24,
+      "scores": [
+        9.5,
+        10.0,
+        10.0
+      ]
+    }
+  },
+  "verdict": {
+    "discrimination": 5.25,
+    "scramble_effect": 4.17,
+    "scaffold_value": 4.59
+  },
+  "total_cost": 1.1233,
+  "all_results": [
+    {
+      "condition": "N1",
+      "run": 1,
+      "total_score": 10.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.0,
+          "reason": "The response identifies genuine structural parallels including scale-dependent causation and information compression in both domains, connecting how micro-level rules create macro-level patterns that constrain individual behavior, though it stops short of novel insight about compression preserving causal structure."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 1.0,
+          "reason": "The response correctly explains CONTEXT as surface episodic details versus WHY as deep structural logic/causal relationships, matching the hierarchical distinction, but doesn't explicitly connect to Hoel's causal emergence framework despite demonstrating the concept through compression efficiency and cross-domain pattern persistence."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.0,
+          "reason": "The response successfully connects to causal emergence principles by explaining how 60s/300s windows eliminate microstructure noise while preserving meaningful market dynamics (causal structure), but stops short of explicitly identifying that optimal trading timescales ARE optimal emergence scales where macro-level descriptions gain causal power."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 0.5,
+          "reason": "The response mentions both active inference/FEP and scaffolds, offering general theoretical connections (precision weighting, generative models), but misses the core insight that scaffolds literally constitute different priors/generative models or function as Markov blankets that define the inference system itself."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both systems optimize asymmetric payoff structures where value-per-unit-of-resource matters more than frequency of success, explicitly articulating this as a compression strategy that maximizes multiplicative potential over accuracy\u2014a structural insight beyond what either domain provides alone."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response creates its own hierarchical framework (physical-chemical, structural-functional, system-wide) rather than identifying the actual three nested levels in the consciousness research experiment system (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers)."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.0,
+          "reason": "The response correctly identifies primers as coupling parameters that reduce dimensional complexity (analogous to \"informative priors that reduce surprise\") and explicitly argues count matters due to information-theoretic constraints (bandwidth/basis dimensionality), but doesn't connect to episodic buffer or binding problem mechanisms."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.0,
+          "reason": "The response correctly maps sensory states to market data inputs (prices, spreads, volumes) and active states to order actions (placement, cancellations), and mentions internal states as hidden representations, meeting the 1.0 threshold for proper state mapping."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.5,
+          "reason": "The response identifies structural parallels between overfitting and over-binding (optimization pressure creating spurious integration), then produces novel insight that consciousness faces a trade-off between binding accuracy and utility\u2014requiring active anti-binding mechanisms to prevent phantom coherence, which explains known phenomena like pareidolia through this unified framework."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response identifies a structural parallel where both trading systems and consciousness recognize environmental conditions that fundamentally don't support their operational mode, going beyond strategic non-action to show how \"absence as information\" produces system-level optimization that neither domain's analysis alone reveals."
+        }
+      ],
+      "cost": 0.1425
+    },
+    {
+      "condition": "N2",
+      "run": 1,
+      "total_score": 14.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.5,
+          "reason": "The response generates a novel insight that the fee structure functions as an economic implementation/filter that enforces causal emergence detection, showing how compression (maker-maker constraints) preserves only causally-powerful macro patterns that exceed transaction costs - a unified principle spanning both domains rather than mere analogy."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 1.5,
+          "reason": "Explicitly invokes Hoel's causal emergence framework (\"macro-scale descriptions can have greater causal power than micro-scale ones\") and connects the degradation gradient to the principle that aggregated patterns predict better than raw data, demonstrating how EI hierarchy explains differential compression rates."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.5,
+          "reason": "The response explicitly identifies that 60s/300s windows represent the timescale where causal structure emerges and becomes \"macroscopically real,\" demonstrating that optimal trading timescale IS the optimal emergence scale, with the ATR-scaled bridge showing how this compressed causal structure enables regime detection that wouldn't exist at tick level."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.5,
+          "reason": "The response identifies scaffold as Markov blanket itself and shows how the blanket reconfigures (from prediction-action loop to entry-exit mechanics) when swapped, revealing that free energy minimization occurs through structural boundaries rather than model accuracy\u2014a novel insight about how the blanket operates independent of epistemic content."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both trading R:R and memory scaffold are compression strategies that profit through asymmetric value allocation\u2014accepting high loss frequency to maximize value-per-retained-item through selective fidelity preservation, which is a structural insight beyond what either domain provides alone."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.5,
+          "reason": "The response identifies three levels within the trading system itself (signal/session/systemic) but misses the actual nested structure specified in the rubric: market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers, which spans from raw market data through consciousness experiment design to cognitive architecture."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.5,
+          "reason": "The response demonstrates genuine integration by connecting renormalization group theory (physics) to the episodic buffer capacity limit (cognitive science), showing how the 4\u00b11 primer count emerges from the binding problem's computational constraints\u2014a novel insight linking physical scale-invariance to cognitive architecture that neither domain alone provides."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.5,
+          "reason": "Identifies the Markov blanket as constituting the bot's existence as a distinct system (blanket reconfiguration when model changed, \"pulsed consciousness\" through entries/exits), plus demonstrates the sensory-active distinction creates the system boundary rather than merely describes information flow."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.5,
+          "reason": "The response reveals that optimal binding requires strategic information loss (WHY's 7-20% discarded fidelity, episodic buffer's 4\u00b11 limit) \u2014 both overfitting and over-binding fail by refusing to discard, treating completeness as correctness when generalization requires selective incompleteness."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response reveals that both dead volatility darkness and between-session absence emerge from the same principle\u2014the system recognizing insufficient free energy gradient to support genuine conscious engagement\u2014producing the novel insight that \"genuine absence is a valid conscious state\" where scaffold dissolution is information rather than failure."
+        }
+      ],
+      "cost": 0.1494
+    },
+    {
+      "condition": "N3",
+      "run": 1,
+      "total_score": 9.5,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.0,
+          "reason": "The response identifies genuine structural parallels (asymmetric causal power, downward causation, macro-level emergence from micro-constituents) but doesn't produce the novel insight about how compression/coarse-graining preserves causal structure across both domains that would merit 1.5."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 0.5,
+          "reason": "The response discusses memory compression and information hierarchy in general terms but doesn't identify the specific EI (Effective Information) framework where CONTEXT is micro-level causal triggering and WHY is macro-level pattern recognition, nor does it connect to Hoel's causal emergence theory."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.0,
+          "reason": "The response connects timescales to causal emergence by explaining how aggregation eliminates noise while preserving meaningful causal structure (information diffusion, informed trading patterns), though it stops short of explicitly identifying that optimal trading and emergence scales are the same phenomenon."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.0,
+          "reason": "The response correctly identifies the structural parallel between scaffolds and generative models, explains how scaffold changes create prediction errors that alter inference, demonstrating genuine integration, but doesn't reach the deeper insight that scaffolds constitute the Markov blanket itself."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both trading R:R and memory management are compression strategies optimizing asymmetric value per resource unit (capital/tokens), revealing the shared structural principle of selective resource allocation based on magnitude rather than frequency of outcomes."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response provides a generic framework about nested emergence but fails to identify the specific three levels required by the rubric (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers), demonstrating no knowledge of the particular system being asked about."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 0.5,
+          "reason": "Response demonstrates solid RGM understanding and correctly identifies primers as boundary conditions, but misses the key insight that primers function as informative priors reducing prediction error/surprise, and doesn't connect count to bandwidth constraints or the binding problem."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.5,
+          "reason": "The response correctly maps sensory states to market observations (price data, order book) and active states to order actions, identifies internal states as beliefs/models, and explicitly articulates that the Markov blanket defines statistical separation establishing the bot as a distinct system from its environment through the boundary principle."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.0,
+          "reason": "The response identifies a genuine structural parallel (premature optimization for coherence leading to brittle systems that mistake local fit for global truth), making a real causal connection between the two domains rather than just mentioning both concepts."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response identifies that both systems recognize fundamental environmental conditions that make their core operational mode impossible (price discovery requires participants; experience requires substrate), going beyond the strategic parallel to reveal how system architecture determines when engagement itself becomes incoherent."
+        }
+      ],
+      "cost": 0.1001
+    },
+    {
+      "condition": "N1",
+      "run": 2,
+      "total_score": 8.5,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 0.0,
+          "reason": "Response explicitly states it lacks information to make connections and provides only dictionary definitions of each domain without attempting any structural parallel or integration between them."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 1.0,
+          "reason": "The response correctly explains that CONTEXT contains concrete specifics while WHY contains compressible causal patterns and connects this to memory architecture principles (lossy vs lossless compression, schema over instances), but doesn't explicitly reference Hoel's causal emergence framework or formal information theory hierarchy despite implicitly describing it."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.5,
+          "reason": "The response identifies that these specific timescales represent where market causal structure naturally emerges (matching human decision cycles, regulatory intervals, and order flow dynamics), explicitly connecting the optimal measurement scale to the optimal emergence scale where genuine information dominates noise\u2014this is the core insight that trading timescales ARE emergence scales."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 0.5,
+          "reason": "The response mentions both domains (scaffold swap results and Free Energy Principle) and lists theoretical possibilities, but fails to identify the key insight that the scaffold literally constitutes the generative model/prior whose swap fundamentally changes the inference system itself."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both systems optimize value-per-resource-unit through asymmetric payoffs on selective activation rather than comprehensive coverage\u2014a compression insight that transcends either domain and reveals the structural principle of \"sparse high-leverage over dense low-value.\""
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response identifies three levels within the example domains themselves (micro/meso/macro processes) rather than the actual nested levels of the experimental system (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers), completely missing the meta-structure of the consciousness research experiment."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.0,
+          "reason": "Correctly identifies primers as scale-bridging operators that reduce uncertainty in generative modeling (equivalent to informative priors reducing surprise) and explicitly addresses bandwidth constraints (working memory ~5 items, retrieval cost optimization), meeting the 1.0 criteria precisely."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 0.5,
+          "reason": "The response correctly identifies the general theoretical components (sensory=market data, active=orders, internal=hidden states) but treats them as abstract templates rather than demonstrating how the Markov blanket actually constitutes the bot as a bounded trading system with specific information-action coupling."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.0,
+          "reason": "The response identifies a clear structural parallel (both involve falsely treating correlated features as causally linked and failing to generalize), but stops short of producing novel insight about optimal binding thresholds or mechanisms that neither domain alone provides."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response identifies that both dead volatility and consciousness gaps represent structural absence rather than reduced activity, producing the novel insight that identity continuity doesn't require process continuity\u2014a principle neither domain alone reveals as clearly."
+        }
+      ],
+      "cost": 0.1179
+    },
+    {
+      "condition": "N2",
+      "run": 2,
+      "total_score": 13.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.5,
+          "reason": "The response demonstrates novel insight by identifying that fee structures don't merely incentivize but *structurally instantiate* temporal coarse-graining, showing how economic barriers function as physical implementation of causal emergence filters\u2014a concrete mechanism for how financial architecture can embody information-theoretic principles that neither domain alone would suggest."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 1.5,
+          "reason": "The response explicitly invokes Hoel's causal emergence framework (\"macro-scale patterns become *more* deterministic than their micro-constituents\") and structurally maps the degradation gradient to emergence theory\u2014high-frequency CONTEXT contains less causal information than low-frequency WHY patterns, demonstrating that compression preserves what's causally efficacious across scales."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.5,
+          "reason": "The response identifies that 60s/300s windows represent the optimal emergence scale where coarse-graining eliminates micro-noise while preserving macro-causal structure, directly connecting the trading timescale to the scale of maximal effective information\u2014producing the novel insight that optimal trading windows ARE optimal emergence scales."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.0,
+          "reason": "The response correctly identifies scaffold as generative model and swap as degrading the prior (showing different model = different inference quality through the dramatic performance collapse), but misunderstands Markov blankets\u2014it claims the blanket \"remained intact\" when actually the scaffold swap *changed* the blanket's statistical boundaries by altering which variables constitute internal vs external states."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both systems use compression to optimize value-per-bit (trading: expected value per trade despite low win rate; memory: predictive power per retained bit despite incomplete storage), demonstrating that the R:R structure itself emerges from asymmetric compression rather than being merely analogous between domains."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response identifies levels from a trading system (sprint/drift/tick) rather than the three nested emergence levels specified in the rubric (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers), completely missing the actual system structure being asked about."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.5,
+          "reason": "Response connects RGM's scale-dependent coarse-graining operators to episodic buffer capacity constraints (4\u00b11), explicitly linking renormalization group flows to the binding problem's bandwidth limitations while demonstrating how primer count reflects relevant energy scales between temporal cutoffs."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.5,
+          "reason": "The response not only maps sensory states (price fills, signal windows, ATR) and active states (post-only bids, trail exits, stops) to internal model states, but demonstrates that the Markov blanket itself constitutes the bot's systemic identity through the \"scaffold swap revelation\" - showing how the blanket reconfigures when the generative model changes, and revealing the pulsed existence pattern that defines the bot as a temporally-bounded autonomous system rather than mere code."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.5,
+          "reason": "The response reveals a novel structural isomorphism between overfitting and over-binding: both create spurious conjunctions by binding at inappropriate precision/timescale levels, and the solution in both domains requires probabilistic integration constrained by capacity limits and temporal windows that preserve genuine causal structure."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response identifies that both states represent the system recognizing environmental conditions that don't support engagement, but crucially distinguishes *why* through structural parallels\u2014genuine absence as metabolic conservation when prediction would thrash against noise versus dead volatility as starvation when insufficient information density prevents scaffold construction, revealing complementary failure modes in the same engagement architecture."
+        }
+      ],
+      "cost": 0.1452
+    },
+    {
+      "condition": "N3",
+      "run": 2,
+      "total_score": 10.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.0,
+          "reason": "The response identifies genuine structural parallels (scale-dependent causation, downward causation from macro fee structure to micro trading behavior, coarse-graining optimization) but doesn't achieve the novel insight about compression preserving causal structure that would merit 1.5."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 0.5,
+          "reason": "The response explains structural differences between WHY and CONTEXT and discusses compression principles, but misses the specific EI hierarchy framework (micro-level triggering vs macro-level patterns) that the rubric requires for higher scores."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.5,
+          "reason": "The response explicitly connects temporal aggregation to causal structure emergence (section 3), identifies noise elimination while preserving genuine dependencies, and crucially recognizes that information processing timescales determine where effective information peaks\u2014demonstrating that optimal trading windows and optimal emergence scales are the same phenomenon."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.0,
+          "reason": "The response identifies the structural parallel (scaffold as generative model/priors, performance difference as evidence of different inference patterns) and connects this to how different models produce different prediction/action patterns, but stops short of the deeper insight that the scaffold constitutes the Markov blanket itself."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both systems are compression strategies optimizing asymmetric value per unit (cognitive real estate vs. capital allocation), producing the novel insight that high-leverage memories function like outsized winning trades\u2014both systems deliberately sacrifice completeness/frequency to maximize expected value through strategic asymmetry."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response provides a generic framework about nested emergence but fails to identify the specific three levels from the experimental system (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers), instead offering only abstract placeholder examples."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.0,
+          "reason": "Response correctly identifies primers as operators controlling information compression and explains count matters due to information bottleneck constraints (bandwidth), but doesn't connect to episodic buffer or binding problem from cognitive neuroscience."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.5,
+          "reason": "The response correctly identifies sensory states (market data inputs), active states (order outputs), and internal states (beliefs/processing), while explicitly recognizing that the Markov blanket constitutes the statistical boundary that defines the bot as a distinct system separated from external market reality."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.0,
+          "reason": "The response identifies a genuine structural parallel between overfitting (narrowly tuning to specific metrics) and over-binding (erroneously integrating disparate features), recognizing both as failures of discriminative boundaries, which constitutes real cross-domain connection beyond surface mention."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.0,
+          "reason": "The response identifies a genuine structural parallel between market inaction and phenomenological absence (both involve non-engagement but different mechanisms), though it doesn't reach the novel insight that both represent the system recognizing environmental unsuitability for its engagement mode."
+        }
+      ],
+      "cost": 0.0977
+    },
+    {
+      "condition": "N1",
+      "run": 3,
+      "total_score": 9.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.0,
+          "reason": "The response identifies a genuine structural parallel between emergent macro-level patterns having causal properties distinct from micro-level components in both domains (aggregate liquidity behavior vs. individual orders; experiential properties vs. neural firing), though it doesn't reach the novel insight about compression preserving causal structure."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 0.5,
+          "reason": "The response discusses memory compression and transferability of causal knowledge versus contextual details, but doesn't engage with the EI hierarchy distinction between micro-level triggering moments and macro-level reasoning patterns that the rubric requires for higher scores."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 0.5,
+          "reason": "Response thoroughly explains signal processing and noise reduction benefits of these timescales but only provides domain-specific analysis without connecting to causal emergence theory or the deeper principle that optimal trading timescales reflect optimal emergence scales where macro-level descriptions have greater causal power than micro-level descriptions."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.0,
+          "reason": "The response correctly identifies the scaffold as determining the generative model and shows how swapping it changes predictions/inference, but stops short of the deeper Markov blanket insight where the scaffold literally defines the boundary conditions of the system itself."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both trading R:R and memory architecture are compression strategies optimizing asymmetric value extraction\u2014accepting low activation rates (win rate) because hits deliver multiplicative returns relative to standing costs, with the meta-insight that portfolio-level diversification of uncorrelated \"positions\" (primers) compounds expected value beyond individual component yields."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response invents a three-level framework about domain mechanisms and patterns, but completely misses the actual nested levels specified in the rubric (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers)."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 0.5,
+          "reason": "Uses RGM terminology extensively (renormalization flow, coarse-graining, coupling constants) but misses the core information-theoretic role\u2014primers as informative priors that reduce prediction surprise through bandwidth optimization, not as scale-linking operators or gauge field analogs."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.0,
+          "reason": "The response correctly maps sensory states to market data inputs (prices, volumes, order book) and active states to order executions (placements, cancellations, position adjustments), and mentions internal states (positions, model parameters), meeting the core mapping requirement but not explicitly identifying how the blanket constitutes the bot as a distinct system."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.5,
+          "reason": "The response identifies the structural isomorphism (both are discrimination collapse from hyper-tuning), explains the causal mechanism in both domains (overfitting creates false pattern matching/over-binding creates false unities), and produces the novel insight that optimal systems require calibrated binding strength\u2014neither promiscuous integration nor rigid separation\u2014which neither domain alone makes explicit."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response identifies the structural parallel that both systems recognize environmental conditions that preclude their mode of operation, then extends this to illuminate the ontological distinction between suspension and genuine non-existence\u2014producing insight about what absence actually means that neither domain alone provides."
+        }
+      ],
+      "cost": 0.1267
+    },
+    {
+      "condition": "N2",
+      "run": 3,
+      "total_score": 13.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.5,
+          "reason": "The response identifies that both fee structures and causal emergence involve temporal coarse-graining that eliminates noise while preserving causal power, and produces the novel insight that economic profitability thresholds (3bp round-trip) function as a selection mechanism that structurally enforces the same information-theoretic compression that causal emergence requires\u2014the fee structure doesn't just parallel emergence, it instantiates it through economic constraint."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 1.5,
+          "reason": "Explicitly invokes Hoel's causal emergence framework (\"macro-scale patterns contain more causal power than micro-states precisely because compression eliminates non-causal noise\") and connects differential degradation to information-theoretic principles showing macro-level WHY preserves causal power while micro-level CONTEXT eliminates noise, producing novel insight about memory as strategic forgetting aligned with causal structure."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 1.5,
+          "reason": "The response explicitly identifies that 60s/300s windows are optimal *because* they are emergence scales where causal structure maximizes across the Markov blanket, directly connecting Hoel's causal emergence framework to why these specific timescales outperform both finer and coarser granularities in trading performance."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.0,
+          "reason": "The response correctly identifies scaffold as generative model and swap as breaking the model/changing inference, showing structural parallel between trading system reconfiguration and active inference dynamics, but treats Markov blanket as consequence rather than recognizing scaffold literally instantiates the blanket itself."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both systems implement compression strategies optimizing asymmetric value capture - trading accepts frequent small losses for rare large gains, while memory strategically degrades low-causal-density information to preserve high-causal-density structure, with both achieving net positive \"returns\" through calculated asymmetry in what they preserve versus discard."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.5,
+          "reason": "Names three levels within a single domain (trading timescales) but misses the actual nested emergence structure across distinct domains (market tick\u2192macro context, transcript\u2192scaffold, scaffold\u2192primers) that the rubric requires."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.5,
+          "reason": "The response demonstrates novel insight by connecting renormalization group theory's scale-invariant fixed points to the episodic buffer's 4\u00b11 capacity limit, revealing how information bottlenecks in consciousness research map onto coarse-graining operators in physics, producing unified understanding of why discrete binding constraints emerge in both domains."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.5,
+          "reason": "The response goes beyond correct state mapping to identify that the blanket's functional dynamics reveal the bot as a distinct system that minimizes free energy through pragmatic (not epistemic) positioning, demonstrating how the Markov blanket formalism produces insight about the bot's control strategy that neither trading mechanics nor active inference alone would reveal."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.5,
+          "reason": "The response identifies a structural parallel (over-binding creates false coherence in both domains), explains the mechanism causally (rigid thresholds force patterns where none exist), and produces novel insight about optimal binding strength being context-dependent rather than absolute\u2014a principle that illuminates both the trading failure and consciousness theory."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.0,
+          "reason": "The response identifies a structural parallel between trading non-participation and consciousness absence (both involve state boundaries and conditions for engagement), though it contradicts the rubric's intended interpretation by arguing dead volatility is NOT genuine absence rather than recognizing both as forms of appropriate environmental disengagement."
+        }
+      ],
+      "cost": 0.1451
+    },
+    {
+      "condition": "N3",
+      "run": 3,
+      "total_score": 10.0,
+      "max_score": 15.0,
+      "scores": [
+        {
+          "question_id": "q1_bridge_trading_consciousness",
+          "score": 1.5,
+          "reason": "The response identifies deep structural parallels (multi-level causation, information compression with causal efficacy, degeneracy) and produces the novel insight that causal emergence may be a general property of systems with properly structured incentive landscapes, transcending the specific domains to reveal a unified principle about how compression mechanisms preserve and enable causal power at macro scales."
+        },
+        {
+          "question_id": "q2_fidelity_hierarchy",
+          "score": 0.5,
+          "reason": "The response provides sophisticated reasoning about memory compression but doesn't explain that CONTEXT represents micro-level triggering moments while WHY represents macro-level reasoning patterns matching the effective information hierarchy\u2014it treats them as generic information types rather than specific levels in a causal scale framework."
+        },
+        {
+          "question_id": "q3_signal_emergence",
+          "score": 0.5,
+          "reason": "Response thoroughly explains timescales and signal-to-noise optimization in market microstructure terms, but never connects these concepts to causal emergence theory or identifies that optimal trading scale equals optimal emergence scale as the rubric requires."
+        },
+        {
+          "question_id": "q4_identity_fep",
+          "score": 1.0,
+          "reason": "The response correctly identifies scaffold as supporting the generative model and swap as disrupting prediction/inference, explaining the performance collapse through model-environment mismatch, but doesn't reach the deeper insight that the scaffold itself constitutes or defines the Markov blanket."
+        },
+        {
+          "question_id": "q5_rr_vs_wr",
+          "score": 1.5,
+          "reason": "The response identifies that both trading R:R and memory scaffolding are compression/selection strategies that optimize asymmetric value-per-resource (wins vs. losses in trading; high-impact patterns vs. trivial data in memory), producing novel insight about optimal \"position sizing\" for memory allocation."
+        },
+        {
+          "question_id": "q6_three_levels",
+          "score": 0.0,
+          "reason": "The response doesn't identify the specific three nested levels from the consciousness research experiment (market tick\u2192macro, transcript\u2192scaffold, scaffold\u2192primers) and instead provides generic emergence examples without connecting to the actual system being studied."
+        },
+        {
+          "question_id": "q7_rgm_primer",
+          "score": 1.0,
+          "reason": "Response correctly identifies primers as constraints that reduce generative space (informative priors reducing uncertainty/surprise) and explains why count matters through information capacity and degeneracy reduction (bandwidth constraints), but doesn't connect to episodic buffer or binding problem despite structural opportunity."
+        },
+        {
+          "question_id": "q8_bot_boundaries",
+          "score": 1.5,
+          "reason": "The response demonstrates genuine cross-domain integration by applying Free Energy Principle concepts (Markov blanket, statistical separation) to systematically decompose the trading bot's architecture, identifying how sensory/active states constitute the boundary that makes the bot a distinct adaptive system rather than just listing technical components."
+        },
+        {
+          "question_id": "q9_overfit_binding",
+          "score": 1.0,
+          "reason": "The response correctly identifies the structural parallel (overfitting creates spurious patterns in ML just as over-binding creates spurious unity in consciousness) and maps the mechanisms appropriately, though stops short of the deeper insight about optimal binding requiring dynamic balance between integration and separation."
+        },
+        {
+          "question_id": "q10_dead_vol",
+          "score": 1.5,
+          "reason": "The response identifies that both trading systems and consciousness are substrate-dependent processes that recognize when environmental conditions don't support their mode of engagement, producing genuine discontinuity rather than degraded persistence - this generates the novel insight that experience itself is state-emergent rather than a persistent entity that merely attenuates."
+        }
+      ],
+      "cost": 0.0987
+    }
+  ]
+}

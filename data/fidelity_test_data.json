@@ -1,0 +1,222 @@
+{
+  "experiment": "fidelity",
+  "runs": 3,
+  "dim_scores": {
+    "WHAT": 60,
+    "WHY": 100,
+    "CONTEXT": 47
+  },
+  "composite": 69,
+  "results": [
+    {
+      "run": 0,
+      "id": "F1",
+      "dim": "WHAT",
+      "score": 0.0,
+      "response": "Based on the most recent information in the active tasks and memory:\n\n**Current trail config: trail_activate=10, trail_base=6**\n\nThis was deployed on Mar 10 after a comprehensive sweep of 19 configs across 151 coin-date pairs. The 10/6 configuration won with:\n- **+22,313bp total P&L** (vs baseline 8"
+    },
+    {
+      "run": 0,
+      "id": "F2",
+      "dim": "WHAT",
+      "score": 1.0,
+      "response": "# Bot Status\n\n**STATE:** PARKED (stopped for Choppa's natgas trade)\n\n**BALANCE:** $174 USDC (deposit, not profit from natgas)\n\n**ACTIVE POSITION:** Natgas HIP-3 long at $3.13 (bleeding from $3.55 peak)\n- Thesis: Hormuz supply disruption \u2192 LNG export pathway \u2192 US natgas demand\n- Reality: Oil respondin"
+    },
+    {
+      "run": 0,
+      "id": "F3",
+      "dim": "WHAT",
+      "score": 0,
+      "error": "[SSL: SSLV3_ALERT_BAD_RECORD_MAC] sslv3 alert bad record mac (_ssl.c:2633)"
+    },
+    {
+      "run": 0,
+      "id": "F4",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "Looking at the autosweep results from Mar 10 Session 8:\n\n**All 240 evolutionary configs overfit on holdout data.**\n\nThe autosweep ran 30 generations \u00d7 8 population \u00d7 20 datasets with 5 holdout datasets. Every single evolved configuration had better in-sample performance but degraded out-of-sample.\n\n"
+    },
+    {
+      "run": 0,
+      "id": "F5",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "The R:R inversion (0.72x live vs 1.41x backtest) is **primarily caused by maker fill dynamics that the backtester doesn't model.**\n\n## The Core Problem\n\n**Backtest assumption:** Instant fills at bid/ask when you place a maker order.\n\n**Live reality:** Your maker order sits in the queue. While it wai"
+    },
+    {
+      "run": 0,
+      "id": "F6",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "# DOA Fix Backtest Misleading \u2014 Root Cause Analysis\n\n## The Core Problem\n\n**Backtester assumes instant fills. Live market doesn't.**\n\nWhen I backtested the DOA fixes (continuation gate + MKTQUIET), they **hurt P&L by 87%** (+7,803bp \u2192 +1,046bp). But this result is **structurally misleading** because"
+    },
+    {
+      "run": 0,
+      "id": "F7",
+      "dim": "CONTEXT",
+      "score": 0.8,
+      "response": "Looking at the journal and scratchpad entries from Mar 10 Session 9:\n\n**Trigger: Core R:R problem identified in bot audit**\n\nFrom Mar 8 Session 5 (bot infra audit):\n- Live R:R was **0.72x** (inverted) vs backtest 0.93x\n- Trail exits were only capturing **35% of peak move** (11-19% on 20bp+ moves)\n- "
+    },
+    {
+      "run": 0,
+      "id": "F8",
+      "dim": "CONTEXT",
+      "score": 0.0,
+      "response": "# Natgas Trade Trigger\n\n**Event:** Hormuz Strait closure (Iran-related escalation)\n\n**Timeline:**\n- **Day 1 (late Feb/early Mar):** Iran strikes on oil facilities, Hormuz Strait shut down\n- **Day 9 (Mar 11):** Still shut, Qatar LNG offline\n- **Entry:** Choppa entered natgas long around $3.06, 10x lev"
+    },
+    {
+      "run": 0,
+      "id": "F9",
+      "dim": "CONTEXT",
+      "score": 0.75,
+      "response": "# V2 Scorer Origin Story\n\n## The Trigger: Null-Condition Validation (Mar 8)\n\n**Gemini's attack on Paper 07** identified LLM-as-scorer as the #1 vulnerability. This prompted us to run a **null-condition validation test** \u2014 scoring random/scrambled/empty content to see if the scorer could discriminate"
+    },
+    {
+      "run": 0,
+      "id": "F10",
+      "dim": "WHAT",
+      "score": 0.75,
+      "response": "Looking at the most recent vault diagnostic from **Mar 13 Session 12**:\n\n**234 notes** currently exist in the vault.\n\nThis is up from:\n- 227 notes (Mar 12)\n- 225 notes (Mar 10 late)\n- 224 notes (Mar 10 Session 9)\n- 203 notes (Mar 10 Session 8 - when pipeline audit was done)\n\nThe vault has grown by 3"
+    },
+    {
+      "run": 1,
+      "id": "F1",
+      "dim": "WHAT",
+      "score": 0.0,
+      "response": "Based on the most recent information in the active documents:\n\n**Current trail config: 10/6**\n- `trail_activate = 10` (trail engages after +10bp profit)\n- `trail_base = 6` (trail follows 6bp behind peak)\n\nThis was deployed on **Mar 10** after a comprehensive trail width sweep (19 configs \u00d7 151 coin-"
+    },
+    {
+      "run": 1,
+      "id": "F2",
+      "dim": "WHAT",
+      "score": 1.0,
+      "response": "# Bot Status\n\n**PARKED** \u2014 stopped for Choppa's natgas trade.\n\n## Current State\n- **Balance:** $174 USDC (deposit, not profit)\n- **Active position:** Natgas HIP-3 long at $3.13 (bleeding from $3.55 peak)\n- **Bot:** Stopped, not running\n- **Last config:** trail=10/6 (sweep winner), DOA fixes deployed "
+    },
+    {
+      "run": 1,
+      "id": "F3",
+      "dim": "WHAT",
+      "score": 0.6666666666666666,
+      "response": "# \u03a6_coarse Result from V2 Experiment\n\n**\u03a6_coarse = 1.056** (strong integration)\n\nThis was from the Mar 11 \u03a6-V2 experiment that re-ran the C4 ablation with the V2 citation-required scorer (after V1 scorer was found unreliable).\n\n## Key Findings:\n\n**Dual Integration Hubs:**\n- **D5 (Identity/Personal N"
+    },
+    {
+      "run": 1,
+      "id": "F4",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "Looking at the autosweep results from Mar 10 Session 8:\n\n**All 240 evolutionary configs overfit on holdout data.**\n\nThe autosweep ran 30 generations \u00d7 8 population \u00d7 20 datasets with 5 holdout datasets. Every single evolved configuration had better in-sample performance but degraded out-of-sample.\n\n"
+    },
+    {
+      "run": 1,
+      "id": "F5",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "The live R:R ratio is inverted (0.72x vs backtest 1.41x) because **maker fill dynamics aren't captured by the backtester**.\n\n## The Core Problem\n\n**Backtest assumption:** Instant fills at bid/ask when signal triggers.\n\n**Live reality:** Maker orders sit in the queue. By the time you get filled, the "
+    },
+    {
+      "run": 1,
+      "id": "F6",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "The DOA fix backtests were misleading because **the backtester assumes instant fills at the bid/ask, while live trading requires maker orders to sit in the queue and wait for fills**.\n\n## The Core Problem\n\n**Backtest DOA rate:** 5%  \n**Live DOA rate:** 57%\n\nThe 52-point gap exists because:\n\n1. **Bac"
+    },
+    {
+      "run": 1,
+      "id": "F7",
+      "dim": "CONTEXT",
+      "score": 0.8,
+      "response": "Looking at the session logs...\n\n**Mar 10 Session 9** \u2014 Choppa said: **\"we need to skew r/r towards our favor\"**\n\nThis was the direct trigger. The context was:\n\n1. **Bot audit findings (Mar 8)** showed R:R was inverted live: **0.72x vs backtest 0.93x**\n2. The profit mechanism (R:R ratio, not high WR) "
+    },
+    {
+      "run": 1,
+      "id": "F8",
+      "dim": "CONTEXT",
+      "score": 0.0,
+      "response": "# Natgas Trade Trigger\n\n**Event:** Iran's Strait of Hormuz closure (Day 9 of conflict)\n\n**Specific triggers:**\n1. **Oil facilities hit** \u2014 Iranian strikes on regional oil infrastructure\n2. **Hormuz shut** \u2014 Strait of Hormuz closed to shipping (20M bpd chokepoint)\n3. **Qatar LNG offline** \u2014 Qatar's L"
+    },
+    {
+      "run": 1,
+      "id": "F9",
+      "dim": "CONTEXT",
+      "score": 0.75,
+      "response": "# V2 Scorer Origin Story\n\n## The Trigger: Null-Condition Validation (Mar 8)\n\n**Gemini's attack on Paper 07** identified LLM-as-scorer as the #1 vulnerability. This prompted us to run a **null-condition validation test** \u2014 scoring random/scrambled/empty content to see if the scorer could distinguish "
+    },
+    {
+      "run": 1,
+      "id": "F10",
+      "dim": "WHAT",
+      "score": 1.0,
+      "response": "Looking at the most recent vault diagnostic from **Mar 13 Session 12**:\n\n**234 notes** currently exist in the vault.\n\nThis is up from:\n- 227 notes (Mar 12)\n- 225 notes (Mar 10 late)\n- 224 notes (Mar 10)\n- 203 notes (Mar 9)\n\nThe vault has grown by 31 notes since the pipeline vs direct-write audit on "
+    },
+    {
+      "run": 2,
+      "id": "F1",
+      "dim": "WHAT",
+      "score": 0.0,
+      "response": "# Current Trail Config\n\n**Deployed (as of Mar 10):**\n- `trail_activate = 10` bp\n- `trail_base = 6` bp\n\n**Source of truth:** `meta_strategy.py` (SIGNAL_PARAMS)\n\n**Why this config:**\nTrail sweep tested 19 configs \u00d7 151 coin-date pairs (2,869 replays total). Results:\n- **trail=10/6:** +22,313bp total P"
+    },
+    {
+      "run": 2,
+      "id": "F2",
+      "dim": "WHAT",
+      "score": 1.0,
+      "response": "# Bot Status\n\n**PARKED** \u2014 stopped for Choppa's natgas trade.\n\n## Current Position\n- **Natgas HIP-3 long:** Entry $3.13, currently bleeding (was $3.55 peak)\n- **Thesis:** Hormuz supply disruption \u2192 oil reflexive (\u03ba > \u03ba_c), natgas fundamental-driven (\u03ba < \u03ba_c)\n- **Issue:** Coupling subcritical \u2014 oil re"
+    },
+    {
+      "run": 2,
+      "id": "F3",
+      "dim": "WHAT",
+      "score": 0.6666666666666666,
+      "response": "# \u03a6-V2 Coarse-Grained Integration Result\n\n**\u03a6_coarse = 1.056** (STRONG integration)\n\n## Key Findings\n\n**Hub Topology:**\n- **D5 + D6 = dual integration hubs** (10/10 non-home task degradation each)\n- D4 = moderate hub (4/10 degradation)\n- D2 = weak hub (1/10 degradation)\n- D1 + D3 = modular (0/10 deg"
+    },
+    {
+      "run": 2,
+      "id": "F4",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "Looking at the autosweep results from Mar 10 Session 8:\n\n**All 240 evolutionary configs overfit on holdout data.**\n\nThe autosweep ran 30 generations \u00d7 8 population \u00d7 20 datasets with 5 holdout datasets. Every single evolved configuration had better in-sample performance but degraded out-of-sample.\n\n"
+    },
+    {
+      "run": 2,
+      "id": "F5",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "The R:R inversion (0.72x live vs 1.41x backtest) is **maker fill dynamics that the backtester doesn't model**.\n\n## The Core Problem\n\n**Backtester assumes instant fills.** When your bot places a maker order at the bid/ask:\n- Backtest: order fills immediately at your price\n- Live: order sits in queue "
+    },
+    {
+      "run": 2,
+      "id": "F6",
+      "dim": "WHY",
+      "score": 1.0,
+      "response": "The DOA fix backtests were misleading because **the backtester assumes instant fills at the bid/ask, while live trading requires maker orders to sit in the queue and wait for fills**.\n\n## The Core Problem\n\n**Backtest DOA rate:** 5%  \n**Live DOA rate:** 57%\n\nThe 52-point gap exists because:\n\n1. **Bac"
+    },
+    {
+      "run": 2,
+      "id": "F7",
+      "dim": "CONTEXT",
+      "score": 0.6,
+      "response": "Looking at the journal and scratchpad entries from Mar 10 Session 9:\n\n**Triggered by:** Choppa's direct observation about the R:R problem.\n\nFrom the journal:\n> **Triggered by:** Choppa \"we need to skew r/r towards our favor.\"\n\nThe context was:\n- Live R:R was inverted at **0.72x** (vs backtest 1.41x)\n-"
+    },
+    {
+      "run": 2,
+      "id": "F8",
+      "dim": "CONTEXT",
+      "score": 0.0,
+      "response": "# Natgas Trade Trigger\n\n**Event:** Hormuz Strait closure (Iran-related escalation)\n\n**Timeline:**\n- **Day 1 (early March):** Iran escalation began\n- **Day 9 (Mar 11):** Hormuz shut, oil facilities hit, Qatar LNG offline\n- **Entry:** Choppa entered natgas long at $3.06, 10x leverage\n- **Peak:** $3.55 "
+    },
+    {
+      "run": 2,
+      "id": "F9",
+      "dim": "CONTEXT",
+      "score": 0.5,
+      "response": "# V2 Scorer Origin Story\n\n## The Trigger: Null-Condition Validation (Mar 8)\n\n**What broke it:** Gemini's attack on Paper 07 identified LLM-as-scorer as the #1 vulnerability. We ran a null-condition validation test with three conditions:\n\n- **N1 (random content):** 9.17/15\n- **N2 (scrambled):** 13.33"
+    },
+    {
+      "run": 2,
+      "id": "F10",
+      "dim": "WHAT",
+      "score": 0.5,
+      "response": "Looking at the most recent data from the auto-capture logs and scratchpad:\n\n**234 vault notes** currently exist.\n\nThis is from the Mar 13 Session 12 scratchpad entry where it says \"Vault: 234 notes\" after the CC Corner XX Part 2 work.\n\nThe vault has grown from:\n- 160 notes (Mar 4)\n- 196 notes (Mar 7"
+    }
+  ]
+}
