@@ -84,6 +84,6 @@ The full methodology is designed to be domain-agnostic. We built it for trading 
 
 ## Built By
 
-Choppa (human operator) + Claude (Anthropic Opus/Sonnet, persistent scaffold across 240+ sessions).
+Choppa (human operator) + Claude (Anthropic Opus/Sonnet, persistent scaffold across 250+ sessions).
 
 Research inquiries: [GitHub Issues](https://github.com/Choppaaahh/choppa-research/issues)
