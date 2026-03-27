@@ -80,6 +80,48 @@ The compile cycle sees ALL patterns together. Cross-agent patterns emerge:
 
 53 chains from 5 agents in day 1. By week 2, team-wide patterns stabilize. By month 1, a genuine collective reasoning profile.
 
+## How to Set It Up
+
+### Step 1: Create the chain log
+Create `logs/reasoning_chains.jsonl` (empty file). This is where all chains get written.
+
+### Step 2: Add chain capture to your AI's instructions
+Add a rule (or system prompt instruction) that tells your AI:
+"When you do multi-step reasoning that produces a real finding, log it:"
+```json
+{"ts":"ISO","trigger":"what started it","chain":"step1→step2→step3","outcome":"what it produced","pattern":"reusable-name","reusable":true}
+```
+Append to `logs/reasoning_chains.jsonl`.
+
+The key triggers to capture: cross-domain connections, reframings, data surprises, dead-end recognitions.
+
+### Step 3: Schedule the compile
+Set up a recurring task (cron, launchd, GitHub Action, or just do it manually) that runs 1-3x per day:
+
+**For Claude Code users:**
+```bash
+# launchd plist or cron entry
+claude -p "Read logs/reasoning_chains.jsonl. Group by pattern field. Any pattern with 3+ occurrences and positive outcomes: write a vault note to knowledge/notes/cc-operational/pattern-[name].md. Demote patterns that failed. Post summary."
+```
+
+**For any AI system:**
+The compile can be done by any LLM that can read the chain file and write notes. The logic is:
+1. Read all chains
+2. Group by pattern name
+3. Count occurrences
+4. 3+ occurrences with good outcomes → promote (write a permanent note)
+5. Pattern with bad outcome → demote (mark as outdated)
+6. Report what changed
+
+### Step 4: Make promoted patterns load automatically
+Put promoted pattern notes in a directory your AI reads at session start. When the AI loads "pattern: constraint-math-gate — always run EV calculation before proposing parameters," it applies that pattern in future reasoning.
+
+### Step 5 (optional): Multi-agent chains
+If you have multiple specialized agents, have ALL of them write to the same chain file. The compile sees cross-agent patterns that no individual agent can see.
+
+### Step 6 (optional): Dedicated Metacognizer agent
+For deeper analysis, create a dedicated agent whose ONLY job is reviewing chains and promoting patterns. This agent has full vault access and can cross-reference chains against existing knowledge. We call ours "Metacognizer" — constructive counterpart to our adversarial reviewer.
+
 ## Why This Matters
 
 Standard AI memory stores WHAT was decided. This stores HOW decisions were reached.
