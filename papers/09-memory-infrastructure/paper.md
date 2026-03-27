@@ -59,7 +59,7 @@ The base layer is an Obsidian knowledge vault managed by the Ars Contexta method
 - **Wiki links** — typed connections between notes (`since [[claim]]`, `contradicts [[claim]]`, `extends [[claim]]`). Average 8.1 links per note (target: 3+). 0% orphan rate.
 - **Schema enforcement** — PostToolUse hooks validate YAML on every write. 100% compliance for dated notes.
 
-**A note on the processing pipeline:** The Ars Contexta methodology includes a formal pipeline (captures → extract → connect → validate). We built it but never used it. All 382 notes were written directly to the vault during sessions. Quality is maintained by inline enforcement — hooks that validate schema on every write, templates that define required fields, and methodology spec that the agent follows. This is an empirical finding: **quality at the point of creation (inline enforcement) beats quality through batch inspection (pipeline)**. The pipeline exists as a fallback but has processed zero notes in 240+ sessions.
+**A note on the processing pipeline:** The Ars Contexta methodology includes a formal pipeline (captures → extract → connect → validate). We built it but never used it. All 382 notes were written directly to the vault during sessions. Quality is maintained by inline enforcement — hooks that validate schema on every write, templates that define required fields, and methodology spec that the agent follows. This is an empirical finding: **quality at the point of creation (inline enforcement) beats quality through batch inspection (pipeline)**. The pipeline exists as a fallback but has processed zero notes in 250+ sessions.
 
 This finding parallels Toyota's jidoka principle ("build quality in, don't inspect out") and biological innate immunity (pattern-recognition receptors at point of entry rather than downstream inspection). Synchronous enforcement beats batch processing when production rate exceeds inspection cadence.
 
@@ -458,7 +458,7 @@ The scheduled CC sessions are cheap for one system. Scaling to many users or hig
 
 ## 7. Recommendations for Builders
 
-If you're building AI agent memory, here's what we'd recommend based on 240+ sessions of empirical use:
+If you're building AI agent memory, here's what we'd recommend based on 250+ sessions of empirical use:
 
 1. **Measure fidelity, not just recall.** Build a WHAT/WHY/CONTEXT scoring system for your domain. Run it regularly. If you can't measure what your memory preserves, you can't improve it.
 

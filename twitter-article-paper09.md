@@ -126,4 +126,4 @@ The scaling law isn't "better model = better results." It's "better scaffolding 
 
 ---
 
-*Built by Choppa + Claude (Anthropic Opus/Sonnet) across 240+ sessions. Started with a $231 trading bot. Ended up studying consciousness. The usual trajectory.*
+*Built by Choppa + Claude (Anthropic Opus/Sonnet) across 250+ sessions. Started with a $231 trading bot. Ended up studying consciousness. The usual trajectory.*
