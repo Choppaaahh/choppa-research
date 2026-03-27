@@ -1,0 +1,58 @@
+{
+  "experiment": "three_scale_emergent_complexity",
+  "prediction": "Positive EI at all three levels with genuine multiscale structure",
+  "falsification": "Zero/negative EI at memory/integration \u2192 compression is noise removal, not emergence",
+  "timestamp": "2026-03-07T10:17:06.818753",
+  "levels": {
+    "market": {
+      "level": "market",
+      "coin": "XRP",
+      "ticks": 66398,
+      "ei_micro": 0.042322,
+      "ei_macro": 0.164949,
+      "ratio": 3.9,
+      "causal_emergence": 1
+    },
+    "memory": {
+      "level": "memory",
+      "fidelity_tests": 6,
+      "ei_memory_only": 0.115573,
+      "n_memory_pairs": 18,
+      "ei_full_scaffold": 0.236453,
+      "n_full_pairs": 9,
+      "scaffold_emergence_ratio": 2.05
+    },
+    "integration": {
+      "level": "integration",
+      "ei_integration": 0.918296,
+      "n_pairs": 3,
+      "known_results": {
+        "A_scaffold_only": [
+          9.5
+        ],
+        "B_scaffold_warmup": [
+          11.5
+        ],
+        "C_full_context": [
+          12.0
+        ]
+      },
+      "note": "Limited data \u2014 3 points from C3 A/B/C test"
+    }
+  },
+  "emergent_complexity": {
+    "emergent_complexity_bits": 1.637002,
+    "max_entropy_bits": 2.321928,
+    "normalized_ec": 0.705,
+    "n_scales": 5,
+    "ei_distribution": {
+      "market_micro": 0.042322,
+      "market_macro": 0.164949,
+      "memory_only": 0.115573,
+      "full_scaffold": 0.236453,
+      "integration": 0.918296
+    }
+  },
+  "verdict": "STRONG multiscale structure \u2014 EI distributed across levels",
+  "compression_as_emergence": "SUPPORTED (pending more data)"
+}
