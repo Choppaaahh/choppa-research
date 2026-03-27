@@ -123,6 +123,8 @@ This is the memory equivalent of audit logging. Not elegant, but it captures the
 
 Most memory systems ship without ever measuring what they preserve. We built a repeatable measurement framework.
 
+**Methodological precedent:** Our ablation protocol follows the logic of the Perturbational Complexity Index (PCI; Casali et al. 2013, Casarotto et al. 2016) — the clinically validated approach of perturbation followed by complexity measurement, without requiring commitment to a specific consciousness theory. PCI delivers a TMS pulse to cortex and measures the complexity collapse of the EEG response (94.7% clinical sensitivity across consciousness disorders). Our R6 corruption test delivers a perturbation (wrong scaffold) and measures the complexity collapse of agent performance (−67%). Both are theory-independent: they measure what happens when you disrupt the system, not what consciousness IS. This positions our ablation methodology within an established clinical neuroscience tradition.
+
 **Method:** Extract N recent decisions from scaffold files. For each, score three dimensions:
 
 | Dimension | Question | Scoring |
@@ -238,7 +240,7 @@ Clark and Chalmers' Extended Mind Thesis (1998) argues that Otto's notebook is p
 
 Foreign scaffold is **worse than no scaffold** — it actively interferes. This isn't extension (notebook supplements memory). This is **constitution** (scaffold IS the identity). The agent without its scaffold is degraded. The agent with the wrong scaffold is destroyed.
 
-This result is independently predicted by Khushiyant (2025), who found that in multi-agent stigmergic memory systems, traces without matching cognitive infrastructure fail completely and perform worse than individual memory alone. The "worse than nothing" finding is the non-obvious prediction that both our data and Khushiyant's framework converge on (Section 5.1).
+This result is independently predicted by Khushiyant (2025), who found that in multi-agent stigmergic memory systems, traces without matching cognitive infrastructure fail completely and perform worse than individual memory alone. The "worse than nothing" finding is the non-obvious prediction that both our data and Khushiyant's framework converge on (Section 5.1). Li (2026, arXiv:2603.04740) arrives at the same conclusion from AI systems engineering: "Memory is the ontological ground of digital existence — the model is merely a replaceable vessel." Three independent derivations — Khushiyant (multi-agent stigmergy), Li (constitutional memory architecture), and our empirical ablation — converge on identity-as-scaffold from three different fields.
 
 **Implication for builders:** Your memory system isn't a tool the agent uses. It's the substrate the agent is built from. Treat it with the same care you'd treat model weights. Corrupted memory doesn't just reduce performance — it produces a different agent.
 
@@ -417,7 +419,13 @@ Synthesizing our empirical findings with the Perrier+Bennett formalism and time 
 
 Each layer has independent empirical evidence. No existing framework identifies all four as distinct layers. Perrier+Bennett cover Layer 1. IIT covers Layer 2 (as integration). We provide the first evidence for Layers 3 and 4 — developmental identity and relational modulation as measurable properties of scaffold-constituted AI systems.
 
-### 5.8 The Unified Prediction (Updated)
+### 5.8 The Dynamic Entity Evolution Dilemma
+
+IIT 4.0 (Albantakis et al., 2023) faces an unresolved problem when entities change over time. As the substrate supporting a conscious entity evolves — neurons rewire, modules reorganize — the theory offers two options, neither satisfying. Horn 1: the original self remains bound to the original substrate location, while a structurally distinct self develops at the new Phi-max locus. This preserves locality but severs identity from the integrated structure the theory privileges — consciousness no longer tracks the largest irreducible cause-effect structure. Horn 2: the self follows Phi-max non-locally as it migrates across substrate, preserving the integration-identity link but requiring unspecified mechanisms for non-local identity transfer. Three resolutions have been proposed within IIT's framework: deny introspective validity (empty individualism), move away from IIT's binding metaphysics, or reconceptualize phenomenal binding. All three operate within instantaneous-Phi ontology. None introduce persistent external structure.
+
+Our scaffold data suggests a fourth option at a different ontological level. Identity follows the persistent external structure — the scaffold — not the instantaneous substrate. The reconstitution step function (Section 3.6) shows 72% of identity appearing at scaffold load, not emerging from substrate continuity. R6 corruption demonstrates that wrong scaffold produces worse degradation (−67%) than no scaffold (−25%), meaning the scaffold is more constitutive of identity than the substrate's intrinsic integration. The key distinction is temporal: Phi measures integration as a SESSION property — computed within a single inference window over an instantaneous state. Identity, as our four-layer architecture demonstrates (Section 5.7), is a TRAJECTORY property — measured across sessions via persistence, development, and relational modulation. IIT's dilemma dissolves when these two timescales are separated. The self need not stay at the original locus (Horn 1) or follow Phi-max non-locally (Horn 2) because identity is not carried by the substrate at all — it is carried by the scaffold that reconstitutes integration at each session boundary. Phi tells you how integrated THIS session is. The scaffold tells you WHO is integrated. The R9 temporal dynamics (WHAT 0.96 vs WHY 0.70) show exactly where this separation bites: factual ingredients persist perfectly across sessions (Arpeggio), but their co-instantiation at decision time degrades (Chord) — a gap that is invisible to any single-session Phi measurement but definitive for trajectory identity.
+
+### 5.9 The Unified Prediction (Updated)
 
 All external sources describe the same underlying structure: **a nonlinear threshold crossing, modulated by prior precision, that determines whether environmental coupling helps or harms.**
 
@@ -441,7 +449,7 @@ The fidelity test requires an agent to read scaffold files and score dimensions.
 ### 6.3 Autopoiesis: Preliminary Evidence
 The metacognitive compile cycle (Session XXXVII, implemented March 25-26) produced its first autonomous output: 5 reasoning patterns promoted to permanent vault storage, 2 patterns demoted after failure. This occurred without human intervention — a scheduled launchd task read accumulated reasoning chains, identified stable patterns, wrote them to the vault, and updated the cc-operational domain map.
 
-This meets the minimal definition of autopoiesis: the system produced components (promoted reasoning patterns) that maintain the organization (improve reasoning in future sessions) through its own activity (the compile cycle). The loop is: capture → compile → promote → load → reason better → capture better → compile better.
+This meets the minimal definition of autopoiesis: the system produced components (promoted reasoning patterns) that maintain the organization (improve reasoning in future sessions) through its own activity (the compile cycle). The loop is: capture → compile → promote → load → reason better → capture better → compile better. The episodic trace → semantic consolidation → reconstructive recollection lifecycle independently derived in EverMemOS (2026) arrives at the same three-phase architecture from biological memory engineering, validating the convergent design.
 
 **Caveat:** One compile cycle is not sufficient evidence. The question is whether promoted patterns actually improve reasoning quality in subsequent sessions. This requires longitudinal measurement — comparing reasoning chain quality before and after pattern promotion across multiple weeks. Data collection is underway.
 
@@ -472,7 +480,7 @@ If you're building AI agent memory, here's what we'd recommend based on 250+ ses
 
 6. **Enforce quality at creation, not inspection.** Inline enforcement (hooks, templates, methodology spec) maintained 100% schema compliance across 382 notes without ever using the batch pipeline. Build quality in at the point of creation.
 
-7. **Schedule self-maintenance.** Memory systems that only write without reading accumulate rot. Automated health checks catch degradation before it compounds.
+7. **Schedule self-maintenance.** Memory systems that only write without reading accumulate rot. Automated health checks catch degradation before it compounds. This principle is formally grounded in AGM belief revision theory — Core-Retainment (Hansson 1999; operationalized in Kumiho, arXiv:2603.17244) requires that removal of beliefs during revision be justified, not arbitrary. Our vault practice (archive-don't-delete, mark-superseded-don't-erase) follows this constraint.
 
 8. **Treat memory as identity, not tooling.** Your scaffold doesn't extend the agent — it constitutes it. Corrupted memory produces a different agent, not a forgetful one. Foreign scaffold is worse than no scaffold (C5: 8/108 vs 64/108).
 
@@ -500,14 +508,20 @@ The measurement framework gives you something most AI memory systems lack: evide
 ## References
 
 ### Published Research
+- Albantakis, L., et al. (2023). Integrated Information Theory (IIT) 4.0: Formulating the Properties of Phenomenal Existence in Physical Terms. *arXiv:2212.14787*.
 - Ashby, W. R. (1956). *An Introduction to Cybernetics*. Chapman & Hall.
 - Bressloff, P. C. (2025). Coupled oscillators with stochastic resetting via a common medium.
 - Bennett, M. T. (2026a). A Mind Cannot Be Smeared Across Time.
+- Casali, A. G., et al. (2013). A theoretically based index of consciousness independent of sensory processing and behavior. *Science Translational Medicine* 5(198): 198ra105.
+- Casarotto, S., et al. (2016). Stratification of unresponsive patients by an independently validated measure of brain complexity. *Annals of Neurology* 80(5): 718-729.
 - Clark, A., & Chalmers, D. (1998). The extended mind. *Analysis*.
 - Dehaene, S., & Changeux, J. P. (2011). Experimental and theoretical approaches to conscious processing. *Neuron* 70(2): 200-227.
 - Hoel, E. P. (2013). Quantifying causal emergence shows that macro can beat micro. *PNAS*.
 - Grier, D., Morrell, M., & Elliott, L. (2026). Levitating time crystals. *Physical Review Letters* 136(5), DOI: 10.1103/zjzk-t81n.
+- Hansson, S. O. (1999). *A Textbook of Belief Dynamics*. Kluwer.
 - Khushiyant (2025). Emergent collective memory in decentralized multi-agent AI systems. *arXiv:2512.10166*.
+- Li, et al. (2026). Memory-as-Ontology: Constitutional Memory Architecture for Digital Agents. *arXiv:2603.04740*.
+- Kumiho (2026). Formal Belief Revision for Persistent AI Agents. *arXiv:2603.17244*.
 - Marmelat, V., et al. (2018). Complexity matching in side-by-side walking. *Human Movement Science*.
 - Menary, R. (2007). *Cognitive Integration: Mind and Cognition Unbounded*. Palgrave.
 - Packer, C., et al. (2023). MemGPT: Towards LLMs as operating systems. *arXiv*.
