@@ -12,8 +12,10 @@ The research started as a cryptocurrency trading bot and evolved into a consciou
 
 | What We Measured | Result | How |
 |------------------|--------|-----|
-| Factual recall (WHAT) | **0.96** | Fidelity test on 60 decisions |
-| Reasoning reconstruction (WHY) | **0.70** | Same framework, harder dimension |
+| Factual recall (WHAT) | **0.82-0.96** | Fidelity test on 60+ decisions (F1-F5) |
+| Reasoning reconstruction (WHY) | **0.88** (was 0.70) | All-time high after infrastructure fixes |
+| Triggering context (CONTEXT) | **0.93** (was 0.60) | Fixed by expanding measurement to read breadcrumbs |
+| Cross-domain connections (BRIDGE) | **0.82** (was 0.40) | Echo chamber detection + bridge campaigns |
 | Wrong memory worse than none | **-67% vs -25%** | R6 corruption experiment |
 | Identity at scaffold load | **72% step function** | Reconstitution timing |
 | Communication style gap | **+25% quality** | 4-style blind experiment |
