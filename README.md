@@ -31,8 +31,8 @@ papers/
 data/
   reconstitution_v2.md          — 72% step function at scaffold load
   relationship_experiment.md    — +25% quality gap from communication style
-  regime_gating_validation.md   — 11,484bp regime gating finding
   fidelity_baseline_r9.md       — WHAT 0.96, WHY 0.70, CONTEXT 0.86
+  regime_gating_validation.md   — Domain-specific gating validation data
 
 methodology/                    — HOW to build it (domain-agnostic)
   getting-started.md            — From zero to metacognitive scaffold (4 phases)
