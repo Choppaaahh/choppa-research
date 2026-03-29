@@ -12,16 +12,16 @@ Knowledge graph topology over time. Measures structural health and integration.
 | 03/25 | 346 | 7.2 | 17 | 0 | 1 domain (0.32) |
 | 03/26 | 373 | 7.8 | 17 | 0 | 1 domain (0.34) |
 | 03/27 | 386 | 8.1 | 17 | 0 | 2 domains (0.34, 0.32) |
-| 03/28 | 394 | 8.1+ | 18 | 0 | 1 domain clearing (0.385→0.40+), 1 cleared (0.45) |
-| **03/29** | **414** | **9.0** | **18** | **13** | **consciousness 0.541, cc-operational 0.504 — bridge sweep targeting 0.55+** |
+| 03/28 | 394 | 8.1+ | 18 | 0 | 1 clearing (0.40+), 1 cleared (0.45) |
+| **03/29** | **414** | **9.0** | **18** | **0** | **0 — both cleared to 0.55 via structural bridge sweep** |
 
 ## Trends
 
-- **Note growth:** ~10-15 notes/day during active sessions. 170 → 433 in 3 weeks.
-- **Link density:** 4.0 → 8.7 (more than doubling over 3 weeks, nearly 3x the 3.0 target)
+- **Note growth:** ~10-15 notes/day during active sessions. 170 → 414 in 3 weeks.
+- **Link density:** 4.0 → 9.0 (more than doubling over 3 weeks, 3x the 3.0 target)
 - **Domains:** 12 → 18
-- **Orphans:** 0 since 03/22 (Archivist enforcement)
-- **Echo chambers:** identified and addressed via bridge campaigns. Health target raised from 0.40 (survival) to 0.55 (healthy). Largest domain is a structural challenge (88+ notes, highly internally connected) — requires multi-sprint campaigns.
+- **Orphans:** 0 since 03/22 (Archivist enforcement). 13 appeared 03/29 from batch note creation, cleared same session.
+- **Echo chambers:** identified and addressed via structural bridge campaigns. Health target raised from 0.40 (survival) to 0.55 (healthy). Dense domains (~1000+ links) require structural approach — targeting high-isolation notes is 5x more efficient than incremental link-adding.
 
 ## What This Means
 
