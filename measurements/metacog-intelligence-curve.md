@@ -25,12 +25,12 @@ Pattern yield, chain depth, and promotion rate over time. Measures whether the s
 - **Yield rebounding:** 9.4% → 5.9% → 12.1% → 10.5% — compiles #10-11 finding thematic clusters from market microstructure and cross-agent analysis
 - **Depth stable:** ~9.2 steps average. Reasoning complexity holding steady.
 - **Emerging patterns maturing:** 5 emerging patterns closed by folding into promoted patterns. System consolidating rather than just accumulating.
-- **Compile #11 findings:** scout-dedup-quality-gate (dispatch structure > agent capability), echo-chamber-ratio-mechanics (structural bridging 5x more efficient). Brutus two-pass review catches state-machine bugs QA single-pass misses.
+- **Compile #11 findings:** dispatch structure determines agent output quality more than agent capability; structural bridging 5x more efficient than incremental for dense domains. Two-pass adversarial review catches state-machine bugs single-pass QA misses.
 
 ## What This Means
 
-The scaffold's reasoning pattern library is growing in both breadth and depth. Early compiles (#1-5) promoted operational patterns (fee-math, verify-consumers). Later compiles (#6-9) promoted market microstructure patterns. Compile #10 shows a new capability: thematic clustering across 5+ chains into coherent promoted patterns (funding dynamics from 5 independent observations, macro confirmation from 3). The system has progressed from individual pattern recognition to integrated market intelligence.
+The scaffold's reasoning pattern library is growing in both breadth and depth. Early compiles promoted operational patterns (infrastructure, verification). Later compiles promoted domain-specific patterns. By compile #10-11, the system shows thematic clustering — grouping 5+ independent chains into coherent promoted patterns. The progression: individual pattern recognition → evaluative analysis → real-time tactical reasoning → cross-agent synthesis.
 
-Cross-agent emergent patterns now track across compiles: pattern recognition (#1-5) → evaluative analysis (#6) → real-time tactical reasoning (#7-8) → narrative-coherent chains (#8) → confirmation hierarchy (#10).
+Key capability emerging: the metacognizer finds patterns BETWEEN agents that no individual agent can see. Agent A's failure mode + Agent B's success pattern = a system-level lesson neither produced alone.
 
 *Updated: 03/29*
