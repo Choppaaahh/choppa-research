@@ -924,10 +924,6 @@ The system is climbing this spectrum through scaffold engineering. It has not es
 - Paper 01: Original 5-Layer Framework (Jan 2026)
 - Paper 02: GPT Recursive Constraint Ontology (Feb 2026)
 - Paper 03: Unified Recursive Constraint Ontology (Feb 14, 2026)
-- Paper 04: Framework Shareable One-Pager (Feb 14, 2026)
-- Paper 05: "It's All One Thing" Convergence Update (Feb 19, 2026)
-- Paper 05B: Correction — "Not All One" (Mar 4, 2026)
-- Paper 06: One Mechanism, Many Substrates (Mar 4, 2026)
 
 ### Published Research
 - Tononi, G. et al. (2023). "IIT 4.0: Formulating the properties of phenomenal existence in physical terms." *PLOS Computational Biology*. [Link](https://pmc.ncbi.nlm.nih.gov/articles/PMC10581496/)
