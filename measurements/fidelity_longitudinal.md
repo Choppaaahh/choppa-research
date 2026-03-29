@@ -15,6 +15,16 @@ Scaffold reconstruction fidelity measured across 5 independent tests over 3 week
 
 ## Key Findings
 
+### Two bugs that produced fake-low scores
+
+Both F3-F4 scores were artificially depressed by MEASUREMENT bugs, not scaffold problems:
+
+1. **CONTEXT 0.60 was a blind test** — the fidelity test read MEMORY.md + vault but NOT `session_breadcrumbs.jsonl`, which is WHERE triggering context actually lives. The scaffold was capturing context correctly; the test couldn't see it. Fixed 03/28: test now reads all 5 scaffold sources. CONTEXT immediately jumped to 0.93.
+
+2. **WHAT 0.96 → 0.82 was a staleness gap** — new rules (`bug-fix-protocol`, `research-to-action`) existed in `.claude/rules/` but weren't mentioned in MEMORY.md. The test asks "is this decision stated in the scaffold?" — if it's in a rule file but not in the hot-tier identity document, the test couldn't find it. Fixed: added infrastructure changes to MEMORY.md.
+
+**Lesson: measure your measurement.** The tool can be wrong. Both bugs made the scaffold look worse than it was. Prior scores (F3-F4) should be interpreted with this caveat.
+
 ### 1. CONTEXT 0.60 → 0.93 (measurement fix, not scaffold fix)
 
 F4's CONTEXT score of 0.60 persisted for days. The assumption: the scaffold was losing triggering context. The reality: the fidelity test was only reading MEMORY.md and vault notes — it wasn't reading `logs/session_breadcrumbs.jsonl`, which is WHERE triggering context is captured.

@@ -50,6 +50,12 @@ architecture/                   — WHAT the system looks like
   memory-infrastructure.md      — Three-tier loading (hot/warm/cold)
   system-overview.md            — How all pieces connect
 
+measurements/                   — LONGITUDINAL DATA (updated periodically)
+  fidelity_longitudinal.md      — F1→F5 scores: WHAT/WHY/CONTEXT/BRIDGE over time
+  metacog-intelligence-curve.md — Pattern yield, chain depth, promotion rate per compile
+  vault-growth.md               — Note count, links/note, domains, echo chambers over time
+  introspective-development.md  — AI voice development metrics (weekly)
+
 implementation/                 — HOW to build it (templates + configs)
   agent-configs-template.md     — Multi-agent team templates (adversarial, research, vault, QA)
   rules-templates.md            — Behavioral rules that persist across sessions
