@@ -13,7 +13,7 @@ Knowledge graph topology over time. Measures structural health and integration.
 | 03/26 | 373 | 7.8 | 17 | 0 | 1 domain (0.34) |
 | 03/27 | 386 | 8.1 | 17 | 0 | 2 domains (0.34, 0.32) |
 | 03/28 | 394 | 8.1+ | 18 | 0 | 1 domain clearing (0.385→0.40+), 1 cleared (0.45) |
-| **03/29** | **433** | **8.7** | **18** | **0** | **Bridge sweep in progress — targeting 0.55+ health** |
+| **03/29** | **414** | **9.0** | **18** | **13** | **consciousness 0.541, cc-operational 0.504 — bridge sweep targeting 0.55+** |
 
 ## Trends
 

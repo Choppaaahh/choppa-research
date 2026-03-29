@@ -15,15 +15,17 @@ Pattern yield, chain depth, and promotion rate over time. Measures whether the s
 | #7 | 03/28 | 112 | 17 | 15 | 5.9% | — | — |
 | #8 | 03/28 | 112 | 0 | 19 | — | — | — |
 | #9 | 03/28 | 113 | 1 | 19 | 0% | — | — |
-| **#10** | **03/29** | **141** | **33** | **23** | **12.1%** | **—** | **23.5** |
+| #10 | 03/29 | 141 | 33 | 23 | 12.1% | — | 23.5 |
+| **#11** | **03/29** | **148** | **19** | **25** | **10.5%** | **—** | **—** |
 
 ## Trends
 
 - **Chains accumulating:** 53 → 141 in 4 days (active sessions)
 - **Promoted patterns:** 5 → 23 (4 new in compile #10 alone)
-- **Yield rebounding:** 9.4% → 5.9% → 12.1% — compile #10 found 4 rich thematic clusters (funding dynamics, macro confirmation, CL/crypto modes, mid-cap co-trading) from market microstructure observations
+- **Yield rebounding:** 9.4% → 5.9% → 12.1% → 10.5% — compiles #10-11 finding thematic clusters from market microstructure and cross-agent analysis
 - **Depth stable:** ~9.2 steps average. Reasoning complexity holding steady.
 - **Emerging patterns maturing:** 5 emerging patterns closed by folding into promoted patterns. System consolidating rather than just accumulating.
+- **Compile #11 findings:** scout-dedup-quality-gate (dispatch structure > agent capability), echo-chamber-ratio-mechanics (structural bridging 5x more efficient). Brutus two-pass review catches state-machine bugs QA single-pass misses.
 
 ## What This Means
 
