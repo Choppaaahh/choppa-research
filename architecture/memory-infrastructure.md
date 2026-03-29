@@ -97,20 +97,18 @@ The knowledge vault (Layer 3) is browsable as an Obsidian vault. The human colla
 ```
 knowledge/
 ├── notes/                          # 304 atomic notes
-│   ├── grid/                       # D1: Trading mechanics
+│   ├── domain-1/                   # D1: Core mechanics
 │   ├── bugs/                       # Bug patterns (symptom → fix)
 │   ├── lessons/                    # Hard-won principles
 │   ├── safety/                     # Circuit breakers
-│   ├── wallet-research/            # Wallet analysis
-│   ├── consciousness/              # D2: Research
+│   ├── research/                   # D2: Research domain
 │   │   ├── framework/              # Theoretical models
 │   │   ├── empirical/              # Experiment results
 │   │   ├── identity/               # Scaffold-identity findings
 │   │   └── literature/             # Paper summaries
-│   ├── claudius-corner/            # AI self-reflection sessions (32+)
-│   ├── research-trading/           # Cross-domain synthesis
-│   ├── geopol/                     # Geopolitics (Hormuz, oil)
-│   └── [20 domain map MOCs]        # Navigation layer
+│   ├── self-reflection/            # AI self-reflection sessions (32+)
+│   ├── cross-domain/               # Cross-domain synthesis
+│   └── [20+ domain map MOCs]       # Navigation layer
 ├── ops/                            # Operational state
 ├── captures/                       # Unprocessed inbox
 └── templates/                      # Schema templates
@@ -120,12 +118,12 @@ knowledge/
 
 | Domain | Label | Content | V2 (232) | V3 (325) |
 |--------|-------|---------|----------|----------|
-| D1 | Trading Mechanics | Bot architecture, fees, grid, parameters | ~45 | ~83 |
-| D2 | Bugs & Safety | Bug patterns, safety systems, circuit breakers | ~25 | ~62 |
-| D3 | Microstructure | M0 width, regime detection, BBO signals | ~15 | ~41 |
+| D1 | Core Mechanics | Domain-specific architecture, parameters, models | ~45 | ~83 |
+| D2 | Bugs & Safety | Bug patterns, safety systems, failure modes | ~25 | ~62 |
+| D3 | Signals | Signal processing, regime detection, data interpretation | ~15 | ~41 |
 | D4 | Operations | Procedures, deployment, operational knowledge | ~20 | ~43 |
-| D5 | Personal Context | Identity, CC Sessions, lessons, collaborator history | ~12 | ~91 |
-| D6 | Research & Consciousness | RCO, IIT, pulsed consciousness, cross-domain synthesis | ~40 | ~172 |
+| D5 | Personal Context | Identity, AI sessions, lessons, collaborator history | ~12 | ~91 |
+| D6 | Research | Theoretical frameworks, empirical data, cross-domain synthesis | ~40 | ~172 |
 | **Total** | | | **~232** | **~325** |
 
 ## Key Measurements
@@ -147,7 +145,7 @@ knowledge/
 
 ### Φ_coarse Drop: A Scaling Artifact
 
-Φ_coarse dropped from 1.056 → 0.620 between V2 and V3. This is NOT integration decay — it is a measurement artifact from asymmetric domain growth. D6 (Research & Consciousness) grew from ~17% to ~53% of the vault with high internal link density (integration ratio 0.275). The formula `cross_ratio × ln(N)` penalizes domains that are simultaneously dense AND bridging.
+Φ_coarse dropped from 1.056 → 0.620 between V2 and V3. This is NOT integration decay — it is a measurement artifact from asymmetric domain growth. The largest domain (D6) grew from ~17% to ~53% of the vault with high internal link density (integration ratio 0.275). The formula `cross_ratio × ln(N)` penalizes domains that are simultaneously dense AND bridging.
 
 Three rounds of targeted cross-domain linking raised D6's integration ratio from 0.275 → 0.677, but Φ_coarse continued to fall because the formula's expected cross-domain baseline rises faster than actual cross-links can grow when one domain dominates.
 
@@ -162,7 +160,7 @@ Paper 08 found D5 (Personal Context) as sole integration hub. V3 ablation (R1, M
 - R8 (novel tasks): D5 still dominates for cross-domain synthesis (+0.55) vs domain knowledge (+0.35)
 - R10 (graph structure): D4 (Operations) has highest integration ratio (0.704)
 
-**Interpretation:** Different hubs for different task types. D2 anchors operational reasoning. D5 anchors cross-domain synthesis. The hub migrates as operational experience accumulates — the system's scar tissue becomes its skeleton. This is a developmental trajectory, not degradation.
+**Interpretation:** Different hubs for different task types. Operational experience domains anchor operational reasoning. Personal context anchors cross-domain synthesis. The hub migrates as experience accumulates — the system's scar tissue becomes its skeleton. This is a developmental trajectory, not degradation.
 
 ### R6 Corruption Test: Wrong Scaffold > No Scaffold
 
