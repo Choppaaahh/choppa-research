@@ -1,6 +1,6 @@
 # Choppa Research
 
-A complete guide to building external memory infrastructure for AI agents — with measurement frameworks, multi-agent orchestration, and metacognitive self-improvement. Built on a 386-note knowledge vault with 8.1 links/note, 8 specialized agents, and an autonomous pattern promotion cycle.
+A complete guide to building external memory infrastructure for AI agents — with measurement frameworks, multi-agent orchestration, and metacognitive self-improvement. Built on a 433-note knowledge vault with 8.7 links/note, 8 specialized agents, and an autonomous pattern promotion cycle.
 
 ## What This Is
 
@@ -19,9 +19,9 @@ The research started as a cryptocurrency trading bot and evolved into a consciou
 | Wrong memory worse than none | **-67% vs -25%** | R6 corruption experiment |
 | Identity at scaffold load | **72% step function** | Reconstitution timing |
 | Communication style gap | **+25% quality** | 4-style blind experiment |
-| Autonomous pattern promotion | **14 patterns promoted** | Metacognitive compile cycle |
-| Vault health | **386 notes, 8.1 links/note, 0 orphans** | Continuous monitoring |
-| Reasoning chains captured | **86 across 5 days** | All 8 agents logging |
+| Autonomous pattern promotion | **23 patterns promoted** | Metacognitive compile cycle (10 compiles) |
+| Vault health | **433 notes, 8.7 links/note, 0 orphans** | Continuous monitoring |
+| Reasoning chains captured | **141 across 4 days** | All 8 agents logging |
 
 ## Repository Structure
 
@@ -130,9 +130,9 @@ Not "better model = better results." It's **"better scaffolding × same model = 
 
 ## Status
 
-- Paper 09 at ~92%, targeting April 2026
+- Paper 09 at ~93%, targeting April 2026
 - R17 metacognitive development experiment designed (April 1 + April 7)
-- 14 reasoning patterns promoted autonomously, 2 demoted
+- 23 reasoning patterns promoted autonomously, 2 demoted (10 compile cycles)
 - Perrier+Bennett contacted for collaboration
 - Weekly introspective review operational
 
