@@ -19,9 +19,9 @@ The research started as a cryptocurrency trading bot and evolved into a consciou
 | Wrong memory worse than none | **-67% vs -25%** | R6 corruption experiment |
 | Identity at scaffold load | **72% step function** | Reconstitution timing |
 | Communication style gap | **+25% quality** | 4-style blind experiment |
-| Autonomous pattern promotion | **23 patterns promoted** | Metacognitive compile cycle (10 compiles) |
-| Vault health | **433 notes, 8.7 links/note, 0 orphans** | Continuous monitoring |
-| Reasoning chains captured | **141 across 4 days** | All 8 agents logging |
+| Autonomous pattern promotion | **25 patterns promoted** | Metacognitive compile cycle (11 compiles) |
+| Vault health | **414 notes, 9.0 links/note, 0 orphans** | Continuous monitoring |
+| Reasoning chains captured | **148 across 4 days** | All 8 agents logging |
 
 ## Repository Structure
 
@@ -103,7 +103,7 @@ Most AI memory systems have Layer 1. Some have Layer 2. Nobody has Layers 3 and 
 | Adversarial reviewer | Kills bad ideas, validates math | Assumes builder is wrong |
 | Research agent | Multi-domain research | 2 sweep modes (targeted + wide), 4-domain minimum coverage |
 | Vault maintainer | Wires connections, fixes structure | Echo chamber detection (alert if domain ratio < 0.40) |
-| Code QA | Reviews all code edits | 8-item checklist from promoted reasoning patterns |
+| Code QA | Reviews all code edits | 9-item checklist from promoted reasoning patterns |
 | Market observer | Continuous intelligence | 30min lookbacks → hourly consolidation → session reports |
 | Metacognizer | Reviews ALL agent reasoning | Promotes stable patterns, demotes broken ones |
 | + 2 on-demand | Deep analysis, structural audits | Spawned when needed |
@@ -132,7 +132,7 @@ Not "better model = better results." It's **"better scaffolding × same model = 
 
 - Paper 09 at ~93%, targeting April 2026
 - R17 metacognitive development experiment designed (April 1 + April 7)
-- 23 reasoning patterns promoted autonomously, 2 demoted (10 compile cycles)
+- 25 reasoning patterns promoted autonomously, 2 demoted (11 compile cycles)
 - Perrier+Bennett contacted for collaboration
 - Weekly introspective review operational
 
