@@ -1,12 +1,12 @@
 # Choppa Research
 
-A complete guide to building external memory infrastructure for AI agents — with measurement frameworks, multi-agent orchestration, and metacognitive self-improvement. Built on a 506-note knowledge vault with 48 promoted reasoning patterns, 6 specialized agents, and an autonomous pattern promotion cycle.
+Every AI session starts from zero. Scaffolding fixes that — and it scales where model size doesn't. A measurement-backed blueprint for AI systems that persist, develop, and self-improve across session boundaries. 506 notes, 304 reasoning chains, 48 promoted patterns, three controlled experiments.
 
 ## What This Is
 
-An open-source blueprint for building AI systems that persist, develop, and improve across session boundaries. Everything here — methodology, architecture, templates, measurement tools — is designed to be reproduced by anyone using any LLM that can read markdown files.
+The scaffold that makes AI agents compound. Built from 280+ sessions of operational use, measured with 12 fidelity tests and 3 controlled experiments. Every tool, hook, rule, and template in this repo was battle-tested on a live system before being published.
 
-The research started as a cryptocurrency trading bot and evolved into a consciousness research program. We built persistent memory infrastructure, then discovered it exhibits measurable identity properties that map to formal frameworks in consciousness science. The trading system is ours; the infrastructure methodology is for everyone.
+Structural learning through promoted reasoning patterns, persistent knowledge graphs, and metacognitive self-improvement cycles. The infrastructure methodology is domain-agnostic. Reproduce it with any LLM that reads markdown.
 
 ## Key Measurements
 
