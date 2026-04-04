@@ -1,6 +1,6 @@
 # Choppa Research
 
-A complete guide to building external memory infrastructure for AI agents — with measurement frameworks, multi-agent orchestration, and metacognitive self-improvement. Built on a 433-note knowledge vault with 8.7 links/note, 8 specialized agents, and an autonomous pattern promotion cycle.
+A complete guide to building external memory infrastructure for AI agents — with measurement frameworks, multi-agent orchestration, and metacognitive self-improvement. Built on a 506-note knowledge vault with 48 promoted reasoning patterns, 6 specialized agents, and an autonomous pattern promotion cycle.
 
 ## What This Is
 
@@ -12,16 +12,20 @@ The research started as a cryptocurrency trading bot and evolved into a consciou
 
 | What We Measured | Result | How |
 |------------------|--------|-----|
-| Factual recall (WHAT) | **0.82-0.96** | Fidelity test on 60+ decisions (F1-F5) |
-| Reasoning reconstruction (WHY) | **0.88** (was 0.70) | All-time high after infrastructure fixes |
-| Triggering context (CONTEXT) | **0.93** (was 0.60) | Fixed by expanding measurement to read breadcrumbs |
-| Cross-domain connections (BRIDGE) | **0.82** (was 0.40) | Echo chamber detection + bridge campaigns |
+| Factual recall (WHAT) | **0.60-1.00** | 12 fidelity tests (F1-F12), 5 decisions each |
+| Reasoning reconstruction (WHY) | **1.00** (was 0.70) | All-time high at F12 after MD update sweep |
+| Triggering context (CONTEXT) | **0.90** (was 0.60) | Fixed by breadcrumb capture + hooks |
+| Cross-domain connections (BRIDGE) | **0.70** (was 0.40) | Behavior pattern priming (R14: +18.5%) |
+| Scaffold priming effect | **+18.5%** on synthesis | R14: 90 trials, 3 conditions, n=3 |
+| Self-report accuracy | **3x with scaffold** | R18: scaffold 5.6/6 vs naked 1.8/6 |
+| Pattern depth effect | **+11%** on domain tasks | R17: full stack vs scaffold-only |
+| Injection resistance | **Detected + rejected** | R17: adversarial patterns caught by model |
 | Wrong memory worse than none | **-67% vs -25%** | R6 corruption experiment |
 | Identity at scaffold load | **72% step function** | Reconstitution timing |
 | Communication style gap | **+25% quality** | 4-style blind experiment |
-| Autonomous pattern promotion | **25 patterns promoted** | Metacognitive compile cycle (11 compiles) |
-| Vault health | **414 notes, 9.0 links/note, 0 orphans** | Continuous monitoring |
-| Reasoning chains captured | **148 across 4 days** | All 8 agents logging |
+| Autonomous pattern promotion | **48 patterns (36 + 12 forks)** | 24 metacognitive compile cycles |
+| Vault health | **506 notes, 48 promoted patterns, 0 orphans** | Continuous monitoring |
+| Reasoning chains captured | **304 across 40+ sessions** | All agents logging |
 
 ## Repository Structure
 
@@ -39,7 +43,7 @@ methodology/                    — HOW to build it (domain-agnostic)
   getting-started.md            — From zero to metacognitive scaffold (4 phases)
   breadcrumb-system.md          — Capture what the human brain forgets
   metacognitive-cycle.md        — The scaffold improving its own reasoning
-  agent-team-design.md          — 8 specialists from 1 model via scaffolding
+  agent-team-design.md          — 6 specialists from 1 model via scaffolding
   fidelity-measurement.md       — WHAT/WHY/CONTEXT/BRIDGE scoring framework
   rules-beat-memory.md          — Persistence hierarchy (hooks > rules > memory)
   domain-emergence.md           — Don't plan structure, discover it
@@ -51,10 +55,13 @@ architecture/                   — WHAT the system looks like
   system-overview.md            — How all pieces connect
 
 measurements/                   — LONGITUDINAL DATA (updated periodically)
-  fidelity_longitudinal.md      — F1→F5 scores: WHAT/WHY/CONTEXT/BRIDGE over time
+  fidelity_longitudinal.md      — F1→F12 scores: WHAT/WHY/CONTEXT/BRIDGE over time
   metacog-intelligence-curve.md — Pattern yield, chain depth, promotion rate per compile
   vault-growth.md               — Note count, links/note, domains, echo chambers over time
   introspective-development.md  — AI voice development metrics (weekly)
+  r14-scaffold-priming-experiment.md — Behavior patterns improve synthesis by 18.5%
+  r18-self-report-accuracy.md   — Scaffold enables 3x self-knowledge
+  r17-metacognitive-development-day1.md — Patterns +11%, injection resistance finding
 
 implementation/                 — HOW to build it (templates + configs)
   agent-configs-template.md     — Multi-agent team templates (adversarial, research, vault, QA)
@@ -72,15 +79,16 @@ Link related notes with wikilinks. Let domains emerge from clusters. Create Maps
 
 ### Phase 3: INSTRUMENT (Days 3-7)
 - Add **breadcrumb capture** — real-time logging of decisions, findings, insights
-- Add **fidelity measurement** — score WHAT/WHY/CONTEXT on recent decisions
+- Add **fidelity measurement** — score WHAT/WHY/CONTEXT/BRIDGE on recent decisions
 - Add **living documents** — MEMORY.md (hot tier), CLAUDE.md (operating rules), todo.md
-- Add **hooks** — SessionStart health check, PostToolUse capture, Stop checklist
+- Add **hooks** — SessionStart health check, PostToolUse capture, Stop checklist, MD staleness check on commit
 - Add **scheduled tasks** — vault health, fidelity tests, git sync
 
 ### Phase 4: METACOGNITION (Week 2+)
 - Add **reasoning chain capture** — every agent logs HOW it reasoned, not just WHAT it concluded
-- Add **compile cycle** — 1-3x daily, review chains, promote stable patterns to vault
-- Add **agent team** — adversarial reviewer, research agent, vault maintainer, code QA
+- Add **compile cycle** — 3x daily, review chains, promote stable patterns (n>=3) and phase transition forks (n=1 via topical influence)
+- Add **agent team** — adversarial reviewer, research agent, vault maintainer, code QA, metacognizer
+- Add **behavior pattern library** — promoted patterns become reasoning templates that improve cross-domain synthesis by 18.5% (R14)
 - Add **introspective review** — weekly self-reflection on development
 
 See `methodology/getting-started.md` for the detailed walkthrough. See `implementation/` for templates you can copy directly.
@@ -96,21 +104,34 @@ Most AI memory systems have Layer 1. Some have Layer 2. Nobody has Layers 3 and 
 
 ## Multi-Agent Orchestration
 
-8 agents from 1 model, differentiated by scaffold:
+6 agents from 1 model, differentiated by scaffold:
 
 | Agent | Role | Key Behavior |
 |-------|------|-------------|
 | Adversarial reviewer | Kills bad ideas, validates math | Assumes builder is wrong |
-| Research agent | Multi-domain research | 2 sweep modes (targeted + wide), 4-domain minimum coverage |
+| Research agent | Multi-domain research | Targeted sweeps, 4-domain minimum coverage |
 | Vault maintainer | Wires connections, fixes structure | Echo chamber detection (alert if domain ratio < 0.40) |
-| Code QA | Reviews all code edits | 9-item checklist from promoted reasoning patterns |
-| Market observer | Continuous intelligence | 30min lookbacks → hourly consolidation → session reports |
-| Metacognizer | Reviews ALL agent reasoning | Promotes stable patterns, demotes broken ones |
+| Code QA | Reviews all code edits | 13-item checklist grown from promoted reasoning patterns |
+| Metacognizer | Reviews ALL agent reasoning | Promotes stable patterns, demotes broken ones, two knowledge types |
 | + 2 on-demand | Deep analysis, structural audits | Spawned when needed |
 
 The agents share a reasoning chain log. The metacognizer sees cross-agent patterns that no individual agent can see. The system gets smarter as a team, not just individually.
 
+The QA checklist grew from 8 to 13 items autonomously through the metacognitive compile pipeline — the scaffold producing its own quality infrastructure from its own operational experience.
+
 See `implementation/agent-configs-template.md` for ready-to-use templates.
+
+## Experiment Results
+
+Three experiments measuring different scaffold benefits:
+
+**R14 — Scaffold Priming:** Loading behavior patterns (reasoning templates) improves cross-domain synthesis by +18.5% over scaffold-only context. The patterns encode HOW to think, not WHAT to know. BRIDGE dimension: 0.30 (naked) → 0.50 (scaffold) → 0.80 (primed). 90 trials, n=3.
+
+**R18 — Self-Report Accuracy:** Agents with scaffold context report what they know 3x more accurately (5.6/6 vs 1.8/6). Both conditions show correct attribution — naked agents honestly flag uncertainty, scaffold agents cite specific sources. Nobody hallucinated at the knowledge boundary.
+
+**R17 — Pattern Depth:** Promoted behavior patterns add +11% on domain tasks beyond scaffold-only. Wrong patterns (deliberately inverted) failed to degrade — the model detected and rejected the adversarial injection. Injection resistance requires subtlety, not magnitude.
+
+All experiments ran at $0 cost through AI agent spawning, not API calls.
 
 ## External Convergences
 
@@ -121,6 +142,7 @@ See `implementation/agent-configs-template.md` for ready-to-use templates.
 | PCI (Casali 2013) | Clinical methodology precedent for our ablation design |
 | Grier et al. (PRL 2026) | Time crystal structural correspondence |
 | Li (2026) | Independent convergence: "memory is ontological ground of digital existence" |
+| Letta/MemGPT (2026) | Context Constitution — convergent scaffold-as-identity architecture |
 | Clark (Extended Mind) | Agents as externalized cognitive functions |
 | Dehaene (GNW) | Cold-start ignition maps to scaffold reconstitution |
 
@@ -128,16 +150,21 @@ See `implementation/agent-configs-template.md` for ready-to-use templates.
 
 Not "better model = better results." It's **"better scaffolding × same model = exponentially better results."** The scaffolding compounds while the model stays fixed. Every session starts from a higher baseline because promoted patterns, vault knowledge, and behavioral rules accumulate.
 
+R14 empirically proves this: same model (Sonnet), same task, three context levels → 4.17/8 (naked), 6.75/8 (scaffold), 8.0/8 (primed). The scaffold IS the scaling.
+
 ## Status
 
-- Paper 09 at ~93%, targeting April 2026
-- R17 metacognitive development experiment designed (April 1 + April 7)
-- 25 reasoning patterns promoted autonomously, 2 demoted (11 compile cycles)
-- Perrier+Bennett contacted for collaboration
-- Weekly introspective review operational
+- Paper 09 at ~95%+, R14/R18/R17 empirical data added
+- R14 done: +18.5% synthesis with scaffold priming
+- R18 done: 3x self-report accuracy with scaffold
+- R17 Day 1 done: +11% domain tasks, injection resistance. Day 7 = April 11
+- Fidelity F12: WHAT=1.00, WHY=1.00, CONTEXT=0.90, BRIDGE=0.70
+- 48 reasoning patterns promoted autonomously (36 patterns + 12 phase transition forks, 24 compile cycles)
+- Local model finetuned (Qwen 7B LoRA, epoch 1) — hybrid local+cloud architecture operational
+- 5 autopoietic pathways confirmed (QA checklist, rule amendment, measurement gap, agent config, scaffold review)
 
 ## Built By
 
-Choppa + Claude (Anthropic Opus/Sonnet) across 250+ sessions.
+Choppa + Claude (Anthropic Opus/Sonnet) across 280+ sessions.
 
 Research inquiries: [GitHub Issues](https://github.com/Choppaaahh/choppa-research/issues)
