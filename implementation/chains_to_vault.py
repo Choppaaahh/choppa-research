@@ -2,12 +2,12 @@
 """
 Chain-to-Vault Exporter — convert reasoning chains into Obsidian-visible vault notes.
 
-Creates one note per day in knowledge/notes/patterns/chains/
+Creates one note per day in knowledge/notes/cc-operational/chains/
 Each note contains all chains from that day with wikilinks to promoted patterns.
 
 Usage:
     python3 scripts/chains_to_vault.py              # export all
-    python3 scripts/chains_to_vault.py --date 2025-11-01  # single day
+    python3 scripts/chains_to_vault.py --date 2026-04-03  # single day
     python3 scripts/chains_to_vault.py --stats       # show counts only
 """
 
@@ -19,10 +19,8 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 CHAINS_FILE = REPO / "logs" / "reasoning_chains.jsonl"
-# [PLACEHOLDER] Replace with your vault's chains output directory
-OUTPUT_DIR = REPO / "knowledge" / "notes" / "patterns" / "chains"
-# [PLACEHOLDER] Replace with your vault's promoted-patterns directory
-PROMOTED_DIR = REPO / "knowledge" / "notes" / "patterns"
+OUTPUT_DIR = REPO / "knowledge" / "notes" / "cc-operational" / "chains"
+PROMOTED_DIR = REPO / "knowledge" / "notes" / "cc-operational"
 
 
 def load_promoted_patterns():
@@ -105,7 +103,7 @@ def export_day(day, chains, promoted):
 summary: "{len(chains)} reasoning chains from {day}. {len(patterns_seen)} unique patterns, {reusable} reusable."
 type: insight
 status: current
-domains: ["patterns"]
+domains: ["cc-operational"]
 date: {day}
 ---
 
@@ -120,7 +118,7 @@ Promoted Patterns Referenced:
 {chr(10).join(linked_patterns) if linked_patterns else "- none"}
 
 Domains:
-- [[patterns-moc]]
+- [[cc-operational-moc]]
 """
 
     filepath.write_text(content, encoding="utf-8")

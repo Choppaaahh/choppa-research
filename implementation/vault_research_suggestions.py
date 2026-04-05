@@ -12,10 +12,8 @@ Stolen from Karpathy's LLM Wiki "lint" concept: health checks that suggest
 new investigations, not just fixes.
 
 Usage:
-    python3 vault_research_suggestions.py              # full analysis
-    python3 vault_research_suggestions.py --quick      # just gap detection
-
-Customize VAULT and CHAINS paths below for your repo layout.
+    python3 scripts/vault_research_suggestions.py              # full analysis
+    python3 scripts/vault_research_suggestions.py --quick      # just gap detection
 """
 
 import argparse
@@ -25,12 +23,10 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
-# --- CONFIGURE THESE PATHS FOR YOUR REPO ---
 BASE = Path(__file__).resolve().parent.parent
 VAULT = BASE / "knowledge" / "notes"
 CHAINS = BASE / "logs" / "reasoning_chains.jsonl"
 BREADCRUMBS = BASE / "logs" / "session_breadcrumbs.jsonl"
-# -------------------------------------------
 
 WIKILINK_RE = re.compile(r"\[\[(.+?)\]\]")
 
@@ -98,6 +94,7 @@ def find_thin_domains(notes):
         for d in note["domains"]:
             domain_counts[d] += 1
         for link in note["links_out"]:
+            # If a link contains a domain-like name, count as domain reference
             for d in domain_counts:
                 if d.lower() in link.lower():
                     domain_refs[d] += 1
@@ -133,6 +130,7 @@ def find_question_gaps(notes):
             try:
                 chain = json.loads(line)
                 outcome = chain.get("outcome", "")
+                pattern = chain.get("pattern", "")
 
                 # Dead ends are research opportunities
                 if "dead end" in outcome.lower() or "unknown" in outcome.lower():
@@ -173,6 +171,7 @@ def find_implied_connections(notes):
                 stem2 = Path(p2).stem
                 stem1 = Path(p1).stem
                 if stem2 not in stems1 and stem1 not in set(notes[p2]["links_out"]):
+                    # Check word overlap for relevance
                     unlinked.append((p1, p2, domain))
 
     return unlinked[:20]
@@ -236,7 +235,7 @@ def main():
     if unlinked:
         print(f"IMPLIED CONNECTIONS ({len(unlinked)} same-domain note pairs without links):")
         for p1, p2, domain in unlinked[:10]:
-            print(f"  [{domain}] {Path(p1).stem} <-> {Path(p2).stem}")
+            print(f"  [{domain}] {Path(p1).stem} ↔ {Path(p2).stem}")
         print()
 
     print("SUGGESTED RESEARCH QUESTIONS:")
