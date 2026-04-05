@@ -165,6 +165,8 @@ R14 empirically proves this: same model (Sonnet), same task, three context level
 
 ## Built By
 
+Built and used daily as the shared brain between me and a team of AI agents. We synthesize research across domains, persist context between sessions, and compound knowledge over time. Every finding, bug, and lesson lives in the graph — agents read, write, and build on each other's work. It's not a reference system. It's how we think.
+
 Choppa + Claude (Anthropic Opus/Sonnet) across 280+ sessions.
 
 Research inquiries: [GitHub Issues](https://github.com/Choppaaahh/choppa-research/issues)
