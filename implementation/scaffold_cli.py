@@ -3,18 +3,20 @@
 Scaffold CLI — unified query tool across all logs and vault.
 
 Navigate the full feedback filesystem: reasoning chains, breadcrumbs,
-episodes, compiles, vault notes, Q-values. One tool for everything.
+trades, episodes, compiles, vault notes, Q-values. One tool for everything.
 
 Inspired by Meta-Harness "build a CLI over the logs" pattern.
 
 Usage:
     python3 scripts/scaffold_cli.py chains                    # list recent chains
     python3 scripts/scaffold_cli.py chains --pattern "verify"  # search chains by pattern
-    python3 scripts/scaffold_cli.py chains --top 10            # top 10 by chain depth
+    python3 scripts/scaffold_cli.py chains --top 10            # top 10 by Q-value
     python3 scripts/scaffold_cli.py breadcrumbs                # today's breadcrumbs
     python3 scripts/scaffold_cli.py breadcrumbs --type insight # filter by type
+    python3 scripts/scaffold_cli.py trades                     # recent trades from orchestrator
+    python3 scripts/scaffold_cli.py trades --strategy chop     # filter by strategy
     python3 scripts/scaffold_cli.py compiles                   # metacog compile history
-    python3 scripts/scaffold_cli.py vault --search "keyword"   # search vault notes
+    python3 scripts/scaffold_cli.py vault --search "regime"    # search vault notes
     python3 scripts/scaffold_cli.py vault --stats              # vault health stats
     python3 scripts/scaffold_cli.py qvalues                    # pattern Q-values
     python3 scripts/scaffold_cli.py qvalues --promote          # promotion candidates
@@ -35,11 +37,10 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 CHAINS_FILE = REPO / "logs" / "reasoning_chains.jsonl"
 BREADCRUMBS_FILE = REPO / "logs" / "session_breadcrumbs.jsonl"
-# [PLACEHOLDER] Replace with your system's operational log file path
-JOURNAL_FILE = REPO / "logs" / "system_journal.jsonl"
+JOURNAL_FILE = REPO / "logs" / "orchestrator_journal.jsonl"
+LIVE_LOG = REPO / "logs" / "orchestrator_live.log"
 VAULT = REPO / "knowledge" / "notes"
-# [PLACEHOLDER] Replace with your vault's promoted-patterns subdirectory
-PROMOTED_DIR = VAULT / "patterns"
+PROMOTED_DIR = VAULT / "cc-operational"
 
 
 def load_jsonl(path, limit=None):
@@ -106,6 +107,43 @@ def cmd_breadcrumbs(args):
         print(f"  [{ts}] {typ:8s} | {content}")
 
 
+def cmd_trades(args):
+    """Query trades from orchestrator journal."""
+    trades = [t for t in load_jsonl(JOURNAL_FILE) if t.get("type") == "trade"]
+    if args.strategy:
+        trades = [t for t in trades if t.get("strategy") == args.strategy]
+    if args.coin:
+        trades = [t for t in trades if t.get("coin") == args.coin]
+    if args.reason:
+        trades = [t for t in trades if t.get("reason") == args.reason]
+
+    print(f"\n  TRADES — {len(trades)} total\n")
+    wins = sum(1 for t in trades if t.get("pnl_bp", 0) > 0)
+    total_bp = sum(t.get("pnl_bp", 0) for t in trades)
+    wr = (wins / len(trades) * 100) if trades else 0
+
+    for t in trades[-args.limit:]:
+        ts = t.get("ts", "?")[11:19]
+        coin = t.get("coin", "?")[:8]
+        strat = t.get("strategy", "?")[:8]
+        reason = t.get("reason", "?")[:6]
+        pnl = t.get("pnl_bp", 0)
+        flag = "+" if pnl > 0 else ""
+        print(f"  [{ts}] {coin:8s} {strat:8s} {reason:6s} {flag}{pnl:.1f}bp")
+
+    print(f"\n  WR: {wins}/{len(trades)} ({wr:.0f}%) | Total: {total_bp:+.1f}bp")
+
+    # By strategy
+    by_strat = defaultdict(list)
+    for t in trades:
+        by_strat[t.get("strategy", "?")].append(t.get("pnl_bp", 0))
+    if by_strat:
+        print(f"\n  BY STRATEGY:")
+        for s, pnls in sorted(by_strat.items()):
+            w = sum(1 for p in pnls if p > 0)
+            print(f"    {s:12s}: {len(pnls)}T {w}W ({w/len(pnls)*100:.0f}% WR) {sum(pnls):+.1f}bp")
+
+
 def cmd_compiles(args):
     """Show metacog compile history from chains."""
     chains = load_jsonl(CHAINS_FILE)
@@ -168,7 +206,8 @@ def cmd_qvalues(args):
     """Run Q-value analysis."""
     os.system(f"python3 {REPO / 'scripts' / 'pattern_qvalue.py'} "
               f"{'--promote' if args.promote else ''} "
-              f"{'--scaffold' if args.scaffold else ''}")
+              f"{'--scaffold' if args.scaffold else ''} "
+              f"{'--trading' if args.trading else ''}")
 
 
 def cmd_status(args):
@@ -179,16 +218,45 @@ def cmd_status(args):
     print(f"  SCAFFOLD STATUS — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')} UTC")
     print(f"  {'='*60}\n")
 
+    # Processes
+    result = subprocess.run(["ps", "aux"], capture_output=True, text=True)
+    procs = [l for l in result.stdout.splitlines()
+             if any(x in l for x in ["regime_orchestrator", "market_watcher", "patience_trader", "equities_mm"])
+             and "grep" not in l]
+    print(f"  PROCESSES: {len(procs)}")
+    for p in procs:
+        parts = p.split()
+        pid = parts[1]
+        cmd = " ".join(parts[10:])[:60]
+        print(f"    PID {pid}: {cmd}")
+
     # Chains + breadcrumbs
     chains = load_jsonl(CHAINS_FILE)
     crumbs = load_jsonl(BREADCRUMBS_FILE)
-    print(f"  CHAINS: {len(chains)} total")
+    print(f"\n  CHAINS: {len(chains)} total")
     print(f"  BREADCRUMBS: {len(crumbs)} this session")
 
     # Vault
     notes = list(VAULT.rglob("*.md"))
     promoted = len(list(PROMOTED_DIR.glob("pattern-*.md")))
     print(f"\n  VAULT: {len(notes)} notes, {promoted} promoted patterns")
+
+    # Recent trades
+    trades = [t for t in load_jsonl(JOURNAL_FILE) if t.get("type") == "trade"]
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+    today_trades = [t for t in trades if today in t.get("ts", "")]
+    if today_trades:
+        wins = sum(1 for t in today_trades if t.get("pnl_bp", 0) > 0)
+        total_bp = sum(t.get("pnl_bp", 0) for t in today_trades)
+        print(f"\n  TODAY'S TRADES: {len(today_trades)}T {wins}W {total_bp:+.1f}bp")
+    else:
+        print(f"\n  TODAY'S TRADES: 0")
+
+    # Live log
+    if LIVE_LOG.exists():
+        lines = LIVE_LOG.read_text().strip().splitlines()
+        last = lines[-1] if lines else "?"
+        print(f"\n  LIVE LOG: {last[:70]}")
 
 
 def cmd_pareto(args):
@@ -315,6 +383,13 @@ def main():
     p.add_argument("--search", type=str, help="Text search")
     p.add_argument("--limit", type=int, default=20)
 
+    # Trades
+    p = sub.add_parser("trades", help="Query trade journal")
+    p.add_argument("--strategy", type=str, help="Filter: chop|patience|spike_rider|event_straddle")
+    p.add_argument("--coin", type=str, help="Filter by coin")
+    p.add_argument("--reason", type=str, help="Filter: MEAN|CUT|TRAIL|FLIP|TIMEOUT")
+    p.add_argument("--limit", type=int, default=20)
+
     # Compiles
     p = sub.add_parser("compiles", help="Metacog compile history")
     p.add_argument("--limit", type=int, default=10)
@@ -329,6 +404,7 @@ def main():
     p = sub.add_parser("qvalues", help="Pattern Q-values")
     p.add_argument("--promote", action="store_true", help="Show promotion candidates")
     p.add_argument("--scaffold", action="store_true", help="Scaffold channel only")
+    p.add_argument("--trading", action="store_true", help="Trading channel only")
 
     # Status
     sub.add_parser("status", help="Full system status")
@@ -341,7 +417,7 @@ def main():
     p = sub.add_parser("warmstart", help="Export patterns for cross-model")
     p.add_argument("--json", action="store_true", help="JSON output")
     p.add_argument("--behaviors", action="store_true", help="Compact behavior format (97% token reduction)")
-    p.add_argument("--agent", type=str, help="Filter behaviors by agent role (e.g. qa, archivist, observer, scout, metacognizer, brutus, team-lead)")
+    p.add_argument("--agent", type=str, help="Filter behaviors by agent role (qa, archivist, observer, scout, metacognizer, brutus, team-lead)")
 
     args = parser.parse_args()
     if not args.command:
@@ -351,6 +427,7 @@ def main():
     cmds = {
         "chains": cmd_chains,
         "breadcrumbs": cmd_breadcrumbs,
+        "trades": cmd_trades,
         "compiles": cmd_compiles,
         "vault": cmd_vault,
         "qvalues": cmd_qvalues,

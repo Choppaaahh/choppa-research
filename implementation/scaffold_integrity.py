@@ -2,8 +2,8 @@
 """
 Scaffold Integrity Check — verify critical files haven't been corrupted or deleted.
 
-Hashes key scaffold documents on session end.
-Verifies hashes on session start. Alerts via notification if mismatch.
+Hashes MEMORY.md + CLAUDE.md + key rules on session end.
+Verifies hashes on session start. Alerts Discord if mismatch.
 
 From Animesis "Memory Inalienability" axiom: memory can't be taken away.
 Our version: scaffold corruption is detectable.
@@ -18,6 +18,7 @@ import hashlib
 import json
 import os
 import sys
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -25,14 +26,14 @@ REPO = Path(__file__).resolve().parent.parent
 HASH_FILE = REPO / "data" / "scaffold_hashes.json"
 
 # Critical scaffold files — corruption of these = identity damage
-# [PLACEHOLDER] Replace with the paths to your own critical scaffold files
 CRITICAL_FILES = [
-    # Example: Path.home() / ".claude" / "projects" / "YOUR-PROJECT" / "memory" / "MEMORY.md"
-    REPO / "SCAFFOLD.md",           # your main system context doc
+    Path.home() / ".claude" / "projects" / "-Users-claude-Flex-Trading" / "memory" / "MEMORY.md",
+    REPO / "CLAUDE.md",
     REPO / ".claude" / "rules" / "workflow.md",
     REPO / ".claude" / "rules" / "qa-checklist.md",
     REPO / ".claude" / "agents" / "guardrails.md",
-    # Add more critical files as needed
+    REPO / ".claude" / "agents" / "brutus.md",
+    REPO / ".claude" / "agents" / "metacognizer.md",
 ]
 
 
@@ -105,37 +106,29 @@ def verify_hashes():
         print("\n  INTEGRITY ISSUES:")
         for issue in issues:
             print(f"    {issue}")
-        alert_notification(issues)
+        alert_discord(issues)
         return False
     else:
         print("\n  All scaffold files intact.")
         return True
 
 
-def alert_notification(issues):
-    """Alert via notification channel if integrity issues found.
-
-    [PLACEHOLDER] Replace this with your notification mechanism.
-    Options: write to a log file, send to a webhook URL from an env var,
-    print to stderr, etc. Never hardcode webhook URLs or API keys.
-    """
-    webhook_url = os.environ.get("SCAFFOLD_ALERT_WEBHOOK", "")
-    if not webhook_url:
-        # Fallback: print to stderr
-        print("SCAFFOLD INTEGRITY ALERT:", file=sys.stderr)
-        for issue in issues:
-            print(f"  {issue}", file=sys.stderr)
+def alert_discord(issues):
+    """Alert Discord if integrity issues found."""
+    env_file = REPO / ".env"
+    webhook = ""
+    if env_file.exists():
+        for line in env_file.read_text().splitlines():
+            if "DISCORD_WEBHOOK_DATA" in line and "=" in line and not line.startswith("#"):
+                webhook = line.split("=", 1)[1].strip()
+    if not webhook:
         return
-
     try:
-        import urllib.request
         msg = "**SCAFFOLD INTEGRITY ALERT**\n" + "\n".join(issues)
         data = json.dumps({"content": msg[:1900]}).encode()
-        req = urllib.request.Request(
-            webhook_url,
-            data=data,
-            headers={"Content-Type": "application/json", "User-Agent": "ScaffoldIntegrity/1.0"}
-        )
+        req = urllib.request.Request(webhook, data=data,
+                                     headers={"Content-Type": "application/json",
+                                              "User-Agent": "ScaffoldIntegrity/1.0"})
         urllib.request.urlopen(req, timeout=10)
     except Exception:
         pass
