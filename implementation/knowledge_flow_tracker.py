@@ -9,10 +9,8 @@ Scans vault notes for provenance (created_by) and checks backlinks to see which
 OTHER agents referenced the note. High reuse = knowledge flowing. Zero reuse = siloed.
 
 Usage:
-    python3 knowledge_flow_tracker.py              # full report
-    python3 knowledge_flow_tracker.py --summary     # just the flow matrix
-
-Customize VAULT and CHAINS paths below for your repo layout.
+    python3 scripts/knowledge_flow_tracker.py              # full report
+    python3 scripts/knowledge_flow_tracker.py --summary     # just the flow matrix
 """
 
 import argparse
@@ -20,15 +18,13 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 
-# --- CONFIGURE THESE PATHS FOR YOUR REPO ---
 BASE = Path(__file__).resolve().parent.parent
-VAULT = BASE / "knowledge" / "notes"          # your vault notes directory
+VAULT = BASE / "knowledge" / "notes"
 CHAINS = BASE / "logs" / "reasoning_chains.jsonl"
-# -------------------------------------------
 
 WIKILINK_RE = re.compile(r"\[\[(.+?)\]\]")
 
-# Known agents — expand as your team grows
+# Known agents — expand as team grows
 AGENTS = {"team-lead", "brutus", "scout", "archivist", "qa", "observer", "metacognizer", "wallet-dive", "auditor"}
 
 
@@ -76,7 +72,7 @@ def scan_provenance():
 
 
 def infer_agent_from_path(path):
-    """Infer which agent likely created a note based on its path convention."""
+    """Infer which agent likely created a note based on its path."""
     path_lower = path.lower()
     if "scout-findings" in path_lower:
         return "scout"

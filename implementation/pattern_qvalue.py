@@ -3,21 +3,22 @@
 Pattern Q-Value Tracker — RL-based promotion thresholds for metacognitive compile.
 
 Two reward channels:
-  DOMAIN:    Outcome rewards attributed to patterns active during domain-specific reasoning.
-  SCAFFOLD:  Operational outcomes (bug catches, dead ends) from reasoning chains.
+  TRADING:  Trade P&L attributed to patterns active during entry reasoning.
+  SCAFFOLD: Operational outcomes (bug catches, dead ends) from reasoning chains.
 
 Q(pattern, context) = exponentially weighted mean of rewards.
-Context = operation type or domain context.
+Context = regime (trading) or operation_type (scaffold).
 
 High-Q patterns promote faster. Low-Q patterns need more evidence or get demoted.
-Context-conditional: a pattern that works in one mode but not another gets
-promoted for that mode's reasoning only.
+Regime-conditional: a pattern that works in CHOP but not TRENDING gets
+promoted for CHOP reasoning only.
 
 Usage:
     python3 scripts/pattern_qvalue.py                    # show all Q-values
+    python3 scripts/pattern_qvalue.py --trading           # trading channel only
     python3 scripts/pattern_qvalue.py --scaffold          # scaffold channel only
     python3 scripts/pattern_qvalue.py --promote           # show promotion candidates
-    python3 scripts/pattern_qvalue.py --phase             # detect phase transitions (n=1 forks)
+    python3 scripts/pattern_qvalue.py --regime CHOP       # Q-values for specific regime
 """
 
 import argparse
@@ -28,8 +29,8 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
 CHAINS_FILE = REPO_ROOT / "logs" / "reasoning_chains.jsonl"
-# [PLACEHOLDER] Replace with your system's promoted-patterns directory
-PROMOTED_DIR = REPO_ROOT / "knowledge" / "notes" / "patterns"
+TRADES_FILE = REPO_ROOT / "logs" / "orchestrator_dryrun_30s_clock.log"
+PROMOTED_DIR = REPO_ROOT / "knowledge" / "notes" / "cc-operational"
 
 # ─── Config ─────────────────────────────────────────────────────────────────
 
@@ -40,9 +41,9 @@ MIN_SAMPLES_PROMOTE = 2   # need at least 2 rewards to promote
 MIN_SAMPLES_DEMOTE = 5    # need 5 to demote (conservative)
 
 # Scaffold outcome → reward mapping
-# Rebalanced: scaffold/research outcomes scored higher to prevent
-# domain-specific outcomes from dominating Q-values. Architectural and
-# cross-domain outcomes are the most valuable for augmented thinking in totality.
+# Rebalanced 04/03: scaffold/research outcomes scored higher to prevent
+# trading P&L from dominating Q-values. Architectural and cross-domain
+# outcomes are the most valuable for augmented thinking in totality.
 OUTCOME_REWARDS = {
     # High-impact scaffold outcomes (1.5-2.0x — architectural/structural changes)
     "architecture": 2.0, "redesign": 2.0, "phase transition": 2.0,
@@ -188,7 +189,9 @@ def load_scaffold_rewards():
             # Context: use trigger type or "scaffold" as default
             trigger = chain.get("trigger", "scaffold")
             context = "scaffold"
-            if "bug" in trigger.lower() or "qa" in trigger.lower():
+            if "trade" in trigger.lower() or "regime" in trigger.lower():
+                context = "trading"
+            elif "bug" in trigger.lower() or "qa" in trigger.lower():
                 context = "qa"
             elif "research" in trigger.lower() or "scout" in trigger.lower():
                 context = "research"
@@ -198,6 +201,82 @@ def load_scaffold_rewards():
                 "reward": reward,
                 "outcome": outcome[:80],
             })
+
+    return pattern_rewards
+
+
+def load_trading_rewards():
+    """Parse trade logs for trading-level pattern rewards.
+
+    Reads the orchestrator log for trades with active_patterns field.
+    Falls back to attributing trades to the regime they occurred in.
+    """
+    pattern_rewards = defaultdict(list)
+
+    # Read ALL orchestrator logs (dry-run + live) and the patience journal
+    # When active_patterns logging is added to orchestrator, parse those too
+    log_files = sorted(REPO_ROOT.glob("logs/orchestrator_dryrun*.log"))
+    journal = REPO_ROOT / "logs" / "patience_journal.jsonl"
+    if journal.exists():
+        log_files.append(journal)
+    if not log_files:
+        return pattern_rewards
+
+    # Parse trade lines: "[17:26:14] CHOP MEAN EXIT: SHORT HYPE +41.1bp gross, +38.2bp net"
+    trade_pattern = re.compile(
+        r'(CHOP|PATIENCE) (MEAN|CUT|TRAIL|FLIP) (?:EXIT|CLOSE).*?([+-]\d+\.?\d*)bp net'
+    )
+
+    for log_file in log_files:
+      with open(log_file, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            # Handle JSONL (patience_journal) and plain text (orchestrator logs)
+            if line.strip().startswith("{"):
+                try:
+                    entry = json.loads(line)
+                    if "pnl_bp" in entry:
+                        pnl_bp = float(entry["pnl_bp"])
+                        strategy = entry.get("strategy", "patience")
+                        exit_type = entry.get("reason", "UNKNOWN")
+                    else:
+                        continue
+                except (json.JSONDecodeError, ValueError):
+                    continue
+            else:
+                m = trade_pattern.search(line)
+                if not m:
+                    continue
+                strategy = m.group(1).lower()
+                exit_type = m.group(2)
+                pnl_bp = float(m.group(3))
+
+            # Normalize reward: bp/100 so ±50bp = ±0.5 reward
+            reward = pnl_bp / 100.0
+
+            # Determine context from strategy
+            context = "CHOP" if strategy == "chop" else "TRENDING"
+
+            # Precise attribution: if JSONL trade has active_patterns, use those
+            active = []
+            if line.strip().startswith("{"):
+                try:
+                    active = json.loads(line).get("active_patterns", [])
+                except (json.JSONDecodeError, ValueError):
+                    pass
+            if active:
+                for pat in active:
+                    pattern_rewards[pat].append({
+                        "context": context,
+                        "reward": reward,
+                        "outcome": f"{exit_type} {pnl_bp:+.1f}bp",
+                    })
+            else:
+                # Fallback: attribute to regime-level pattern
+                pattern_rewards["entry-only-regime-gating"].append({
+                    "context": context,
+                    "reward": reward,
+                    "outcome": f"{exit_type} {pnl_bp:+.1f}bp",
+                })
 
     return pattern_rewards
 
@@ -237,8 +316,8 @@ def detect_phase_transitions():
     """Find n=1 chains that caused downstream reorganization.
 
     For each unique pattern that appears exactly once, measure how many new
-    chains appeared in the 48hrs after it. High downstream count = structural
-    fork = phase transition candidate.
+    chains and vault notes appeared in the 48hrs after it. High downstream
+    count = structural fork = phase transition candidate.
     """
     from datetime import datetime, timedelta, timezone
     from pathlib import Path
@@ -275,6 +354,17 @@ def detect_phase_transitions():
     for c in chains:
         if c["pattern"]:
             pattern_counts[c["pattern"]] += 1
+
+    # Get vault note creation dates (from file mtime)
+    vault_notes = []
+    vault_dir = REPO_ROOT / "knowledge" / "notes"
+    if vault_dir.exists():
+        for f in vault_dir.rglob("*.md"):
+            try:
+                mtime = datetime.fromtimestamp(f.stat().st_mtime, tz=timezone.utc)
+                vault_notes.append({"ts": mtime, "path": str(f.relative_to(REPO_ROOT))})
+            except (OSError, ValueError):
+                continue
 
     window = timedelta(hours=PHASE_TRANSITION_WINDOW_HRS)
     candidates = []
@@ -324,11 +414,79 @@ def detect_phase_transitions():
     return candidates
 
 
+# ─── Maturity Tiers (stolen from ByteRover AKL, adapted) ─────────────────────
+
+MATURITY_TIERS = {
+    "CHAIN":     {"label": "🔵 CHAIN",     "desc": "n=1, just captured"},
+    "PURGATORY": {"label": "🟡 PURGATORY", "desc": "n=2, seen again but not promoted"},
+    "PROMOTED":  {"label": "🟢 PROMOTED",  "desc": "n>=3, in vault as pattern"},
+    "STABLE":    {"label": "🟢 STABLE",    "desc": "n>=10 + Q>0.5, high confidence"},
+    "STALE":     {"label": "🔴 STALE",     "desc": "promoted but Q declining or no recent rewards"},
+}
+
+
+def classify_tier(pattern_name, n_rewards, q_value, is_promoted, recent_reward_count=0):
+    """Classify a pattern into a maturity tier.
+
+    Lifecycle: CHAIN → PURGATORY → PROMOTED → STABLE → STALE
+    Based on instance count, Q-value, promotion status, and recency.
+    """
+    if is_promoted:
+        if n_rewards >= 10 and q_value > PROMOTE_Q:
+            return "STABLE"
+        elif recent_reward_count == 0 and q_value < 0.0:
+            return "STALE"
+        else:
+            return "PROMOTED"
+    else:
+        if n_rewards >= 3:
+            return "PURGATORY"  # enough instances but not yet promoted
+        elif n_rewards == 2:
+            return "PURGATORY"
+        else:
+            return "CHAIN"
+
+
+def show_tiers(q_table, all_rewards, promoted):
+    """Display patterns grouped by maturity tier."""
+    tier_groups = defaultdict(list)
+
+    for (pattern, context), vals in q_table.items():
+        norm = pattern.lower().replace("_", "-").replace(" ", "-")
+        is_promoted = norm in promoted or any(norm == p for p in promoted)
+        tier = classify_tier(pattern, vals["n"], vals["q"], is_promoted)
+        tier_groups[tier].append((pattern, context, vals, is_promoted))
+
+    print(f"\n{'='*70}")
+    print(f"PATTERN MATURITY TIERS (ByteRover AKL-inspired lifecycle)")
+    print(f"{'='*70}\n")
+
+    for tier_name in ["STABLE", "PROMOTED", "PURGATORY", "CHAIN", "STALE"]:
+        info = MATURITY_TIERS[tier_name]
+        patterns = tier_groups.get(tier_name, [])
+        print(f"  {info['label']} — {info['desc']} ({len(patterns)} patterns)")
+        for p, c, v, ip in sorted(patterns, key=lambda x: -x[2]["q"])[:10]:
+            print(f"    Q={v['q']:+.3f} n={v['n']:2d} | {p}")
+        if len(patterns) > 10:
+            print(f"    ... and {len(patterns)-10} more")
+        print()
+
+    # Summary
+    total = sum(len(v) for v in tier_groups.values())
+    print(f"  Total: {total} patterns across {len(tier_groups)} tiers")
+    for tier_name in ["STABLE", "PROMOTED", "PURGATORY", "CHAIN", "STALE"]:
+        count = len(tier_groups.get(tier_name, []))
+        print(f"    {tier_name}: {count}")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Pattern Q-Value Tracker")
+    parser.add_argument("--trading", action="store_true", help="Trading channel only")
     parser.add_argument("--scaffold", action="store_true", help="Scaffold channel only")
     parser.add_argument("--promote", action="store_true", help="Show promotion candidates")
     parser.add_argument("--phase", action="store_true", help="Detect phase transitions (n=1 forks)")
+    parser.add_argument("--tiers", action="store_true", help="Show maturity tier breakdown")
+    parser.add_argument("--regime", type=str, help="Filter by regime context")
     parser.add_argument("--json", action="store_true", help="JSON output")
     args = parser.parse_args()
 
@@ -350,12 +508,28 @@ def main():
 
     promoted = load_promoted_patterns()
 
-    # Load scaffold reward channel
+    # Load both reward channels
     scaffold_rewards = load_scaffold_rewards()
+    trading_rewards = load_trading_rewards()
 
+    if args.tiers:
+        all_r = defaultdict(list)
+        for p, r in scaffold_rewards.items():
+            all_r[p].extend(r)
+        for p, r in trading_rewards.items():
+            all_r[p].extend(r)
+        qt = compute_q_values(all_r)
+        show_tiers(qt, all_r, promoted)
+        return
+
+    # Merge
     all_rewards = defaultdict(list)
-    for p, r in scaffold_rewards.items():
-        all_rewards[p].extend(r)
+    if not args.trading:
+        for p, r in scaffold_rewards.items():
+            all_rewards[p].extend(r)
+    if not args.scaffold:
+        for p, r in trading_rewards.items():
+            all_rewards[p].extend(r)
 
     q_table = compute_q_values(all_rewards)
 
@@ -375,6 +549,9 @@ def main():
 
     # Sort by Q descending
     sorted_q = sorted(q_table.items(), key=lambda x: -x[1]["q"])
+
+    if args.regime:
+        sorted_q = [(k, v) for k, v in sorted_q if k[1] == args.regime]
 
     promote_candidates = []
     demote_candidates = []
@@ -414,6 +591,7 @@ def main():
     total_rewards = sum(len(r) for r in all_rewards.values())
     print(f"\n  Total reward signals: {total_rewards}")
     print(f"  Scaffold: {sum(len(r) for r in scaffold_rewards.values())}")
+    print(f"  Trading: {sum(len(r) for r in trading_rewards.values())}")
 
 
 if __name__ == "__main__":

@@ -28,23 +28,37 @@ TEXTURE_LOG = REPO / "logs" / "session_texture.jsonl"
 # ─── Energy Word Maps ───────────────────────────────────────────────────────
 
 HIGH_ENERGY = {
-    # Customize with your own high-energy phrases
-    # Examples: "lets go", "ship it", "perfect", "exactly"
+    # Enthusiastic/decisive
+    "yessir", "lets go", "lets hit", "lets do", "cook it", "ship it", "wire it",
+    "yea lets", "bet", "huge", "nice", "damn", "fire", "start er up",
+    "hell yea", "perfect", "exactly", "thats it", "yea cook", "im listening",
+    "good", "sick", "sounds good", "letsgo",
+    # Flow state
+    "keep going", "more", "next", "hit the", "do both", "run it",
+    # User speech patterns (calibrated from Flex's style)
+    "yessir", "laddy", "buddy", "brotha", "gnbud", "seeya",
 }
 
 LOW_ENERGY = {
-    # Customize with your own low-energy / disengaged phrases
-    # Examples: "maybe", "not sure", "later", "skip"
+    # Uncertain/disengaged
+    "idk", "meh", "maybe", "i guess", "whatever", "later",
+    "not sure", "hmm", "nah", "skip", "leave it", "we'll see",
+    # Fatigue
+    "nap time", "brb", "gotta go", "wind down", "tired", "might have to",
+    # Thinking out loud (not low energy but reflective)
+    "im thinking", "im just saying", "thinking outloud",
 }
 
 PROBE_WORDS = {
-    # Customize with question/exploration phrases
-    # Examples: "what if", "how come", "explain", "what about"
+    # Questions/exploration
+    "what if", "how come", "why", "what about", "explain",
+    "think about", "whatcha think", "your take", "how does",
 }
 
 DIRECTIVE_WORDS = {
-    # Customize with command/decision phrases
-    # Examples: "do it", "build", "fix", "deploy", "push"
+    # Commands/decisions
+    "do it", "build", "wire", "fix", "add", "remove", "push", "commit",
+    "kill", "restart", "deploy", "ship", "lets", "hit",
 }
 
 

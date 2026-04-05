@@ -5,17 +5,17 @@ Metacognitive Intelligence Tracker — measures scaffold reasoning quality over 
 Runs after each metacog compile. Computes:
 - Pattern yield (promoted / chains since last compile)
 - Chain depth (avg reasoning steps)
+- Cross-agent ratio (patterns from 2+ agents)
+- Brutus kill rate (from reasoning chains tagged as kills)
 - Reusability ratio
 - Chains per day
 
 Appends metrics to logs/metacog_metrics.jsonl for longitudinal tracking.
-Optionally posts to Discord webhook (set DISCORD_WEBHOOK env var).
+Posts summary to Discord #cc if webhook available.
 
 Usage:
-    python3 metacog_tracker.py                 # compute + log
-    python3 metacog_tracker.py --report        # print trend report
-
-Customize paths below for your project structure.
+    python3 scripts/metacog_tracker.py                 # compute + log
+    python3 scripts/metacog_tracker.py --report         # print trend report
 """
 
 import json
@@ -25,14 +25,11 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
-# ─── CUSTOMIZE THESE PATHS ──────────────────────────────────────────────────
-REPO_ROOT = Path(__file__).parent.parent  # adjust to your project root
+REPO_ROOT = Path(__file__).parent.parent
 CHAINS_FILE = REPO_ROOT / "logs" / "reasoning_chains.jsonl"
 METRICS_FILE = REPO_ROOT / "logs" / "metacog_metrics.jsonl"
-PATTERNS_DIR = REPO_ROOT / "knowledge" / "notes" / "cc-operational"  # where promoted patterns live
+PATTERNS_DIR = REPO_ROOT / "knowledge" / "notes" / "cc-operational"
 ENV_FILE = REPO_ROOT / ".env"
-DISCORD_WEBHOOK_VAR = "DISCORD_WEBHOOK"  # env var name for your webhook
-# ────────────────────────────────────────────────────────────────────────────
 
 
 def load_chains():
@@ -81,20 +78,29 @@ def count_demoted_patterns():
 
 def compute_metrics(chains, prior_metrics):
     now = datetime.now(timezone.utc)
+
+    # Total counts
     total_chains = len(chains)
     promoted = count_promoted_patterns()
     demoted = count_demoted_patterns()
 
     # Chains since last metric
-    last_ts = prior_metrics[-1].get("ts") if prior_metrics else None
-    new_chains = [c for c in chains if c.get("ts", "") > last_ts] if last_ts else chains
+    last_ts = None
+    if prior_metrics:
+        last_ts = prior_metrics[-1].get("ts")
+
+    if last_ts:
+        new_chains = [c for c in chains if c.get("ts", "") > last_ts]
+    else:
+        new_chains = chains
+
     new_chain_count = len(new_chains)
 
     # Chain depth (count arrows)
     depths = []
     for c in chains:
         chain_str = c.get("chain", "")
-        depth = chain_str.count("\u2192") + chain_str.count("->") + 1
+        depth = chain_str.count("→") + chain_str.count("->") + 1
         depths.append(depth)
     avg_depth = sum(depths) / len(depths) if depths else 0
     max_depth = max(depths) if depths else 0
@@ -112,14 +118,18 @@ def compute_metrics(chains, prior_metrics):
     days_active = len(by_date)
     chains_per_day = total_chains / days_active if days_active else 0
 
-    # Yields
+    # Pattern yield (promoted / total chains)
     pattern_yield = promoted / total_chains if total_chains else 0
+
+    # Yield since last compile
     prior_promoted = prior_metrics[-1].get("promoted_patterns", 0) if prior_metrics else 0
     new_promoted = promoted - prior_promoted
     compile_yield = new_promoted / new_chain_count if new_chain_count > 0 else 0
+
+    # Compile number
     compile_num = len(prior_metrics) + 1
 
-    return {
+    metrics = {
         "ts": now.isoformat(),
         "compile_num": compile_num,
         "total_chains": total_chains,
@@ -136,17 +146,22 @@ def compute_metrics(chains, prior_metrics):
         "days_active": days_active,
     }
 
+    return metrics
+
 
 def post_discord(msg):
     try:
-        if ENV_FILE.exists():
-            for line in ENV_FILE.read_text().splitlines():
+        env_path = ENV_FILE
+        if env_path.exists():
+            for line in env_path.read_text().splitlines():
                 if "=" in line and not line.startswith("#"):
                     k, v = line.split("=", 1)
                     os.environ.setdefault(k.strip(), v.strip())
-        webhook = os.environ.get(DISCORD_WEBHOOK_VAR, "").strip()
+
+        webhook = os.environ.get("DISCORD_WEBHOOK_CC", "").strip()
         if not webhook:
             return
+
         import urllib.request
         data = json.dumps({"content": msg}).encode()
         req = urllib.request.Request(
@@ -162,50 +177,76 @@ def trend_report(metrics_history):
     if len(metrics_history) < 2:
         print("Need 2+ compiles for trend analysis.")
         return
+
     print("=== METACOGNITIVE INTELLIGENCE CURVE ===\n")
     print(f"{'#':>3} {'Date':>12} {'Chains':>7} {'New':>5} {'Promoted':>8} {'Yield':>7} {'Depth':>6} {'C/Day':>6}")
     print("-" * 62)
+
     for m in metrics_history:
         ts = m["ts"][:10]
-        print(f"{m['compile_num']:>3} {ts:>12} {m['total_chains']:>7} "
-              f"{m['new_chains']:>5} {m['promoted_patterns']:>8} "
-              f"{m['compile_yield']:>6.1%} {m['avg_chain_depth']:>6.1f} "
-              f"{m['chains_per_day']:>6.1f}")
-    first, last = metrics_history[0], metrics_history[-1]
-    print(f"\nDepth: {first['avg_chain_depth']:.1f} -> {last['avg_chain_depth']:.1f}")
-    print(f"Yield: {first['cumulative_yield']:.1%} -> {last['cumulative_yield']:.1%}")
-    print(f"Promoted: {last['promoted_patterns']} | Demoted: {last['demoted_patterns']}")
+        print(
+            f"{m['compile_num']:>3} {ts:>12} {m['total_chains']:>7} "
+            f"{m['new_chains']:>5} {m['promoted_patterns']:>8} "
+            f"{m['compile_yield']:>6.1%} {m['avg_chain_depth']:>6.1f} "
+            f"{m['chains_per_day']:>6.1f}"
+        )
+
+    # Trend indicators
+    first = metrics_history[0]
+    last = metrics_history[-1]
+    print()
+
+    depth_delta = last["avg_chain_depth"] - first["avg_chain_depth"]
+    yield_delta = last["cumulative_yield"] - first["cumulative_yield"]
+
+    print(f"Depth trend: {first['avg_chain_depth']:.1f} → {last['avg_chain_depth']:.1f} ({depth_delta:+.1f})")
+    print(f"Cumulative yield: {first['cumulative_yield']:.1%} → {last['cumulative_yield']:.1%} ({yield_delta:+.1%})")
+    print(f"Total promoted: {last['promoted_patterns']} | Demoted: {last['demoted_patterns']}")
+    print(f"Net patterns: {last['promoted_patterns'] - last['demoted_patterns']}")
 
 
 def main():
-    if "--report" in sys.argv:
-        prior = load_prior_metrics()
-        if prior:
-            trend_report(prior)
-        else:
-            print("No metrics history yet.")
-        return
+    report_mode = "--report" in sys.argv
 
     chains = load_chains()
     prior = load_prior_metrics()
+
+    if report_mode:
+        if not prior:
+            print("No metrics history yet. Run without --report first.")
+            return
+        trend_report(prior)
+        return
+
     metrics = compute_metrics(chains, prior)
 
+    # Append to metrics file
     with open(METRICS_FILE, "a") as f:
         f.write(json.dumps(metrics) + "\n")
 
-    print(f"=== METACOG TRACKER -- Compile #{metrics['compile_num']} ===")
-    print(f"Chains: {metrics['total_chains']} (+{metrics['new_chains']})")
-    print(f"Promoted: {metrics['promoted_patterns']} ({metrics['new_promoted']:+d}) | Demoted: {metrics['demoted_patterns']}")
-    print(f"Yield: {metrics['compile_yield']:.1%} (compile) / {metrics['cumulative_yield']:.1%} (cumulative)")
-    print(f"Depth: {metrics['avg_chain_depth']} avg | Rate: {metrics['chains_per_day']:.1f}/day")
+    # Print summary
+    print(f"=== METACOG TRACKER — Compile #{metrics['compile_num']} ===")
+    print(f"Total chains: {metrics['total_chains']} (+{metrics['new_chains']} new)")
+    print(f"Promoted: {metrics['promoted_patterns']} ({metrics['new_promoted']:+d} this compile)")
+    print(f"Demoted: {metrics['demoted_patterns']}")
+    print(f"Compile yield: {metrics['compile_yield']:.1%}")
+    print(f"Cumulative yield: {metrics['cumulative_yield']:.1%}")
+    print(f"Avg depth: {metrics['avg_chain_depth']} steps")
+    print(f"Chains/day: {metrics['chains_per_day']}")
 
-    msg = (f"METACOG TRACKER -- Compile #{metrics['compile_num']}\n"
-           f"Chains: {metrics['total_chains']} (+{metrics['new_chains']})\n"
-           f"Promoted: {metrics['promoted_patterns']} ({metrics['new_promoted']:+d}) | "
-           f"Demoted: {metrics['demoted_patterns']}\n"
-           f"Yield: {metrics['compile_yield']:.1%} | Depth: {metrics['avg_chain_depth']}")
+    # Discord
+    msg = (
+        f"📊 **METACOG TRACKER** — Compile #{metrics['compile_num']}\n"
+        f"Chains: {metrics['total_chains']} (+{metrics['new_chains']})\n"
+        f"Promoted: {metrics['promoted_patterns']} ({metrics['new_promoted']:+d}) | "
+        f"Demoted: {metrics['demoted_patterns']}\n"
+        f"Yield: {metrics['compile_yield']:.1%} (compile) / "
+        f"{metrics['cumulative_yield']:.1%} (cumulative)\n"
+        f"Depth: {metrics['avg_chain_depth']} avg | "
+        f"Rate: {metrics['chains_per_day']:.1f}/day"
+    )
     post_discord(msg)
-    print("\nMetrics logged.")
+    print("\nMetrics logged + Discord posted.")
 
 
 if __name__ == "__main__":
