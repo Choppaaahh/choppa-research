@@ -222,7 +222,7 @@ def load_trading_rewards():
     if not log_files:
         return pattern_rewards
 
-    # Parse trade lines: "[17:26:14] CHOP MEAN EXIT: SHORT HYPE +41.1bp gross, +38.2bp net"
+    # Parse trade lines: "[17:26:14] CHOP MEAN EXIT: SHORT COIN_A +41.1bp gross, +38.2bp net"
     trade_pattern = re.compile(
         r'(CHOP|PATIENCE) (MEAN|CUT|TRAIL|FLIP) (?:EXIT|CLOSE).*?([+-]\d+\.?\d*)bp net'
     )
