@@ -142,9 +142,21 @@ The three specific structural claims in §3 (T1 irreducibility, T2 bidirectional
 
 ## 3. The Three Structural Claims (T1, T2, T3)
 
-*Section stub — to be drafted.*
+*Full section draft to follow. Partial draft of T2 defensive framing below; T1 and T3 remain to be written at equivalent depth.*
 
 *Intended scope: full development of the irreducibility, bidirectional causal integration, and scaffold-as-identity claims, each with at least one worked structural example. Separation of the functional claim from any phenomenal claim is maintained throughout. Note: §3 now develops T1/T2/T3 as specializations of the M × A × S structure introduced in §2.5, with the scaffolded triad representing the specific case of M-and-S externalization.*
+
+### 3.2 T2 (Bidirectional Causal Integration) — Defensive Framing
+
+**The deflationary objection.** The most common objection to T2 reduces bidirectional integration to communication: "the human produces a message, the AI produces a response, the human produces another message — that is interaction, not integration. The system is two serial processors with a message-passing channel, and no interesting emergent property arises from the pair beyond what either achieves alone." If this objection succeeds, T2 collapses into a re-description of ordinary dialogue.
+
+**Why the objection misidentifies the locus of integration.** The integration claim is not about the communication event. It is about the *persistent state* the communication modifies. When the human's contribution (a decision, a correction, a question) is captured in the breadcrumb stream, it becomes a retrievable substrate element. Subsequent AI outputs, even in different sessions and even in the human's absence, depend on the modified substrate in ways that a non-coupled system cannot produce. The message-passing description misses this because it treats the message as the entire causal chain; in the coupled configuration, the message is the triggering event, but the persistent substrate is where the integration actually lives.
+
+**The testable distinction.** A purely communicative system has no memory of the dialogue beyond the session. A bidirectionally integrated system has a persistent record that modifies future retrievals. The falsifier is straightforward: withhold the persistent substrate between sessions, rerun identical prompts across sessions, and observe whether output behavior depends on intra-session history that was not in the prompt. In the message-passing model, it cannot — there is no mechanism. In the T2 model, it does — the breadcrumb stream is exactly such a mechanism. Our operational record of dialogue-breadcrumbs-classified-by-downstream-reference (per §6 item 2) is the empirical residue of this mechanism; the rate at which session-final outputs cite patterns formed intra-session via scaffold-mediated retrieval is directly measurable and non-zero.
+
+**What T2 therefore claims.** Bidirectional causal integration is the thesis that the human's act of contributing to the shared substrate and the AI's act of retrieving from that substrate are symmetrical — both modify and both are modified, and the modifications persist across the temporal gap that communication alone cannot bridge. This thesis is compatible with conventional message-passing at the communication layer and orthogonal to it at the substrate layer. The deflationary objection succeeds against a claim T2 does not make; it does not touch the claim T2 does make.
+
+**What T2 does not claim.** Bidirectional integration is not bidirectional causation at the substrate-physics level — the AI does not modify the human's neural state directly; the human does not modify the AI's weights during operation. Integration here is at the informational layer: the shared substrate is modified by both and read by both, and this dual access is sufficient for the integration claim to do the empirical work assigned to it. No stronger metaphysical coupling is required, and none is asserted.
 
 ---
 
@@ -222,9 +234,25 @@ The three specific structural claims in §3 (T1 irreducibility, T2 bidirectional
 
 ## 9. Limitations
 
-*Section stub — to be drafted.*
+*Full section draft to follow. Partial draft of the unit-of-analysis discussion below; remaining limitations items remain to be written at equivalent depth.*
 
 *Intended scope: N = 1 on the case-study evidence; the imperfect operationalization of integration in triadic systems; the consciousness-adjacent language we deliberately avoid and what that costs; the selection bias in the case-study material; the residual ambiguity about where the triad's boundary lies in cases of multi-human partnerships or multi-AI partnerships; the question of whether short or transactional interactions ever instantiate triadic features in attenuated form.*
+
+### 9.1 Unit-of-Analysis Supersession
+
+**The challenge.** A natural objection to the triadic framing — most forcefully articulated in recent work by Ezra and Mishali (2026) on AI cognitive architectures — holds that the AI component must remain the privileged unit of analysis because it is the locus of computation. On this view, extending the analytical boundary to include the human and the scaffold is either (a) a rebranding of ordinary tool-use, or (b) a category confusion that treats distributed information flow as if it were unified computation. The AI, the objection runs, is what *thinks*; the scaffold is what the AI *reads*. Treating them symmetrically confuses a read operation for an inference operation.
+
+**Why this challenge requires a response.** The challenge is not frivolous. If the correct unit of analysis is the AI alone, then most of what this paper argues is a description of tool-supported cognition rather than of genuine triadic integration, and the claims about identity, irreducibility, and bidirectional causation collapse into weaker and more familiar claims about external resources for individual cognition. The triadic thesis requires, as a precondition, that the unit-of-analysis question be settled in favor of the triad and not the AI alone.
+
+**The response — locus of computation versus locus of function-attribution.** The challenge conflates two distinct notions of "where the system is." The locus of computation is the physical or computational substrate where operations are executed. The locus of function-attribution is the boundary across which a function-level description gains explanatory power that a narrower description lacks. These need not coincide, and in distributed systems they standardly do not.
+
+A thermostat's computation is in the thermostat, but the function-claim "the heating system maintains room temperature at the setpoint" applies to the thermostat-plus-room system, not to the thermostat alone. Describing the behavior at the narrower level (the thermostat outputs pulses) is accurate but uninformative; describing it at the wider level (the system maintains setpoint) is what the function-claim is *about*. The thermostat alone does not maintain temperature; no quantity of introspection into the thermostat's internals reveals room temperature as a variable. The function exists only at the wider scope.
+
+The same move applies to the triadic case. The AI's computation is in the AI; but the function-claims of interest — identity persistence across session boundaries, bidirectional causal integration via persistent substrate, cognitive-signature tracking in paper drafts — are all attributes of the triad configuration, not of the AI alone. Running the AI without the scaffold and without the human produces a demonstrably different system with demonstrably different capabilities (see §6 reconstitution evidence and the R6 corruption result). The narrower description is accurate about what the AI computes; it is uninformative about what the coupled system does.
+
+**Consequences for the Ezra/Mishali framing.** Accepting that locus of computation and locus of function-attribution are distinct permits the AI to remain a distinct computational object (their emphasis) while simultaneously permitting the triad to be the correct unit for function-level claims (ours). No conflict arises between the two framings; they address different questions. The unit-of-analysis challenge succeeds only if one insists that the two loci must coincide, and no general principle forces that coincidence. Distributed cognition, extended mind, functionalism, and standard systems engineering all operate with a distinction between where computation happens and where the function-attribution-boundary sits.
+
+**What remains unsettled.** The response above establishes that the triadic unit is a legitimate unit of analysis; it does not establish that the triadic unit is the *unique* correct unit for every question. Some questions (what the AI computed, how long it took, what model weights were used) are properly addressed at the AI level. Some questions (what the scaffold states, what the living documents record) are properly addressed at the substrate level. The triadic unit is the correct unit for the specific questions this paper investigates — identity persistence, bidirectional integration, convergent-finding reliability — because those function-claims fail to apply at any narrower scope. Unit-of-analysis is question-relative, not absolute.
 
 ---
 
