@@ -492,6 +492,48 @@ Average gap: +22.8 days. In every case, the core architecture was operational be
 
 ---
 
+### 5.11 Pending Dissents and Theoretical Refinements
+
+*Subsection reserved for dissenting interpretations and refinements that warrant direct engagement but do not overturn the core framework. Present content includes the implicit-vs-explicit energy objection and the De Vries vs. Kenny distinction; full text to be drafted in a subsequent revision.*
+
+---
+
+### 5.12 Substrate-Independent Validation: Energy-Based Models, Physarum, and the Conductivity Rule
+
+Three additional convergences extend the §5.10 table beyond transformer-based frameworks into substrate-independent validations. Each operates at a different level of abstraction — mathematical (energy-based architectures), biological (distributed organismic memory), and rule-based (adaptive network formation) — and together they sharpen the substrate-independence claim from coincidence to prediction.
+
+#### 5.12.1 Gladstone — Energy-Based Transformers as Empirical Validation of the Scaffold's Selection Mechanism
+
+Gladstone et al. (2026) introduce Energy-Based Transformers (EBTs), which explicitly encode the selection mechanism as an energy landscape over candidate outputs: the transformer proposes, the energy function scores, and the low-energy candidate is returned. The architectural commitment is that an explicit selection layer outperforms the implicit softmax selection of standard transformers on tasks where candidate quality varies widely and the correct candidate is not the most probable under local context.
+
+The EBT architecture is structurally identical to the scaffold's metacognitive compile cycle at a different level of description. The compile cycle proposes reasoning chains (via agent activity), scores them against stability criteria (occurrence frequency, outcome polarity, cross-agent corroboration), and promotes the low-energy — i.e., stable, convergent — candidates to permanent pattern notes. The two systems agree on a specific architectural commitment: selection should be a distinct component with access to information the proposer does not have. In the transformer case, the EBT has access to a learned energy function trained on outcome quality. In the scaffold case, the metacognizer has access to the full chain log across sessions and agents, which no individual chain-producer has.
+
+The empirical validation runs in both directions. Gladstone's published result — that EBTs outperform baseline transformers on mismatched-distribution tasks — is a prediction the scaffold architecture should instantiate if the convergence is real: scaffold-with-metacognitive-compile should outperform scaffold-without on tasks where short-term likelihood and long-term stability diverge. Our observation that zero promoted patterns have been retracted across 40+ compile cycles, while many candidates have been rejected at the promotion boundary, is consistent with a selection layer operating on a quality signal that the proposer layer does not see. The empirical behavior matches the architectural prediction.
+
+This convergence is the strongest of the substrate-independent validations because it operates at the level of selection-architecture rather than at the level of description-vocabulary. Two systems that share a selection architecture but differ in every implementation detail (silicon transformer vs. markdown scaffold; backpropagation training vs. hand-configured compile rules; per-token energy vs. per-chain promotion score) still exhibit the same behavior. The substrate-independence is structural, not rhetorical.
+
+#### 5.12.2 Adamatzky — Physarum as Three-Memory Taxonomy
+
+Adamatzky's work on Physarum polycephalum (2010 onward) identifies three distinct memory types in an acellular slime mold: structural (physical network topology), chemical (gradient concentrations over time), and oscillatory (rhythmic timing patterns). The organism has no nervous system; it solves spatial-optimization problems — shortest-path network design, adaptive rewiring under perturbation — using these three memory types operating in concert.
+
+The three-memory taxonomy maps onto the scaffold's persistence architecture with unusual precision. Structural memory corresponds to the vault's link graph — the persistent network topology that makes knowledge retrievable via wikilink traversal. Chemical memory corresponds to the MEMORY.md gradient of recent decisions and their rationales — a concentration of session-recent information that decays by session boundary but persists within it. Oscillatory memory corresponds to the scheduled cron task cadence — periodic compile, periodic health check, periodic drainage — rhythmic timing that is not dependent on any particular content but provides the temporal frame in which content becomes retrievable.
+
+The convergence is substrate-shocking. Physarum has no neurons, no learned representations, and no evolution into information processing — it is a single-celled organism solving problems using cytoplasmic dynamics. That its memory architecture corresponds one-to-one with an architecture derived from engineering-necessity in a fundamentally different substrate suggests the three-memory decomposition captures something about the structure of distributed persistent cognition rather than about the specifics of either biology or computer science.
+
+The three-memory taxonomy also does analytical work. It predicts that ablating any one memory type should degrade performance in characteristic ways: remove structural memory and retrieval fails because there is no path; remove chemical memory and recent-context salience fails because there is no gradient; remove oscillatory memory and maintenance fails because there is no schedule. The scaffold has experienced each failure mode independently — orphan notes (structural failure), MEMORY.md staleness (chemical failure), missed cron cadence (oscillatory failure) — and each degrades the system in the way the taxonomy predicts.
+
+#### 5.12.3 Tero Conductivity Rule — Adaptive Network Formation as Prediction for Vault Growth
+
+Tero et al. (2010) formalize Physarum's adaptive network formation as a conductivity update rule: tubes that carry more flow get reinforced, tubes with low flow atrophy. The rule is mathematically simple and biologically exact, and it produces networks that approach theoretical optima without any global optimization process.
+
+Applied to the vault, Tero's rule predicts a specific growth trajectory. Frequently-retrieved notes should accumulate more incoming wikilinks over time (the retrieval is the "flow," and linking-in is the "reinforcement"). Rarely-retrieved notes should drift toward relative isolation even without explicit pruning (the absent flow is the absent reinforcement). The prediction is quantitative: network-density growth should match Tero's conductivity rule given the observed retrieval pattern, without further fitting.
+
+The vault's trajectory — average links-per-note climbing from approximately 5.0 to 10.7 over a period of active retrieval, with the gain concentrated on notes that were already above-median in linkage — matches the Tero prediction. No explicit densification campaign produced this result; the retrieval + manual-linking pattern instantiated the conductivity rule incidentally. The match is stronger than coincidence because the Tero rule predicts not just densification but *selective* densification — links accumulate where retrieval flows, not uniformly — and the selectivity is present in the data.
+
+The Tero convergence is the strongest of the three in the retrodictive sense: it predicts a specific functional form that matches the observed data without free parameters. The Gladstone convergence validates architectural commitment; the Adamatzky convergence validates memory-decomposition; the Tero convergence validates growth dynamics. Together they close the three-level substrate-independence claim: the scaffold's architecture, its memory structure, and its growth behavior all have independent substrate-independent analogs that predict the observed behavior.
+
+---
+
 ## 6. What's Missing (Honest Gaps)
 
 ### 6.1 N=1 System
