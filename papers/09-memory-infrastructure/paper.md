@@ -496,6 +496,14 @@ Average gap: +22.8 days. In every case, the core architecture was operational be
 
 *Subsection reserved for dissenting interpretations and refinements that warrant direct engagement but do not overturn the core framework. Present content includes the implicit-vs-explicit energy objection and the De Vries vs. Kenny distinction; full text to be drafted in a subsequent revision.*
 
+#### 5.11.1 LLM + AIF Hybrid Proposals and the EFE-Decoupling Question
+
+Recent proposals (e.g., "Missing Reward: Active Inference in the Era of Experience," 2025, arXiv:2508.05619) argue for hybrid architectures in which the language model provides amortized inference and active inference provides the decision rule via expected-free-energy (EFE) minimization. Such proposals are compatible with our scaffold-as-RGM framing at the structural level: both treat the system as implementing hierarchical generative modeling with retrieval-selection operations that can be described in EFE terms.
+
+A technical question remains open. Kenny (2026, arXiv:2511.20321) argues that EFE as conventionally formulated is mathematically ill-defined — the statistical-independence approximations used to decompose epistemic and pragmatic value imply a mutual-information quantity that evaluates to zero, making the objective formally incoherent when examined closely. His proposed resolution is to decouple active inference from EFE entirely and use a unified KL-divergence objective instead. The hybrid-architecture proposals cited above adopt EFE without engaging this critique.
+
+Our own use of EFE-derived epistemic/pragmatic decomposition at the retrieval layer (see `vault_search.py --efe` mode, shipped from prior convergent-evidence work) adopts the *decomposition* as a retrieval-ranking heuristic without committing to EFE's status as the foundational objective. This position survives under either the hybrid proposals' framework or Kenny's decoupling framework: the retrieval-layer mechanism is operationally motivated (it improves ranking), and the theoretical status of EFE upstream of the retrieval mechanism is an open question we engage rather than assume resolved. Subsequent revision in this section will expand the engagement with Kenny's critique and with the implicit-vs-explicit energy objection.
+
 ---
 
 ### 5.12 Substrate-Independent Validation: Energy-Based Models, Physarum, and the Conductivity Rule
