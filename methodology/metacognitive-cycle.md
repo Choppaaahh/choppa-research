@@ -1,6 +1,6 @@
 # Metacognitive Cycle — The Scaffold Improving Its Own Reasoning
 
-Across 382 vault notes and 50+ reasoning chains captured in one day, we observed patterns in HOW the AI reasons, not just WHAT it produces. This led to a structured self-improvement cycle.
+Across 824 vault notes and 531 reasoning chains captured across sessions, we observed patterns in HOW the AI reasons, not just WHAT it produces. This led to a structured self-improvement cycle.
 
 ## The Insight
 
@@ -34,18 +34,23 @@ Every agent logs chains to a shared file:
 5. **Demote broken patterns** (pattern used but outcome was bad) → update status to outdated
 6. **Meta-observation** — what TYPE of reasoning is working best right now?
 
-## First Results (Day 1)
+## Results Over Time
 
-5 patterns promoted:
-- `MCR-coiling-dynamics` (HIGH confidence) — 8 chains
-- `classifier-lag-stale-windows` (HIGH) — 6 chains  
+**Early patterns (first compile cycles):**
+- `coiling-dynamics` (HIGH confidence) — 8 chains
+- `classifier-lag-stale-windows` (HIGH) — 6 chains
 - `power-window-relay-structure` (MED-HIGH) — 7 chains
 - `post-trend-exhaustion-lifecycle` (HIGH) — 3 chains
 - `meta-reasoning-operations` (HIGH) — 5 chains
 
-2 patterns broken:
-- `btc-safe-haven-coil` — failed on second test
-- `multi-coin-simultaneous-coil` — divergent release
+**Broken patterns (caught by adversarial review):**
+- `safe-haven-coil` — failed on second test, demoted
+- `multi-instrument-simultaneous-coil` — divergent release, demoted
+
+**Current state (40+ compile cycles):**
+- 62 promoted patterns, 0 retracted promotions
+- Compile identifies pattern stability, not just frequency — a pattern appearing 10 times with 2 failures is less stable than one appearing 5 times with 0 failures
+- The checklist for what constitutes a "stable" promotion has itself been refined through the compile process
 
 ## The Closed Loop
 
@@ -72,13 +77,14 @@ Captures better chains
 When multiple specialized agents share the same reasoning chain log:
 - Adversarial reviewer logs KILL patterns (what fails and why)
 - Code QA logs BUG patterns (which checks catch real issues)
-- Market observer logs MARKET patterns (regime dynamics)
-- Researcher logs SEARCH patterns (which strategies find relevant work)
+- Domain observer logs DOMAIN patterns (regime dynamics, structural signals)
+- Research agent logs SEARCH patterns (which strategies find relevant work)
+- Metacognizer sees ALL of these simultaneously
 
 The compile cycle sees ALL patterns together. Cross-agent patterns emerge:
 "The adversarial reviewer kills proposals that lack domain-specific constraint math" → system-wide lesson.
 
-53 chains from 5 agents in day 1. By week 2, team-wide patterns stabilize. By month 1, a genuine collective reasoning profile.
+531 chains logged across the team. By week 2, team-wide patterns stabilize. By month 1, a genuine collective reasoning profile that no individual agent can see alone.
 
 ## How to Set It Up
 
@@ -101,7 +107,7 @@ Set up a recurring task (cron, launchd, GitHub Action, or just do it manually) t
 **For Claude Code users:**
 ```bash
 # launchd plist or cron entry
-claude -p "Read logs/reasoning_chains.jsonl. Group by pattern field. Any pattern with 3+ occurrences and positive outcomes: write a vault note to knowledge/notes/cc-operational/pattern-[name].md. Demote patterns that failed. Post summary."
+claude -p "Read logs/reasoning_chains.jsonl. Group by pattern field. Any pattern with 3+ occurrences and positive outcomes: write a vault note to knowledge/notes/patterns/pattern-[name].md. Demote patterns that failed. Post summary."
 ```
 
 **For any AI system:**
