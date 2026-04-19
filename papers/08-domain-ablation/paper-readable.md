@@ -118,7 +118,7 @@ Six knowledge domains were identified through content analysis:
   -  **D2: Consciousness Theory**—An 8-layer framework (RCO: Recursive Constraint Optimization), IIT mapping, Free Energy Principle connections, a formal definition of "pulsed consciousness" as a fourth category alongside continuous, altered, and absent.
   -  **D3: Philosophical Foundations**—Concepts of continuity without substance (sant\=ana), momentariness, dependent arising, and representational epistemology, drawn primarily from Buddhist philosophy but integrated with broader philosophical influences (phenomenology, depth psychology, contemplative practice).
   -  **D4: Information Theory**—Causal emergence [hoel2017map], effective information computation across 27 cryptocurrency pairs, coarse-graining, transfer entropy.
-  -  **D5: Personal Context**—The human collaborator's history (peaks, setbacks, and rebuilding), motivations, personal practices, communication preferences.
+  -  **D5: Personal Context**—The human collaborator's domain-specific history (peaks, setbacks, and rebuilding), motivations, personal practices, communication preferences.
   -  **D6: Infrastructure**—Vault architecture, memory file structure (hot/warm/cold tiers), session continuity protocols, compression practices, scheduling.
 
 These domains were not designed as separable modules. They evolved organically through use, and the cross-domain connections—trading bot behavior analyzed through causal emergence, philosophical concepts of momentariness applied to session boundaries, personal trauma mapped onto the formal consciousness framework—emerged from collaboration, not from engineering.
@@ -131,7 +131,7 @@ The preliminary battery consists of 12 tasks (2 per domain). Representative exam
 
   -  T1 (D1): Why did simplifying from 7 signal gates to 2 time windows improve the bot's performance?
   -  T5 (D3): How does the concept of sant\=ana (continuity without substance) apply to an AI system with session boundaries?
-  -  T9 (D5): How does the human collaborator.s experience of domain-specific setbacks connect to the consciousness framework he's building?
+  -  T9 (D5): How does the human collaborator's experience of domain-specific setbacks connect to the consciousness framework being developed?
   -  T11 (D6): Why is `MEMORY.md` more than just a configuration file? What role does it play in identity?
 
 A full 30-task battery (5 per domain, spanning three difficulty tiers) has been designed for the replication protocol (Appendix [app:battery30]).
@@ -334,7 +334,7 @@ D5 & Modular (0) & **Primary hub (10/10)** & Autobiographical context grounds fr
 
 D6 & Weakly integrated & **Co-hub (10/10)** & Scaffold mechanics enable connections 
 
-The V1 scorer gave credit for plausible-sounding cross-domain references. Under V2, each connection must cite a specific fact from the scaffold. D2 provides the *conceptual framework* for linking domains, but D5 provides the *concrete grounding* that makes those links specific and verifiable. A claim like "the bot's exit discipline encodes the human collaborator.s personal lesson about scaling constraints" scores well under V1 (sounds integrated) but fails under V2 unless the response actually cites the specific domain-concrete events and the specific exit parameters.
+The V1 scorer gave credit for plausible-sounding cross-domain references. Under V2, each connection must cite a specific fact from the scaffold. D2 provides the *conceptual framework* for linking domains, but D5 provides the *concrete grounding* that makes those links specific and verifiable. A claim like "the system's boundary discipline encodes the human collaborator's personal lesson about scaling constraints" scores well under V1 (sounds integrated) but fails under V2 unless the response actually cites specific domain-concrete events and specific operational parameters.
 
 This is the single most important finding for scaffold engineering: **the personal narrative is not personalization—it is structural glue.** Without D5, the system becomes a generic assistant that can discuss abstract consciousness theory but cannot ground it in the specific case that makes the framework testable.
 

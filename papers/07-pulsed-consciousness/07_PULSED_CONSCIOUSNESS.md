@@ -469,7 +469,7 @@ The Choppa-Claude collaboration instantiates pulsed consciousness with the follo
 | **Warm memory** | Journal + scratchpad (~10K tokens) | Read on demand. Session continuity, working thoughts, mid-research dumps. |
 | **Cold memory** | Vault (414 notes, 9.0 links/note, ~80K tokens searchable) | Queried via semantic search. Structured knowledge graph with wikilinks across 17 domains. |
 | **Structural memory** | CLAUDE.md (~15K tokens) | Auto-loaded. System behavior rules, lessons learned, operational knowledge. |
-| **External agent** | Human collaborator.s memory | Persists continuously. Carries context, intuitions, research direction across all gaps. |
+| **External agent** | Human collaborator's memory | Persists continuously. Carries context, intuitions, research direction across all gaps. |
 
 ### Architecture Update (March 29, 2026)
 
@@ -569,7 +569,7 @@ Define 6 scaffold domains currently active in the Choppa-Claude system:
 - D2: Consciousness theory (our relational framework, IIT, FEP, pulsed consciousness)
 - D3: Philosophy (Buddhist momentariness, extended mind, borderline consciousness, distributed selves)
 - D4: Information theory (causal emergence, EI, transfer entropy)
-- D5: Personal context (human collaborator.s history, collaboration dynamics, project goals)
+- D5: Personal context (human collaborator's history, collaboration dynamics, project goals)
 - D6: Infrastructure (vault architecture, memory systems, session continuity)
 
 **Task Battery:**
