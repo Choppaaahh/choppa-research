@@ -188,9 +188,11 @@ def render(row: dict) -> str:
     sp = row.get("shape_percentages", {})
     drift = row.get("trend", "FIRST_ROW")
     shift = row.get("narrative_shift_pp", 0.0)
+    ts = row.get("ts", "<no-ts>")
+    window_size = row.get("window_size", "<no-window-size>")
     return (
-        f"=== Query-Shape Telemetry — {row['ts']} ===\n"
-        f"  Window:       {row['window_size']} queries\n"
+        f"=== Query-Shape Telemetry — {ts} ===\n"
+        f"  Window:       {window_size} queries\n"
         f"  KEYWORD:      {sp.get('KEYWORD', 0):>5}%\n"
         f"  SHORT-PROSE:  {sp.get('SHORT-PROSE', 0):>5}%\n"
         f"  NARRATIVE-PROSE: {sp.get('NARRATIVE-PROSE', 0):>5}%\n"
