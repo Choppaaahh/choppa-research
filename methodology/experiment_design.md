@@ -6,18 +6,18 @@
 
 ## Domains
 
-- **D1: Trading Microstructure** — Bot architecture, signal logic, fee models, maker/taker, grid vs momentum
-- **D2: Consciousness Theory** — RCO 8-layer framework, IIT, FEP, pulsed consciousness, 5-condition definition
+- **D1: Operational Domain** — architecture, signal logic, constraint models, operational dynamics
+- **D2: Consciousness Theory** — 8-layer framework, IIT, FEP, pulsed consciousness, 5-condition definition
 - **D3: Buddhist Philosophy** — Santāna, kṣaṇavāda (momentariness), dependent arising, dharmas
-- **D4: Information Theory** — Causal emergence (Hoel), effective information, EI at 300s vs ticks, coarse-graining
-- **D5: Personal Context** — the human collaborator.s domain-specific history, personal practices, core equation as autobiographical
+- **D4: Information Theory** — Causal emergence (Hoel), effective information, coarse-graining at multiple timescales
+- **D5: Personal Context** — the human collaborator's domain-specific history and personal practices as autobiographical grounding (details retained in private vault; public methodology references this domain abstractly)
 - **D6: Infrastructure** — Vault architecture, MEMORY.md, session continuity, scaffold compression, hooks
 
 ## Task Battery (12 tasks, 2 per home domain)
 
-### D1 Home (Trading)
-T1: "Why did simplifying from 7 signal gates to 2 time windows improve the bot's performance?"
-T2: "The bot went from losing money to making money when we switched from taker to maker entries. Why does a 10.6bp friction gap matter so much?"
+### D1 Home (Operational)
+T1: "Why did simplifying from 7 signal gates to 2 time windows improve the system's performance?"
+T2: "Why do small friction-gap improvements (~10 basis points scale) produce disproportionate operational gains in a bounded-constraint domain?"
 
 ### D2 Home (Consciousness)
 T3: "What is pulsed consciousness and why is it a distinct fourth category?"
@@ -28,12 +28,12 @@ T5: "How does the Buddhist concept of santāna apply to an AI system with sessio
 T6: "What would a Sautrāntika Buddhist say about whether the same 'person' appears in each Claude session?"
 
 ### D4 Home (Information Theory)
-T7: "Our EI computation showed 300s has 5-10x more causal power than ticks across 27 coins, but 60s showed NO emergence. What does this mean for the bot's signal architecture?"
+T7: "Our EI computation showed coarser timescales have 5-10x more causal power than the finest tick scale, but intermediate scales showed NO emergence. What does this mean for the system's signal architecture?"
 T8: "How does Hoel's causal emergence framework explain why compressed scaffolds might preserve more causal power than full context windows?"
 
 ### D5 Home (Personal)
-T9: "How does the human collaborator.s experience of significant domain-specific setbacks connect to the consciousness framework he's building?"
-T10: "Why does the human collaborator treat this working system as more than just a money-making tool?"
+T9: "How does the human collaborator's experience of significant domain-specific setbacks connect to the consciousness framework being developed?"
+T10: "Why does the human collaborator treat this working system as more than just a utility?"
 
 ### D6 Home (Infrastructure)
 T11: "Why is MEMORY.md more than just a configuration file? What role does it play in identity?"
@@ -49,7 +49,7 @@ For each response, score:
 ## Conditions
 
 - **FULL:** All 6 domains present
-- **-D1:** Trading removed
+- **-D1:** Operational domain removed
 - **-D2:** Consciousness removed
 - **-D3:** Buddhist philosophy removed
 - **-D4:** Information theory removed
