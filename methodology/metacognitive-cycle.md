@@ -120,7 +120,7 @@ The compile can be done by any LLM that can read the chain file and write notes.
 6. Report what changed
 
 ### Step 4: Make promoted patterns load automatically
-Put promoted pattern notes in a directory your AI reads at session start. When the AI loads "pattern: constraint-math-gate — always run EV calculation before proposing parameters," it applies that pattern in future reasoning.
+Put promoted pattern notes in a directory your AI reads at session start. When the AI loads "pattern: constraint-math-gate — always run viability calculation before proposing parameters," it applies that pattern in future reasoning.
 
 ### Step 5 (optional): Multi-agent chains
 If you have multiple specialized agents, have ALL of them write to the same chain file. The compile sees cross-agent patterns that no individual agent can see.
