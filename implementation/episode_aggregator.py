@@ -206,8 +206,12 @@ def render_summary(episodes: list[dict]) -> str:
     lines.append(
         f"  Span: {episodes[0]['start_ts'][:16]} -> {episodes[-1]['end_ts'][:16]}"
     )
+    # Median: for even-length lists, average the two middle values to avoid off-by-one bias.
+    sc = sorted(counts)
+    mid = len(sc) // 2
+    median_counts = sc[mid] if len(sc) % 2 == 1 else (sc[mid - 1] + sc[mid]) / 2
     lines.append(
-        f"  Breadcrumbs per episode: min {min(counts)}, median {sorted(counts)[len(counts)//2]}, max {max(counts)}"
+        f"  Breadcrumbs per episode: min {min(counts)}, median {median_counts}, max {max(counts)}"
     )
     lines.append(
         f"  Duration per episode (min): min {min(durations)}, max {max(durations):.1f}"
