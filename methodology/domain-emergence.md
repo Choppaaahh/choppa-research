@@ -28,7 +28,7 @@ Large domains split. Our "consciousness" domain (82 notes) split into 4 sub-doma
 | 100-200 | 12-15 | Consciousness, deep analysis, agent coordination added |
 | 200-300 | 18-20 | Session notes + multiple research sub-domains added |
 | 300-500 | 20+ sub-domains | Consciousness split into 4, operational patterns domain added |
-| 500-824 | 25+ sub-domains | Scaffold-as-RGM validated, self-audit pipeline, cross-domain ratios tracked |
+| 500-850+ | 25+ sub-domains | Scaffold-as-RGM validated, self-audit pipeline, cross-domain ratios tracked |
 
 ## Rules for Domain Health
 
