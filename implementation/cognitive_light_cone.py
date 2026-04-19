@@ -12,8 +12,8 @@ scaffold state on four dimensions:
     4. MULTISCALE COORDINATION — goals pursued at multiple timescales simultaneously
 
 Writes a single row to logs/cognitive_light_cone.jsonl per invocation:
-    {"ts": ISO, "time_horizon": ..., "spatial_scope": ...,
-     "goal_persistence": ..., "multiscale": ..., "score_summary": {...}}
+    {"ts": ISO, "time_horizon": {...}, "spatial_scope": {...},
+     "goal_persistence": {...}, "multiscale": {...}}
 
 The scores are not absolute magnitudes. They are defined relative to a fixed baseline
 (a raw LLM cold-start session) which scores 1 on each dimension by convention. The
@@ -57,8 +57,17 @@ def score_time_horizon() -> dict:
     papers_dir = ROOT / "research"
     if papers_dir.exists() and any(papers_dir.rglob("*.md")):
         horizons.append(("paper_drafts", 24 * 30 * 12))  # year-scale
-    memory = Path.home() / ".claude" / "projects" / "MEMORY.md"  # configure per deployment
-    if memory.exists():
+    # Check for a MEMORY.md anchor. Configure MEMORY_PATH env var for your deployment,
+    # or the script will discover the first MEMORY.md under ~/.claude/projects/ automatically.
+    memory_env = os.environ.get("MEMORY_PATH")
+    memory_candidates = []
+    if memory_env:
+        memory_candidates.append(Path(memory_env))
+    claude_projects = Path.home() / ".claude" / "projects"
+    if claude_projects.exists():
+        memory_candidates.extend(claude_projects.glob("*/memory/MEMORY.md"))
+        memory_candidates.extend(claude_projects.glob("*/MEMORY.md"))
+    if any(p.exists() for p in memory_candidates):
         horizons.append(("MEMORY.md", 4))  # session-protocol anchor
     eff = max((h for _, h in horizons), default=1)
     return {
@@ -83,9 +92,12 @@ def score_spatial_scope() -> dict:
     domain_count = len(domains)
 
     cron_count = 0
-    crontab = subprocess.run(["crontab", "-l"], capture_output=True, text=True, timeout=5)
-    if crontab.returncode == 0:
-        cron_count = len([ln for ln in crontab.stdout.splitlines() if ln.strip() and not ln.startswith("#")])
+    try:
+        crontab = subprocess.run(["crontab", "-l"], capture_output=True, text=True, timeout=5)
+        if crontab.returncode == 0:
+            cron_count = len([ln for ln in crontab.stdout.splitlines() if ln.strip() and not ln.startswith("#")])
+    except (subprocess.TimeoutExpired, FileNotFoundError):
+        cron_count = 0  # no crontab available, or command missing
 
     agents_dir = ROOT / ".claude" / "agents"
     agent_count = len(list(agents_dir.glob("*.md"))) if agents_dir.exists() else 0
@@ -123,8 +135,18 @@ def score_goal_persistence() -> dict:
             if pct_vals:
                 scaffold_fidelity = sum(pct_vals[-5:]) / len(pct_vals[-5:]) / 100.0
 
+    memory_env = os.environ.get("MEMORY_PATH")
+    memory_found = False
+    if memory_env and Path(memory_env).exists():
+        memory_found = True
+    else:
+        claude_projects = Path.home() / ".claude" / "projects"
+        if claude_projects.exists():
+            if any(claude_projects.glob("*/memory/MEMORY.md")) or any(claude_projects.glob("*/MEMORY.md")):
+                memory_found = True
+
     persistent_substrate = {
-        "MEMORY.md": (Path.home() / ".claude" / "projects" / "MEMORY.md"  # configure per deployment).exists(),
+        "MEMORY.md": memory_found,
         "CLAUDE.md": (ROOT / "CLAUDE.md").exists(),
         "todo.md": (ROOT / "tasks" / "todo.md").exists(),
         "vault": VAULT.exists(),
