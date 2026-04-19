@@ -66,14 +66,14 @@ The asymmetric bet is: when budget is constrained, prefer curating the four axes
 
 ## Why This Generalizes
 
-The four axes are not specific to the task the dataset was built for. They generalize to any small-model fine-tune on scaffold operational data:
+The four axes are not specific to the task the dataset was built for. They should generalize to any small-model fine-tune on scaffold operational data:
 
 - Class balance is domain-agnostic.
 - PMI requires only that multiple agents produce comparable outputs.
 - Three-channel rationale quality requires only that rationales have a structural template to score against.
 - Disagreement priority requires only a designated adversarial role.
 
-The composition — not the specific axes — is the pattern worth stealing. Any stack of four orthogonal signal axes will outperform a single axis applied four times. The criterion is orthogonality, not the particular choice of axes.
+The composition — not the specific axes — is what looks portable. The structural claim is that orthogonal axes compose multiplicatively, so stacking them is more efficient than applying any single axis more intensely. Whether that claim holds empirically across datasets is what future runs should test.
 
 ---
 
