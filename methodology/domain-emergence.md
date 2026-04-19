@@ -1,6 +1,6 @@
 # Domain Emergence — Don't Plan Structure, Discover It
 
-Our vault grew from 0 to 382 notes across 20+ domains. We didn't plan the domains. They emerged from content.
+Our vault grew from 0 to 824 notes across 25+ domains. We didn't plan the domains. They emerged from content.
 
 ## How Domains Form
 
@@ -23,11 +23,12 @@ Large domains split. Our "consciousness" domain (82 notes) split into 4 sub-doma
 
 | Note Count | Domains | What Happened |
 |-----------|---------|---------------|
-| 0-50 | 3-5 | Grid trading, bugs, safety |
+| 0-50 | 3-5 | Core mechanics, bugs, safety |
 | 50-100 | 8-10 | Microstructure, regime detection, lessons emerged |
-| 100-200 | 12-15 | Consciousness, wallet research, agent coordination added |
-| 200-300 | 18-20 | CC sessions, research-trading, geopolitics |
-| 300-382 | 20+ sub-domains | Consciousness split into 4, cc-operational domain added |
+| 100-200 | 12-15 | Consciousness, deep analysis, agent coordination added |
+| 200-300 | 18-20 | Session notes + multiple research sub-domains added |
+| 300-500 | 20+ sub-domains | Consciousness split into 4, operational patterns domain added |
+| 500-824 | 25+ sub-domains | Scaffold-as-RGM validated, self-audit pipeline, cross-domain ratios tracked |
 
 ## Rules for Domain Health
 

@@ -1,6 +1,6 @@
 # Getting Started — From Zero to Metacognitive Scaffold
 
-Your vault size will grow from 0 to hundreds of notes. Ours is 382 notes with 8+ links/note as of March 27, 2026. Here's the path.
+Your vault size will grow from 0 to hundreds of notes. Ours is 824 notes with 10.7 links/note as of April 2026. Here's the path.
 
 ## Phase 1: SEED (Day 1-3)
 
@@ -99,6 +99,33 @@ Reason better → Capture better chains → Repeat
 
 This is where the scaffold starts improving itself. The compile cycle runs autonomously. Patterns get promoted without human intervention. The system teaches itself.
 
+## Phase 5: AUTOPOIETIC CLOSURE (Week 4+)
+
+The scaffold audits itself and produces novel components.
+
+**Walk-forward truth:**
+- Periodically audit your own prior numeric claims: "is this number still valid, or was it based on a confounded dataset?"
+- Build a pipeline that re-runs key claims against fresh data. If a claim was based on a biased sample, flag it CONFOUNDED rather than silently propagating it.
+- We audited 18 prior numeric claims and flagged all 18 CONFOUNDED when run against an honest fill model. The self-audit is load-bearing.
+
+**Versioned resource registry:**
+- Immutable per-resource snapshots with restore capability
+- Every promoted pattern gets a version number. When it's superseded, the old version stays queryable.
+- Prevents pattern-name collisions and lets you trace the lineage of a belief.
+
+**Contract-based spawn context:**
+- When spawning an agent sub-task, pass only the context that task needs (a "contract"), not the full context window
+- 5-10x context-bloat reduction per multi-agent task
+- The contract defines what the sub-agent receives, what it must return, and what it cannot touch
+
+**GEPA-lite (Generalized Evolutionary Protocol for Agents):**
+- Periodically run your quality checklists and ruleset against your accumulated bug/failure log
+- Mutation types: consolidation (merge two overlapping items), gap-patch (add item for uncovered class), specification (sharpen a vague item)
+- Route mutations through adversarial review before applying
+- The checklist grows from its own operational experience, not from manual curation
+
+See `methodology/autopoietic-production.md` for the four production pathways in detail.
+
 ## Vault Growth Trajectory
 
 | Stage | Notes | Links/note | Domains | Key milestone |
@@ -107,6 +134,7 @@ This is where the scaffold starts improving itself. The compile cycle runs auton
 | Connect | 50-100 | 3-4 | 3-5 | Clusters visible, first MOCs |
 | Instrument | 100-200 | 5-6 | 8-12 | Feedback loops active, fidelity measured |
 | Metacognition | 200+ | 7+ | 15+ | Reasoning patterns compounding |
-| Ours (current) | 382 | 8.1 | 20+ | Autopoietic cycle autonomous |
+| Autopoietic | 500+ | 9+ | 20+ | Walk-forward truth, self-audit pipeline active |
+| Ours (current) | 824 | 10.7 | 25+ | Scaffold-as-RGM validated, 62 patterns promoted |
 
 The numbers aren't targets — they're what happened to us. Your trajectory will differ based on domain, usage frequency, and how aggressively you connect notes.

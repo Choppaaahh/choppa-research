@@ -1,6 +1,6 @@
 # Breadcrumb System — Capturing What the Human Brain Forgets
 
-Our vault has 382 notes. The breadcrumb system captures the reasoning BETWEEN notes — the decisions, insights, and connections that happen during work sessions but would otherwise be lost when the session ends.
+Our vault has 824 notes. The breadcrumb system captures the reasoning BETWEEN notes — the decisions, insights, and connections that happen during work sessions but would otherwise be lost when the session ends.
 
 ## The Problem
 
@@ -42,11 +42,11 @@ A scheduled task reads all breadcrumbs and compiles a session note with 5 mandat
 - The system catches what the human brain forgets
 - Insights that would die with the session get promoted to permanent knowledge
 
-## CC Session Notes
+## Session Notes
 
 One session note per day, multiple entries:
-- `2026-03-26-cc-session-xxxviii.md` — the day's session
-- Entry #1 (3pm compile), Entry #2 (7pm wrap)
+- `2026-03-26-session.md` — the day's session
+- Entry #1 (morning compile), Entry #2 (evening wrap)
 - Each entry timestamped and numbered
 - Same file grows through the day
 
