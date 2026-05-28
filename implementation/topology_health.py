@@ -14,7 +14,7 @@ SKIP_STEMS = {
     'safety-systems', 'microstructure-signals', 'regime-detection',
     'operational-procedures', 'lessons-learned', 'build-roadmap',
     'domain-1', 'domain-2', 'domain-3', 'domain-4',
-    'scheduled-reports', 'research-trading', 'geopol', 'operator', 'choppa',
+    'scheduled-reports', 'research-trading', 'geopol', 'operator',
     'navigation', 'dashboard', 'session-log', 'agent-coordination',
     'market-sessions', 'cc-operational', 'consciousness-framework',
     'consciousness-empirical', 'consciousness-identity', 'consciousness-literature',

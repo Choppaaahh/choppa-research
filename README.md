@@ -1,4 +1,4 @@
-# Choppa Research
+# Scaffold Research
 
 > Every AI session starts from zero. Scaffolding fixes that — and it scales where model size doesn't.
 
@@ -117,7 +117,7 @@ Full list of 17+ convergences in `methodology/convergences.md`.
 
 ## Built By
 
-Choppa + Claude (Anthropic Opus / Sonnet) across 400+ sessions. Built and used daily as the shared substrate between one human and a team of AI agents — synthesizing research across domains, persisting context between sessions, and compounding knowledge over time. Every finding, bug, and lesson lives in the graph.
+An independent researcher + Claude (Anthropic Opus / Sonnet) across 400+ sessions. Built and used daily as the shared substrate between one human and a team of AI agents — synthesizing research across domains, persisting context between sessions, and compounding knowledge over time. Every finding, bug, and lesson lives in the graph.
 
 It's not a reference system. It's how we think.
 

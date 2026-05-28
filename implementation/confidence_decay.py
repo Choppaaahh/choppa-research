@@ -60,7 +60,7 @@ SKIP_STEMS = {
     'safety-systems', 'microstructure-signals', 'regime-detection',
     'operational-procedures', 'lessons-learned', 'build-roadmap',
     'consciousness-trading', 'wallet-research', 'momoscalp', 'ccorner',
-    'scheduled-reports', 'research-trading', 'geopol', 'operator', 'choppa',
+    'scheduled-reports', 'research-trading', 'geopol', 'operator',
     'navigation', 'dashboard', 'session-log', 'agent-coordination',
     'market-sessions', 'cc-operational',
 }
