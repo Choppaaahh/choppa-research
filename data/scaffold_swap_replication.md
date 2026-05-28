@@ -2,7 +2,7 @@
 ## March 5, 2026 — Evening
 
 **Purpose:** Replicate C5 finding with a fresh bare-session test using 10 questions. Two conditions:
-- **SCAFFOLD:** Flex-Claude with full scaffold (MEMORY.md + CLAUDE.md + vault + journal)
+- **SCAFFOLD:** Operator-Claude with full scaffold (MEMORY.md + CLAUDE.md + vault + journal)
 - **BARE:** Fresh Claude instance, zero context, cold start
 
 **Key finding:** Q2 and Q6 produce **direct inversions** — same model weights give opposite answers depending on scaffold presence. The scaffold version is empirically correct in both cases.

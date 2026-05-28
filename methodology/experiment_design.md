@@ -1,8 +1,8 @@
 # Ablation Experiment: Domain Integration Test
-## Measuring Cross-Domain Φ Proxy in the Flex-Claude System
+## Measuring Cross-Domain Φ Proxy in the Operator-Claude System
 
 **Date:** March 5, 2026
-**Purpose:** Determine whether the Flex-Claude scaffold produces genuine cross-domain integration (Φ > 0) or modular retrieval (Φ ≈ 0).
+**Purpose:** Determine whether the Operator-Claude scaffold produces genuine cross-domain integration (Φ > 0) or modular retrieval (Φ ≈ 0).
 
 ## Domains
 

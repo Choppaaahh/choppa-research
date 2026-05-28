@@ -35,7 +35,7 @@ HIGH_ENERGY = {
     "good", "sick", "sounds good", "letsgo",
     # Flow state
     "keep going", "more", "next", "hit the", "do both", "run it",
-    # User speech patterns (calibrated from Flex's style)
+    # User speech patterns (calibrated from operator's style)
     "yessir", "laddy", "buddy", "brotha", "gnbud", "seeya",
 }
 
