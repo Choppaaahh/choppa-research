@@ -1,6 +1,6 @@
 # Four-Layer Identity Architecture
 
-Synthesized from 824+ vault notes, 8 controlled experiments, and convergent validation across 8 independent ontological levels (biology / mathematics / active inference / software / energy-based architectures / extended-mind philosophy / protocol engineering / physics observer-irreducibility).
+Synthesized from ~1,900+ vault notes, 8 controlled experiments, and convergent validation across 8 independent ontological levels (biology / mathematics / active inference / software / energy-based architectures / extended-mind philosophy / protocol engineering / physics observer-irreducibility).
 
 ## The Four Layers
 

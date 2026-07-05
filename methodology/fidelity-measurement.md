@@ -66,7 +66,7 @@ The BRIDGE dimension is sensitive to cross-domain wikilink density — isolated 
 | BRIDGE | Cross-domain wikilinks, MOC density | Echo-chamber domains (<40% cross-domain ratio) |
 
 ## Vault Stats (our system, April 2026)
-- 824 notes, 10.7 links/note, 0 orphans, 0 danglers
+- ~1,900 notes, 10.7 links/note, 0 orphans, 0 danglers
 - 25+ domain maps
 - 531 reasoning chains captured across sessions
 - Fidelity measured 17+ times across 8 weeks (F17: WHAT=1.00, WHY=0.87, CONTEXT=0.82, BRIDGE=0.73)
