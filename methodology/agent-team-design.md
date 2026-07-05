@@ -1,6 +1,6 @@
 # Agent Team Design — Specialized Cognition from One Model
 
-Our system runs multiple agents, all using the same Claude model. The scaffolding makes them functionally different intelligences. Total vault: 824 notes serving as shared knowledge substrate.
+Our system runs multiple agents, all using the same Claude model. The scaffolding makes them functionally different intelligences. Total vault: ~1,900 notes serving as shared knowledge substrate.
 
 ## The Insight
 

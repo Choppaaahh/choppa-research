@@ -1,6 +1,6 @@
 # Domain Emergence — Don't Plan Structure, Discover It
 
-Our vault grew from 0 to 824 notes across 25+ domains. We didn't plan the domains. They emerged from content.
+Our vault grew from 0 to ~1,900 notes across 25+ domains. We didn't plan the domains. They emerged from content.
 
 ## How Domains Form
 

@@ -1,6 +1,6 @@
 # Metacognitive Cycle — The Scaffold Improving Its Own Reasoning
 
-Across 824 vault notes and 531 reasoning chains captured across sessions, we observed patterns in HOW the AI reasons, not just WHAT it produces. This led to a structured self-improvement cycle.
+Across ~1,900 vault notes and 531 reasoning chains captured across sessions, we observed patterns in HOW the AI reasons, not just WHAT it produces. This led to a structured self-improvement cycle.
 
 ## The Insight
 

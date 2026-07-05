@@ -1,6 +1,6 @@
 # Memory Infrastructure Architecture
 
-The scaffold system under study operates across 7 layers of memory infrastructure. Current state: 824 vault notes + 62 promoted patterns + 35+ scheduled maintenance tasks + a specialized multi-agent team. This document describes the architecture for replication purposes — the specific content is not included, and the architecture is domain-agnostic.
+The scaffold system under study operates across 7 layers of memory infrastructure. Current state: ~1,900 vault notes + 62 promoted patterns + 35+ scheduled maintenance tasks + a specialized multi-agent team. This document describes the architecture for replication purposes — the specific content is not included, and the architecture is domain-agnostic.
 
 ## System Diagram
 
@@ -35,7 +35,7 @@ The scaffold system under study operates across 7 layers of memory infrastructur
 │         ▼                                                  │
 │  ┌───────────────────────────────────────────────────┐     │
 │  │  LAYER 3: Knowledge Vault (COLD)                  │     │
-│  │  824 atomic notes, 10.7 links/note avg            │     │
+│  │  ~1,900 atomic notes, 10.7 links/note avg            │     │
 │  │  20+ domain maps (MOCs)                           │     │
 │  │  Wiki-linked graph — browsable in Obsidian        │     │
 │  │  Schema-enforced frontmatter (type, status,       │     │
@@ -106,7 +106,7 @@ The knowledge vault (Layer 3) is browsable as an Obsidian vault. The human colla
 
 ```
 knowledge/
-├── notes/                          # 824 atomic notes
+├── notes/                          # ~1,900 atomic notes
 │   ├── <domain-1>/                 # Core operational mechanics
 │   ├── bugs/                       # Bug patterns (symptom → fix)
 │   ├── lessons/                    # Hard-won principles
@@ -125,9 +125,9 @@ knowledge/
 
 ## Key Metrics Over Time
 
-| Metric | Early snapshot (~350 notes) | Current (~824 notes) |
+| Metric | Early snapshot (~350 notes) | Current (~1,900 notes) |
 |--------|------------------------------|-----------------------|
-| Notes | ~232 / ~325 | 824 |
+| Notes | ~232 / ~325 | ~1,900 |
 | Links/note | 6.9 — 7.1 | 10.7 |
 | Cross-domain ratio | not measured | 98.7% |
 | Domain maps (MOCs) | 16 — 20 | 20+ |

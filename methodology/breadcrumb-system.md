@@ -1,6 +1,6 @@
 # Breadcrumb System — Capturing What the Human Brain Forgets
 
-Our vault has 824 notes. The breadcrumb system captures the reasoning BETWEEN notes — the decisions, insights, and connections that happen during work sessions but would otherwise be lost when the session ends.
+Our vault has ~1,900 notes. The breadcrumb system captures the reasoning BETWEEN notes — the decisions, insights, and connections that happen during work sessions but would otherwise be lost when the session ends.
 
 ## The Problem
 
