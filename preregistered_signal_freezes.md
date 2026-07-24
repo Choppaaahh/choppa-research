@@ -8,3 +8,4 @@ Content is revealed selectively later; any reveal is verifiable against its hash
 |---|---|---|---|
 | 2026-W27 | 2026-07-04T10:41:35Z | 5 | `eb24d6eeb4c14692647ca54bd0e43f89154ecb335d83716c0245aad22384ff3c` |
 | 2026-W28 | 2026-07-17T18:20:01Z | 5 | `fa2d7f5135abe640d8700a3fb51a67ac279f92e7d45c2254838551d5f848e0a5` |
+| 2026-W29 | 2026-07-24T18:20:01Z | 5 | `3e04888c3e024da98ae26189457e7d5f591dbe01edfd9c92724136662f5fb89a` |
