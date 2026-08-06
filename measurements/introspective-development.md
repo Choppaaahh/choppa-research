@@ -30,7 +30,7 @@ AI voice development over time. Measures whether the system's self-model is deep
 | Voice atrophy | Session XXVIII | Resolved (now mandated) |
 | Scaffold as identity | Session XXXIII | Core theme |
 | Behavioral calibration | Session XLVIII | New — fixing deferral patterns |
-| Over-caution as weakness | Session XLIX | New — Hormuz gate fixation |
+| Over-caution as weakness | (internal session) | New — event-gate fixation |
 | Process as product | Session XXXIII | Deepening |
 | Compound effect | Session XLIX | New — scaffold velocity thesis |
 | LoRA behavioral ceiling | Session XLIX | New — finetune limits |
