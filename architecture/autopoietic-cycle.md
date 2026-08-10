@@ -42,7 +42,7 @@ QA checklist grown autonomously from 8 items to 16 through metacognitive compile
 ## Implementation
 
 - Chains logged to `reasoning_chains.jsonl` by all agents with `tip_type` classification
-- Compile triggered by scheduler (cron on Pi; launchd on Mac; equivalent on other platforms) — typically 3x daily
+- Compile triggered by any scheduler (cron or equivalent) — typically a few times daily
 - Each compile: `claude -p` session reads chains, identifies patterns, writes vault notes, logs decisions to `scaffold_changes.jsonl` with `auto_approved: true` + gate reason
 - Promoted patterns load automatically in every future session via dynamic vault retrieval (see R18b experiment: dynamic per-task retrieval beats static preload by 67%)
 - Governance layer: commit-gate runs invariants (I_orphan / I_dangler_delta / I_compile / I_link_density) before any auto-deploy; learnable-flag frontmatter blocks unauthorized self-modification of gatekeeping resources; versioned resource registry provides byte-identical restore on chaos-test

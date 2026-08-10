@@ -110,7 +110,6 @@ The gate makes the standard *enforced*. A commit that would have drifted the sys
 The production scaffold runs 5 additional invariants beyond the 10 above. They are scaffold-specific (trading-bot logic, internal authentication chains, structural-prose layering) and don't generalize cleanly. Listed here for transparency about the gap between this doc and the production system:
 
 - `I_temporal_fabrication_check` — scans CC's prose for fabricated time-claims ("2+ years of...") without verification receipt. LLM-hallucination-specific.
-- `I_entry_only_regime_gating` — trading-bot regime-gating logic (advisory mode). Trading-domain specific.
 - `I_brutus_verdict_grounded` — adversarial-review output discipline (`DRIVEN-BY:` / `GROUNDING:` / `DOWNSTREAM-CONSEQUENCE:` fields required on Brutus verdicts). Scaffold-team-structure specific.
 - `I_sibling_sync_check` — multi-scale layer trace across rules / hooks / agents / patterns / invariant-specs / MOCs / scripts. Concept portable; implementation tightly coupled to scaffold structure.
 - `I_apply_handler_guard_present` — runtime-guard discipline on a specific Python module's state-mutating handlers (proposal_queue_apply.py + writer's rebuild_audit_chain). Internal infrastructure.
@@ -119,4 +118,4 @@ The 5 above represent failure-classes that surfaced in our specific architecture
 
 ---
 
-*Implementation: a single Python script runs all 15 invariants on staged or working-tree changes. Exceptions are stored in a JSON file at the repo root. The gate is wired into the commit workflow via a hook; it can be overridden explicitly but the override is logged.*
+*Implementation: a single Python script runs the full invariant set on staged or working-tree changes — 15 as of cycle-30 when this document was written; the production gate has since grown to ~36, with the 10 documented above remaining the portable core. Exceptions are stored in a JSON file at the repo root. The gate is wired into the commit workflow via a hook; it can be overridden explicitly but the override is logged.*

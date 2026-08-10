@@ -65,11 +65,11 @@ Chaos-test validated: corrupting a resource, restoring from a prior version, and
 
 ### 4. Contract-based spawn context
 
-Agent configurations in a production scaffold can be 5-10 KB each. When spawning multiple agents per session, context-bloat becomes real.
+Agent configurations in a production scaffold can be 5-10 KB each. In our earlier persistent-team deployment (multiple agents spawned per session), context-bloat was real; the same contract discipline now applies to the rarer escalation-class spawns.
 
 The contract system auto-generates compressed "capability + constraint" specs for each agent and tool. A wrapper script physically swaps the full agent configs with their contract equivalents before launching a subordinate session, then restores the full configs on exit via a `trap`-based handler with lockfile protection.
 
-Measured savings in the reference implementation: ~7.7× spawn-context reduction (~78 KB full config → ~10 KB contracts across 11 agent configs).
+Measured savings in that deployment: ~7.7× spawn-context reduction (~78 KB full config → ~10 KB contracts across 11 agent configs) — the measurement is era-specific; the discipline is not.
 
 **Principle:** the swap is a run-time decision ( `--use-contracts` flag), not a permanent config change. When deeper context is needed for a task, full configs still apply.
 

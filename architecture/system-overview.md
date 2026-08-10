@@ -1,6 +1,6 @@
 # System Overview — How All Pieces Connect
 
-**Total vault: ~1,900 notes, 10.7 links/note, cross-domain ratio 98.7%, 20+ domains. Specialized agents. 35+ scheduled tasks.**
+**Total vault: ~2,400 notes, ~10.4 links/note, cross-domain ratio 98.7%, 20+ domains. Routed specialist workers. 100+ scheduled tasks.**
 
 ## The Stack
 
