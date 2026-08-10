@@ -1,6 +1,6 @@
 # Memory Infrastructure Architecture
 
-The scaffold system under study operates across 7 layers of memory infrastructure. Current state: ~1,900 vault notes + 62 promoted patterns + 35+ scheduled maintenance tasks + a specialized multi-agent team. This document describes the architecture for replication purposes — the specific content is not included, and the architecture is domain-agnostic.
+The scaffold system under study operates across 7 layers of memory infrastructure. Current state: ~2,400 vault notes + 62 promoted patterns + 100+ scheduled maintenance tasks + routed specialist workers (see methodology/agent-team-design.md). This document describes the architecture for replication purposes — the specific content is not included, and the architecture is domain-agnostic.
 
 ## System Diagram
 

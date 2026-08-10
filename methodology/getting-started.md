@@ -1,6 +1,6 @@
 # Getting Started — From Zero to Metacognitive Scaffold
 
-Your vault size will grow from 0 to hundreds of notes. Ours is ~1,900 notes with 10.7 links/note as of 2026. Here's the path.
+Your vault size will grow from 0 to hundreds of notes. Ours is ~2,400 notes with ~10.4 links/note as of mid-2026. Here's the path.
 
 ## Phase 1: SEED (Day 1-3)
 
@@ -135,6 +135,6 @@ See `methodology/autopoietic-production.md` for the four production pathways in 
 | Instrument | 100-200 | 5-6 | 8-12 | Feedback loops active, fidelity measured |
 | Metacognition | 200+ | 7+ | 15+ | Reasoning patterns compounding |
 | Autopoietic | 500+ | 9+ | 20+ | Walk-forward truth, self-audit pipeline active |
-| Ours (current) | ~1,900 | 10.7 | 25+ | Scaffold-as-RGM validated, 62 patterns promoted |
+| Ours (mid-2026) | ~2,400 | ~10.4 | 25+ | Scaffold-as-RGM validated, 62 patterns promoted |
 
 The numbers aren't targets — they're what happened to us. Your trajectory will differ based on domain, usage frequency, and how aggressively you connect notes.

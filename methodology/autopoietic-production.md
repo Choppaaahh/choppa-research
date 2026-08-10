@@ -53,7 +53,7 @@ When the same behavioral rule gets violated 3+ times for the same structural rea
 During every compile, scan for unmeasured dimensions:
 - "I think X is true but we have no data" → measurement gap
 - "This pattern seems to occur but we don't track it" → measurement gap
-- Log the gap and route to the team lead as a build candidate
+- Log the gap and route to the orchestrator as a build candidate
 - The scaffold identifies its OWN missing instruments
 
 ### 4. Agent Config Evolution from Kill Patterns

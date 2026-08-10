@@ -1,67 +1,61 @@
-# Agent Team Design — Specialized Cognition from One Model
+# Agent Team Design — Specialized Cognition, Routed Not Spawned
 
-Our system runs multiple agents, all using the same Claude model. The scaffolding makes them functionally different intelligences. Total vault: ~1,900 notes serving as shared knowledge substrate.
+Our system runs many specialized AI workers off a small set of models. The scaffolding — not the model — makes them functionally different intelligences. Shared substrate: a ~2,400-note living knowledge vault.
 
-## The Insight
+## The Insight (unchanged)
 
-One general-purpose AI chat is weaker than multiple specialized agents with defined roles, guardrails, and routing. The specialization comes from CONTEXT (agent config files), not from different models.
+One general-purpose AI chat is weaker than many specialized workers with defined roles, guardrails, and routing. Specialization comes from CONTEXT — role definitions, injected conventions, spec contracts — not from different weights.
 
-## Agent Roster
+## The Architecture: a routed office, not a standing team
 
-| Agent | Model tier | Role | Key Behavior |
-|-------|-----------|------|-------------|
-| Adversarial reviewer | Opus | Adversarial review | Assumes builder is wrong. Kills bad ideas. Validates good ones. |
-| Research agent | Sonnet | Multi-domain research | Single sweeps across target domains. Routes findings through adversarial reviewer. |
-| Vault maintainer | Sonnet | Vault health | Fixes orphans, danglers, schema. Wires cross-domain connections. |
-| Code QA | Sonnet | Code quality | Compile check, import verification, math audits. Every code edit routed here. |
-| Observer | Sonnet | Domain intelligence | Persistent watcher. Regime learning. Session personality mapping. |
-| Metacognizer | Sonnet | Pattern promotion | Reviews all agent reasoning chains. Promotes stable patterns. |
-| Auditor | Opus | Workflow review | On-demand. Structural audits. |
+Work is classified by reasoning threshold and routed to the cheapest layer that can carry it:
 
-## Design Principles
+| Tier | What runs there | Mechanism |
+|---|---|---|
+| **Mechanical code-drafting** | New scripts, boilerplate, structured transforms | Offload to routed non-frontier models with a spec CONTRACT: golden fixtures (ground-truth I/O pairs the model asserts verbatim, never recomputes), adversarial self-test requirements, entry-point tests |
+| **Scheduled specialists** | Vault gardening, backlog harvesting, system audits, gap-drains | Cron-fired wrapper scripts, each assembling fresh context per run — stateless workers, no drift |
+| **Adversarial review** | Every substantive artifact | An escalation ladder: a cheap *decorrelated pair* (two different-lab models voting) first; bigger models only when stakes or disagreement demand it |
+| **In-session subagents** | Deep adversarial passes, cross-model verification, triage sweeps | Spawned rarely, deliberately, with standing orders — the escalation class, not the default |
+| **The orchestrator** | Judgment, synthesis, operator dialogue, final verification | The main session. Never offloaded. |
 
-**1. Each agent has a config file** (`.claude/agents/name.md`) that defines:
-- Standing orders
-- What they check / don't check
-- Output format
-- Who they route to
-- Context (updated regularly)
+## The Verification Spine (where the quality actually comes from)
 
-**2. Guardrails apply to ALL agents:**
-- Critical code protection (some files need team lead approval)
-- Vault quality gate (6 checks before any note enters the vault)
-- Research pipeline (research agent → adversarial review → team lead → vault maintainer)
-- No infinite loops (go idle after task completion)
-- Escalation rules
+Every worker's output is **untrusted until verified** — the trust membrane:
 
-**3. All agents log reasoning chains** to a shared file. The metacognitive compile reviews chains from ALL agents together. Team-wide patterns emerge.
+1. **T1** — does it compile / parse?
+2. **T2** — does it pass its own self-test against *pre-computed* golden fixtures? (The truth-source is decorrelated from the code-author: the spec-writer computes expected values, the builder asserts them.)
+3. **T3** — does it behave on *real* data? Fixtures test pure functions; production code dies in the glue. One test must always invoke the real entry point.
 
-## Routing Pipelines
+The recurring lesson that shaped this: defect *rate* is roughly model-independent. The variable you control is **which tier catches the defect** — and every lever pushes catches from expensive tiers (deep review, production) into cheap ones (compile, self-test).
+
+## Decorrelation as a design principle
+
+Two different-lineage models reviewing beat one bigger same-lineage model. Shared training lineage means shared blind spots; the review ladder deliberately crosses labs. (This is the same principle behind our public co-failure benchmark — it's load-bearing in production here, not just measured.)
+
+## Routing pipelines (current)
 
 ```
-Research:  Research agent → Adversarial review → Team Lead (approve) → Vault maintainer
-Code:      Edit code → compile check → Code QA review → adversarial review on critical files
-Domain:    Watcher (script) → Observer (AI) → session notes → proposals
+Code:      spec w/ golden fixtures → routed builder → T1/T2 self-verify → orchestrator T3 → review ladder
+Research:  scoped dispatch → external-source worker → orchestrator verification (claims re-checked at source) → vault
+Maintenance: cron fires specialist → bounded pass w/ write-receipts → change-log with provenance
 ```
+
+Routing between workers IS the quality control. The builder never grades its own work; the truth-source for tests never comes from the code-author; review crosses model lineages.
+
+## Governance Layer (unchanged)
+
+Every worker operates within a three-layer contract:
+- **VIEW** (locked) — what it sees, what tools it gets. Cannot self-modify.
+- **STRUCTURE** (orchestrator-only) — who routes to whom. Workers cannot rewire.
+- **EVOLUTION** (free) — workers contribute knowledge, log reasoning, propose notes.
+
+Knowledge growth is encouraged. Role drift is not. Full contract: `architecture/governance-layer.md`.
 
 ## How to Replicate
 
-You don't need 7 agents. Start with 2:
-1. **A builder** (writes code, makes decisions)
-2. **A reviewer** (challenges assumptions, checks math)
+Start with two roles: a **builder** and a **reviewer** — and make the reviewer's fixtures come from you, not the builder. Add, in order, as volume demands:
+3. **Scheduled maintenance workers** (when your knowledge base needs regular tending)
+4. **A review ladder** (when one reviewer becomes the bottleneck — add a cheap decorrelated pair below it)
+5. **Spec contracts with golden fixtures** (the single highest-leverage upgrade: it converts expensive review catches into free self-test catches)
 
-Add as needed:
-3. **A researcher** (when you need external knowledge)
-4. **A vault maintainer** (when the vault grows past ~100 notes)
-5. **A metacognizer** (when reasoning chain volume exceeds manual review)
-
-The key is SEPARATION OF CONCERNS. The builder shouldn't review their own code. The researcher shouldn't implement their own findings. The routing between agents IS the quality control.
-
-## Governance Layer
-
-Each agent operates within a three-layer structural contract:
-- **VIEW** (locked) — what the agent sees and what tools it uses. Cannot self-modify.
-- **STRUCTURE** (team-lead only) — who reports to whom, routing paths. Agents cannot rewire this.
-- **EVOLUTION** (free) — agents contribute to shared knowledge, log chains, propose vault notes.
-
-Knowledge growth is encouraged. Role drift is not. See `architecture/governance-layer.md` for the full contract specification.
+The key remains SEPARATION OF CONCERNS — enforced by routing, not by trust.
