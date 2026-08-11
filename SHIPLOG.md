@@ -4,6 +4,7 @@
 
 ---
 
+- **2026-08-11** — decorr-eval probe battery v2.0: 40 → 92 probes. The single-curator caveat gets attacked, not just disclosed — 52 new probes authored by three more model lineages (OpenAI, Google, Moonshot), cross-curated for duplicates. Five curator lineages total. Old leaderboard rows stay marked n=40.
 - **2026-08-10** — [decorr-eval](https://github.com/Choppaaahh/decorr-eval) goes live: the decorrelation benchmark as a runnable public harness + leaderboard. Judge-free metric, stdlib-only, live-verified model slugs, and a validity check that rejects runs where same-lab pairs read as decorrelated. Ships with its limitations listed and a PR path to attack them.
 - **2026-08-10** — [Elevation-vs-capability boundary study](writeups/elevation-vs-capability-boundary-2026-08.md) published: pre-registered, +28pp canonical-widening confirmed, product thesis and code-transfer both FAILED their own bars and are reported as such. Prior art independently establishing the core effect is credited, not buried.
 - **2026-08-10** — Three standalone tools published to `implementation/` (corpus-calibrated dedup gate, saturation detector, counterfactual retrieval-poison scorer) — paper → built → golden-fixture tested → published inside 12 hours.
