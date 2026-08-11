@@ -35,11 +35,13 @@ On every auto-deploy path, a commit gate runs a set of typed invariants before t
 - `I_orphan` — no new notes with zero incoming wikilinks (prevents dead additions)
 - `I_dangler_delta` — set-difference of broken wikilink targets does not increase (allows fixing broken links, blocks adding new ones)
 - `I_compile` — any modified `.py` file passes `py_compile` (no syntax errors shipped)
-- `I_link_density` — average links-per-note does not drop by more than a threshold (prevents silent graph-structure regressions)
+- `I_provenance` — every autonomous write carries source, trigger, and trust-tier metadata (untrusted writes stay distinguishable from human ones)
 
-Any failing invariant blocks the commit + logs the blocked change to `scaffold_changes.jsonl` with the failing invariant list.
+Any failing invariant blocks the commit and logs the blocked change, with the failing invariant named.
 
-**Principle:** preventive invariant checks are stronger than reactive human review. Human review catches errors after they ship; invariant checks catch them pre-commit.
+**The invariant set is itself audited.** Every invariant's lifetime block-count gets ranked periodically. Never-fired invariants get retired with receipts, and a registry-sync check (run on every gate pass) catches any invariant whose own self-test quietly falls out of registration. The most recent audit found the gate's freshness self-test had been failing *correctly* into an unread log for 13 days — the fix was to make that class of silence structurally impossible, not to read the log harder.
+
+**Principle:** preventive invariant checks are stronger than reactive human review. Human review catches errors after they ship; invariant checks catch them pre-commit. And the checks themselves need checking — an invariant that never fires is either perfect deterrence or dead, and only an audit can tell you which.
 
 ### 3. Versioned resource registry
 
@@ -87,7 +89,7 @@ Two more governance mechanisms worth noting:
 
 ### Walk-forward truth validator
 
-Audits the scaffold's own prior numeric claims against honest modeling. When a scaffold accumulates empirical claims over months, some of those claims will have been derived under methodology that later gets invalidated. The walk-forward-truth validator systematically re-tests prior claims against current methodology and flags CONFOUNDED claims for re-review. In the reference implementation, a single run flagged 18/18 reinforcement-learning-derived backtest claims as confounded — claims that would otherwise have continued to be cited as validated evidence.
+Audits the scaffold's own prior numeric claims against current methodology. Over months, a scaffold accumulates empirical claims — and some were derived under methodology that later gets invalidated. The validator re-tests prior claims and flags CONFOUNDED ones for re-review. In the reference implementation, a single run flagged 18 of 18 reinforcement-learning-derived backtest claims as confounded. Without the audit, all 18 would still be cited as validated evidence.
 
 ### Supersedes proposer
 

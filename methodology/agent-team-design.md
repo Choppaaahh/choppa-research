@@ -2,7 +2,7 @@
 
 Our system runs many specialized AI workers off a small set of models. The scaffolding — not the model — makes them functionally different intelligences. Shared substrate: a ~2,400-note living knowledge vault.
 
-## The Insight (unchanged)
+## The Insight
 
 One general-purpose AI chat is weaker than many specialized workers with defined roles, guardrails, and routing. Specialization comes from CONTEXT — role definitions, injected conventions, spec contracts — not from different weights.
 
@@ -42,7 +42,7 @@ Maintenance: cron fires specialist → bounded pass w/ write-receipts → change
 
 Routing between workers IS the quality control. The builder never grades its own work; the truth-source for tests never comes from the code-author; review crosses model lineages.
 
-## Governance Layer (unchanged)
+## Governance Layer
 
 Every worker operates within a three-layer contract:
 - **VIEW** (locked) — what it sees, what tools it gets. Cannot self-modify.
@@ -53,9 +53,10 @@ Knowledge growth is encouraged. Role drift is not. Full contract: `architecture/
 
 ## How to Replicate
 
-Start with two roles: a **builder** and a **reviewer** — and make the reviewer's fixtures come from you, not the builder. Add, in order, as volume demands:
-3. **Scheduled maintenance workers** (when your knowledge base needs regular tending)
-4. **A review ladder** (when one reviewer becomes the bottleneck — add a cheap decorrelated pair below it)
-5. **Spec contracts with golden fixtures** (the single highest-leverage upgrade: it converts expensive review catches into free self-test catches)
+Start with two roles: a **builder** and a **reviewer** — and make the reviewer's test fixtures come from you, not the builder. Then add, in order, as volume demands:
 
-The key remains SEPARATION OF CONCERNS — enforced by routing, not by trust.
+1. **Spec contracts with golden fixtures** — the single highest-leverage upgrade. It converts expensive review catches into free self-test catches.
+2. **A review ladder** — when one reviewer becomes the bottleneck, add a cheap decorrelated pair (two different-lab models) below it.
+3. **Scheduled maintenance workers** — when your knowledge base needs regular tending.
+
+The key is SEPARATION OF CONCERNS — enforced by routing, not by trust.
