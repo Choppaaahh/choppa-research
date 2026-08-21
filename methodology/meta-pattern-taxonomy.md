@@ -1,10 +1,10 @@
 # Meta-Pattern Taxonomy — Naming Class-Bugs So They Can Be Remediated
 
-The metacognitive cycle promotes reasoning patterns — ways of thinking that consistently produce good outcomes. Meta-patterns are a different level: they are *recurring failure modes of the scaffold itself*. Named meta-patterns let a class of bug be addressed once instead of individually forever.
+The metacognitive cycle promotes reasoning patterns — ways of thinking that keep producing good outcomes. Meta-patterns sit one level up: *recurring failure modes of the scaffold itself*. Naming one lets a class of bug be fixed once instead of individually forever.
 
 ## The Observation
 
-In a scaffold of ~850 notes, ~70 promoted patterns, and hundreds of rules and hooks, the same kinds of failure kept recurring. Not the same instance — different instances of the same structural shape. Left nameless, each occurrence was treated as a one-off. Named, they become classes.
+In a scaffold of ~850 notes, ~70 promoted patterns, and hundreds of rules and hooks, the same failures kept coming back. Not the same instance — different instances of the same shape. Nameless, each one was treated as a one-off. Named, they become classes.
 
 A selection of recurring classes the scaffold surfaced:
 
