@@ -1,10 +1,10 @@
 # Commit-Gate Invariants — Typed Checks That Refuse Decay
 
-After ~40 cycles of scaffold work, a class of silent rot kept reappearing: rules that referenced infrastructure which no longer existed; notes that lost frontmatter schema; orphans produced by renames; link density thinning below useful thresholds. Each instance was individually minor. Across months, the cumulative drift was significant.
+After ~40 cycles of scaffold work, the same silent rot kept coming back: rules pointing at infrastructure that no longer existed, notes losing their frontmatter schema, orphans left behind by renames, link density thinning out. Each instance was minor. Over months, the drift was not.
 
-The fix: encode the scaffold's structural commitments as **typed invariants** enforced at commit time. Not a linter warning — a refusal. A commit that breaks an invariant is rejected until it is repaired or the invariant is explicitly amended.
+The fix: encode the scaffold's structural commitments as **typed invariants** enforced at commit time. Not a linter warning — a refusal. A commit that breaks an invariant is rejected until repaired, or until the invariant itself is explicitly amended.
 
-The set has grown over time. The original 6 invariants captured the most acute failure classes. As new failure classes were named, additional invariants were promoted in. As of cycle-30, the production scaffold runs **15 invariants** — the 6 originals + 9 added at the rate of roughly one per architectural-pattern-class that surfaced through adversarial review. Of those 9 additions, **4 are methodologically portable** (any structured-knowledge scaffold benefits from them); the other 5 are scaffold-internal (specific to our trading + autonomous-agent infrastructure). This document covers the 6 originals + 4 portable additions = **10 disciplines** that generalize. The other 5 are mentioned at the end as honest disclosure of the gap between this doc and the production system.
+The set grew over time. The original 6 caught the most acute failure classes; new ones were promoted in as new failure classes got named — roughly one per pattern that surfaced through adversarial review. As of cycle-30 the production scaffold ran **15 invariants**. Of the 9 additions, **4 are portable** — any structured-knowledge scaffold benefits from them. The other 5 are internal to our infrastructure. This document covers the 6 originals plus the 4 portable additions: **10 disciplines** that generalize. The internal 5 are disclosed at the end, so the gap between this doc and the production system is visible.
 
 ## The 6 Originals
 
@@ -109,10 +109,11 @@ The gate makes the standard *enforced*. A commit that would have drifted the sys
 
 The production scaffold runs 5 additional invariants beyond the 10 above. They are scaffold-specific (trading-bot logic, internal authentication chains, structural-prose layering) and don't generalize cleanly. Listed here for transparency about the gap between this doc and the production system:
 
-- `I_temporal_fabrication_check` — scans CC's prose for fabricated time-claims ("2+ years of...") without verification receipt. LLM-hallucination-specific.
-- `I_brutus_verdict_grounded` — adversarial-review output discipline (`DRIVEN-BY:` / `GROUNDING:` / `DOWNSTREAM-CONSEQUENCE:` fields required on Brutus verdicts). Scaffold-team-structure specific.
+- `I_temporal_fabrication_check` — scans agent prose for fabricated time-claims ("2+ years of...") without a verification receipt. LLM-hallucination-specific.
+- `I_brutus_verdict_grounded` — adversarial-review output discipline (`DRIVEN-BY:` / `GROUNDING:` / `DOWNSTREAM-CONSEQUENCE:` fields required on reviewer verdicts). Team-structure specific.
 - `I_sibling_sync_check` — multi-scale layer trace across rules / hooks / agents / patterns / invariant-specs / MOCs / scripts. Concept portable; implementation tightly coupled to scaffold structure.
-- `I_apply_handler_guard_present` — runtime-guard discipline on a specific Python module's state-mutating handlers (proposal_queue_apply.py + writer's rebuild_audit_chain). Internal infrastructure.
+- `I_apply_handler_guard_present` — runtime-guard discipline on one module's state-mutating handlers. Internal infrastructure.
+- an entry-path coverage check on automated-trading gating logic — verifies a gate added to one entry method exists on all of them. Trading-infrastructure specific.
 
 The 5 above represent failure-classes that surfaced in our specific architecture. The pattern of "name a failure class → mechanize the discipline" generalizes; the specific 5 invariants don't. Adding them would describe scaffold-internal infra; the 10 above describe disciplines.
 

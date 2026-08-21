@@ -1,8 +1,8 @@
 # Training Signal Stack — Four Orthogonal Axes Compose
 
-When building a small-model training dataset from scaffold operational data, the obvious axis is *class balance* — don't let easy classes dominate, don't let rare classes vanish. That axis alone produces a dataset that trains consistently but plateaus early: the model learns the distribution but not the hard cases within each class.
+When building a small-model training dataset from operational data, the obvious axis is *class balance* — don't let easy classes dominate, don't let rare classes vanish. That axis alone trains consistently but plateaus early: the model learns the distribution, not the hard cases inside each class.
 
-A better approach: stack multiple *orthogonal* signal axes. Each axis captures a different gradient the model should learn. Because they are orthogonal, they compose — a row's final training weight is the product of its position on each axis, not a sum.
+Better: stack multiple *orthogonal* signal axes. Each captures a different gradient the model should learn. Because they are orthogonal, they compose — a row's final weight is the product of its position on each axis, not a sum.
 
 This note describes a four-axis stack assembled for a scaffolded training dataset. The axes individually are standard or adapted from recent research; the specific composition is the contribution.
 
