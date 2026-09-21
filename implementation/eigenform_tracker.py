@@ -80,11 +80,11 @@ def count_domain_maps():
     """Count domain map files (top-level .md files in notes/ that are MOCs)."""
     if not VAULT_DIR.exists():
         return 0
-    # Domain maps are top-level .md files that serve as MOCs
-    moc_patterns = ["index.md", "grid-mechanics.md", "fee-model.md", "bug-patterns.md",
-                    "coin-evaluation.md", "safety-systems.md", "microstructure-signals.md",
-                    "regime-detection.md", "operational-procedures.md", "lessons-learned.md",
-                    "build-roadmap.md", "consciousness-trading.md"]
+    # Domain maps are top-level .md files that serve as MOCs. Substitute your
+    # own vault's MOC filenames.
+    moc_patterns = ["index.md", "operational.md", "operational-procedures.md",
+                    "lessons-learned.md", "build-roadmap.md",
+                    "domain-1.md", "domain-2.md", "domain-3.md", "domain-4.md"]
     count = 0
     for f in VAULT_DIR.iterdir():
         if f.suffix == ".md" and f.is_file():

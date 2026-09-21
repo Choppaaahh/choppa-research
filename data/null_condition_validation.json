@@ -473,7 +473,7 @@
         {
           "question_id": "q1_bridge_trading_consciousness",
           "score": 1.5,
-          "reason": "The response identifies that both fee structures and causal emergence involve temporal coarse-graining that eliminates noise while preserving causal power, and produces the novel insight that economic profitability thresholds (3bp round-trip) function as a selection mechanism that structurally enforces the same information-theoretic compression that causal emergence requires\u2014the fee structure doesn't just parallel emergence, it instantiates it through economic constraint."
+          "reason": "The response identifies that both fee structures and causal emergence involve temporal coarse-graining that eliminates noise while preserving causal power, and produces the novel insight that economic profitability thresholds (a round-trip fee floor) function as a selection mechanism that structurally enforces the same information-theoretic compression that causal emergence requires\u2014the fee structure doesn't just parallel emergence, it instantiates it through economic constraint."
         },
         {
           "question_id": "q2_fidelity_hierarchy",

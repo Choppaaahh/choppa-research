@@ -25,7 +25,7 @@ from typing import Dict, List, Optional
 
 MEMORY_PATH = Path.home() / ".claude/projects/-Users-claude-Flex-Trading/memory/MEMORY.md"
 LOG_PATH = Path(__file__).resolve().parent.parent / "logs" / "conflict_detections.jsonl"
-TENSIONS_DIR = Path(__file__).resolve().parent.parent / "knowledge" / "notes" / "cc-operational" / "tensions"
+TENSIONS_DIR = Path(__file__).resolve().parent.parent / "knowledge" / "notes" / "operational" / "tensions"
 
 QWEN_TIMEOUT = 30
 SIMILARITY_THRESHOLD = 0.55  # fallback: flag pairs above this similarity

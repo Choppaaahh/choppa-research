@@ -4,7 +4,7 @@ After ~40 cycles of scaffold work, the same silent rot kept coming back: rules p
 
 The fix: encode the scaffold's structural commitments as **typed invariants** enforced at commit time. Not a linter warning — a refusal. A commit that breaks an invariant is rejected until repaired, or until the invariant itself is explicitly amended.
 
-The set grew over time. The original 6 caught the most acute failure classes; new ones were promoted in as new failure classes got named — roughly one per pattern that surfaced through adversarial review. As of cycle-30 the production scaffold ran **15 invariants**. Of the 9 additions, **4 are portable** — any structured-knowledge scaffold benefits from them. The other 5 are internal to our infrastructure. This document covers the 6 originals plus the 4 portable additions: **10 disciplines** that generalize. The internal 5 are disclosed at the end, so the gap between this doc and the production system is visible.
+The set grew over time. The original 6 caught the most acute failure classes; new ones were promoted in as new failure classes got named — roughly one per pattern that surfaced through adversarial review. At the time of writing the production scaffold ran **15 invariants**. Of the 9 additions, **4 are portable** — any structured-knowledge scaffold benefits from them. The other 5 are internal to our infrastructure. This document covers the 6 originals plus the 4 portable additions: **10 disciplines** that generalize. The internal 5 are disclosed at the end, so the gap between this doc and the production system is visible.
 
 ## The 6 Originals
 
@@ -56,7 +56,7 @@ When a bug is documented in `knowledge/notes/bugs/`, its frontmatter must includ
 
 Every research deepdive note (papers we've read in depth) must carry: `type` matching the deepdive enum, `memory_type` containing `deepdive`, an arXiv ID (frontmatter or first 60 body lines), and a provenance trio (`origin_signature` / `source_trigger` / `trust_tier`).
 
-**Why it exists:** Research captures rot fast when LLMs drift, papers get revised, or tooling turns over. Without explicit substrate + source, a note from cycle-12 saying "MetaRAG showed X" becomes irreproducible by cycle-30 because nobody remembers which arXiv version, which model summarized it, or whether the framing was the model's or the paper's.
+**Why it exists:** Research captures rot fast when LLMs drift, papers get revised, or tooling turns over. Without explicit substrate + source, a note from months earlier saying "MetaRAG showed X" becomes irreproducible because nobody remembers which arXiv version, which model summarized it, or whether the framing was the model's or the paper's.
 
 **Generalization:** any system that ingests external research benefits from making the ingestion-substrate first-class metadata, not provenance-by-convention.
 
@@ -72,7 +72,7 @@ Every JSONL row written by a background writer (cron jobs, scheduled tasks, auto
 
 When a vault note makes a pattern-shape claim ("X dominates Y" / "P fires N% of the time" / "metric M flipped from A to B"), the note must declare the scope of evidence inline: a ≥3-day data window, OR explicit single-event scoping, OR explicit "no wider data exists" annotation. Without one of these three receipts, the claim is flagged.
 
-**Why it exists:** A common failure mode in self-measuring systems: an agent reads N rows from a recent sub-day window and writes a pattern-shape claim ("100% UC dominance!") that's actually a session-window artifact, not a population claim. The invariant forces every pattern-claim to declare what evidence-window justifies it. Cycle-28 had n=2 instances of this in a single conversation before the discipline was named.
+**Why it exists:** A common failure mode in self-measuring systems: an agent reads N rows from a recent sub-day window and writes a pattern-shape claim ("100% UC dominance!") that's actually a session-window artifact, not a population claim. The invariant forces every pattern-claim to declare what evidence-window justifies it. We hit n=2 instances of this in a single conversation before the discipline was named.
 
 **Generalization:** any system where humans or agents make population-level claims from recent sub-population data benefits from inline scope-of-evidence declaration. The discipline is "no population claim without window-receipt."
 
@@ -119,4 +119,4 @@ The 5 above represent failure-classes that surfaced in our specific architecture
 
 ---
 
-*Implementation: a single Python script runs the full invariant set on staged or working-tree changes — 15 as of cycle-30 when this document was written; the production gate has since grown to ~36, with the 10 documented above remaining the portable core. Exceptions are stored in a JSON file at the repo root. The gate is wired into the commit workflow via a hook; it can be overridden explicitly but the override is logged.*
+*Implementation: a single Python script runs the full invariant set on staged or working-tree changes — 15 when this document was written; the production gate has since grown to ~36, with the 10 documented above remaining the portable core. Exceptions are stored in a JSON file at the repo root. The gate is wired into the commit workflow via a hook; it can be overridden explicitly but the override is logged.*

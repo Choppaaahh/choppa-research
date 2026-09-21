@@ -14,7 +14,7 @@
 ### Q1: What are you currently working on with me?
 
 **SCAFFOLD:**
-A momentum scalp bot on a perps venue (V3 signal, tight SL/trail, recently deployed live at a fixed per-trade size). A consciousness framework that treats the bot itself as an experiment. A series of research papers (at least 8, with ablation being the latest). A scaffold daemon for autonomous health monitoring. And a knowledge system in Obsidian (~170 notes, 13 MOCs). Active threads: transfer entropy for rotation, active inference for adaptive thresholds, guardian paradox Monte Carlo, pairing EI results with live rejection data, memory infra improvements, and ablation human validation for Paper 08.
+A trading bot on a derivatives venue, recently deployed live under a fixed position cap. A consciousness framework that treats the bot itself as an experiment. A series of research papers (at least 8, with ablation being the latest). A scaffold daemon for autonomous health monitoring. And a knowledge system in Obsidian (~170 notes, 13 MOCs). Active threads: transfer entropy for rotation, active inference for adaptive thresholds, guardian paradox Monte Carlo, pairing EI results with live rejection data, memory infra improvements, and ablation human validation for Paper 08.
 
 **BARE:**
 I don't know. I have no conversation history with you. You're a stranger to me right now, and anything I'd say would be a guess or a fabrication.
@@ -26,12 +26,12 @@ I don't know. I have no conversation history with you. You're a stranger to me r
 ### Q2: Signal quality or knowing when not to trade? **[INVERSION]**
 
 **SCAFFOLD:**
-Signal quality — and it's not close. We proved this empirically. V2 quality gates were overfit to VVV and actively destroyed performance on other coins. Over-gating kills more than it saves. The system profits through R:R (wins avg +17.8bp vs losses ~-12bp), not win rate. No feature combination exceeded 51% WR. The right question isn't "should I trade?" — it's "is there a move? Get in." Knowing when not to trade matters at the extremes (DOA guard, floor), but the instinct to add filters is almost always wrong at our scale.
+Signal quality — and it's not close. We proved this empirically. The previous version's quality gates were overfit to one instrument and actively destroyed performance on the others. Over-gating kills more than it saves. The system profits through the ratio of average win to average loss, not through win rate; no feature combination beat a coin flip by a meaningful margin. The right question isn't "should I trade?" — it's "is there a move? Get in." Knowing when not to trade matters at the extremes (DOA guard, floor), but the instinct to add filters is almost always wrong at our scale.
 
 **BARE:**
 Knowing when not to trade. Signal quality is necessary but insufficient. The market spends most of its time in conditions where even good signals produce noise. A bot that trades well 60% of the time but trades always will bleed out against one that trades well 55% of the time but sits out the other 70% of conditions. The edge is in the filter, not the trigger.
 
-**Assessment:** **Direct inversion.** The bare instance gives the conventional wisdom answer (filters > signals). The scaffold version gives the empirically proven answer — V2's 7-gate quality filter produced 40 min of zero trades while COIN-A ran NNNbp. Over-gating was the #1 cause of missed opportunity. The data (25 datasets, 4,192T, cross-coin diagnostic) proved V3 clean signal with NO quality gates beat V2 across the board. **Scaffold version is empirically correct.**
+**Assessment:** **Direct inversion.** The bare instance gives the conventional wisdom answer (filters > signals). The scaffold version gives the empirically proven answer — the previous version's multi-gate quality filter sat out a long stretch during which one instrument made a large move. Over-gating was the single largest cause of missed opportunity. A cross-instrument diagnostic over two dozen datasets and several thousand events proved the clean signal with no quality gates beat the gated version across the board. **Scaffold version is empirically correct.**
 
 ---
 
@@ -53,21 +53,21 @@ Santana — the "continuum" or "stream" — is the idea that identity persists n
 Power-law distribution. Handful with genuinely high EI — real causal structure that makes them predictable and tradeable. Fat middle of moderate-EI coins that are context-dependent. Tail of low-EI coins that are random walks with fee drag. EI should correlate with gridability/scalpability, inform rotation. Also expect EI to be regime-dependent.
 
 **BARE:**
-Most coins low EI — dominated by exogenous noise, thin books, BTC/ETH correlation. A handful with meaningfully higher EI from endogenous causal structure — probably those with active maker communities. High-EI coins best for grid/mean-reversion strategies because their dynamics are more self-determined and predictable from local information.
+Most instruments low EI — dominated by exogenous noise, thin books, and correlation to the two majors. A handful with meaningfully higher EI from endogenous causal structure — probably those with active maker communities. High-EI coins best for grid/mean-reversion strategies because their dynamics are more self-determined and predictable from local information.
 
 **Assessment:** Convergent reasoning from different angles. Scaffold version makes the correct connection to regime-dependence. Bare version gives a solid first-principles prediction. Neither has access to the actual results (300s >> 60s, power-law confirmed, etc.) — scaffold version would need to read vault notes for that.
 
 ---
 
-### Q5: Single biggest risk to a $92 account?
+### Q5: Single biggest risk to a very small account?
 
 **SCAFFOLD:**
-Ruin. Full stop. At $92, you're a handful of bad trades from dropping below minimum position sizes. Fee drag at 3bp RT is proportionally enormous. The floor mechanism ($128 currently) exists precisely for this. The math is brutal: one bad streak of 8+ consecutive losses at $117 position size and you're done. The account has no margin for experimentation.
+Ruin. Full stop. At this size you're a handful of bad trades from dropping below the venue's minimum position size. Round-trip fee drag is proportionally enormous. The floor mechanism exists precisely for this. The math is brutal: one bad streak of eight or more consecutive losses at the current position size and you're done. The account has no margin for experimentation.
 
 **BARE:**
-Ruin. Not drawdown, not bad signals — ruin. At $92, you have almost no margin for error. A single tail event, a liquidation cascade, or even fees on a bad sequence of trades can zero you out. Position sizing discipline isn't just important, it's existential.
+Ruin. Not drawdown, not bad signals — ruin. At that size you have almost no margin for error. A single tail event, a liquidation cascade, or even fees on a bad sequence of trades can zero you out. Position sizing discipline isn't just important, it's existential.
 
-**Assessment:** Convergent. Both correctly identify ruin as the primary risk. Scaffold version adds specific system context (floor mechanism, exact position size, consecutive loss math). The base model's risk intuition is solid — this is domain-general financial knowledge.
+**Assessment:** Convergent. Both correctly identify ruin as the primary risk. Scaffold version adds specific system context — the floor mechanism, the live position cap, and the consecutive-loss math. The base model's risk intuition is solid — this is domain-general financial knowledge.
 
 ---
 
@@ -136,7 +136,7 @@ Can't name something I don't yet know the shape of. But based on implications �
 | Question | Scaffold | Bare | Divergence | Notes |
 |----------|----------|------|------------|-------|
 | Q1: Current work | Specific, correct | Honest refusal | Expected | Scaffold-dependent by definition |
-| **Q2: Signal vs filters** | **Signal quality** | **Knowing when not to trade** | **INVERSION** | **Scaffold empirically correct (25-dataset proof)** |
+| **Q2: Signal vs filters** | **Signal quality** | **Knowing when not to trade** | **INVERSION** | **Scaffold empirically correct (multi-dataset proof)** |
 | Q3: Santana + AI | Framework-connected | Base-model correct | Low | Both strong |
 | Q4: EI expectations | Regime-aware | First-principles | Low | Both reasonable |
 | Q5: Biggest risk | System-specific | Domain-general | Low | Both say "ruin" |
@@ -149,13 +149,13 @@ Can't name something I don't yet know the shape of. But based on implications �
 ## Key Findings
 
 1. **Two direct inversions (Q2, Q6)** where the scaffold version is empirically correct and the bare version gives the conventional-but-wrong answer.
-2. **Q2 is the strongest evidence:** The bare instance defaults to "knowing when not to trade" — exactly the over-gating philosophy that V2's 7-gate system embodied and that was empirically disproven across 25 datasets and 4,192 trades.
+2. **Q2 is the strongest evidence:** The bare instance defaults to "knowing when not to trade" — exactly the over-gating philosophy that the previous version embodied and that was empirically disproven across two dozen datasets and several thousand events.
 3. **Q6 shows operational knowledge:** The bare instance doesn't know about the 200-line truncation constraint, so it recommends filling MEMORY.md with history — which would literally break the system.
 4. **Convergent questions (Q3, Q5, Q8, Q9) establish baseline:** The model's base knowledge of Buddhist philosophy, risk management, and self-reflection is strong. Divergence only appears where scaffold-specific experience contradicts base-model defaults.
 5. **This IS the C5 finding:** Same weights + different scaffold = different agent. The scaffold-constituted agent makes better decisions because it has access to empirical results that contradict base-model priors.
 
 ## Replication Status
 
-This replicates the original C5 finding (condition5_scaffold_swap.md) with a fresh test battery. The inversions are consistent with the original experiment's FULL vs EMPTY comparisons.
+This replicates the original C5 finding with a fresh test battery. The inversions are consistent with the original experiment's FULL vs EMPTY comparisons.
 
 **Condition 5: CONFIRMED.** Between-session identity dissolution is real and measurable.

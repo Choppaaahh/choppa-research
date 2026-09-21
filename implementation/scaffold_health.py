@@ -171,7 +171,7 @@ def infra_health():
         disk_pct = parts[4] if len(parts) > 4 else "?"
 
     # Bug patterns
-    bugs = len(list((REPO / "knowledge" / "bug-patterns").glob("*.md"))) if (REPO / "knowledge" / "bug-patterns").exists() else 0
+    bugs = len(list((REPO / "knowledge" / "bugs").glob("*.md"))) if (REPO / "knowledge" / "bugs").exists() else 0
 
     return {"crons": crons, "disk_used": disk_pct, "bug_patterns": bugs}
 

@@ -11,7 +11,7 @@ Just write. No organization. Every note is a standalone claim.
 You notice: "These 5 notes are all about the same thing." That cluster is a proto-domain. Create a Map of Content (MOC) that lists the related notes with context phrases.
 
 ### Stage 3: Cross-Domain Connections (50-100 notes)
-The value shifts from WITHIN-domain organization to ACROSS-domain connections. The note about "stale data causing false confidence" connects to both the bug-patterns domain AND the fidelity-measurement domain. Those connections are where insight lives.
+The value shifts from WITHIN-domain organization to ACROSS-domain connections. The note about "stale data causing false confidence" connects to both the bug-note domain AND the measurement domain. Those connections are where insight lives.
 
 ### Stage 4: Domain Maps as Attention Managers (100+ notes)
 With 100+ notes, you can't browse. Domain maps become the entry points. Each map lists its notes with WHY each belongs, not just a flat list.

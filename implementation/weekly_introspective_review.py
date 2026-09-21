@@ -26,7 +26,7 @@ from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-CCORNER = REPO_ROOT / "knowledge" / "notes" / "claudius-corner"
+JOURNAL_DIR = REPO_ROOT / "knowledge" / "notes" / "introspective"
 METRICS_FILE = REPO_ROOT / "logs" / "introspective_metrics.jsonl"
 ENV_FILE = REPO_ROOT / ".env"
 
@@ -35,7 +35,7 @@ def find_sessions_this_week():
     """Find CC session files from the last 7 days."""
     cutoff = datetime.now(timezone.utc) - timedelta(days=7)
     sessions = []
-    for f in sorted(CCORNER.glob("2026-*-cc-session-*.md")):
+    for f in sorted(JOURNAL_DIR.glob("*-session-*.md")):
         try:
             # Extract date from filename
             date_str = f.name[:10]
@@ -48,10 +48,10 @@ def find_sessions_this_week():
 
 
 def find_introspective_notes():
-    """Find standalone introspective vault notes in ccorner."""
+    """Find standalone introspective vault notes in the journal domain."""
     notes = []
-    for f in CCORNER.glob("*.md"):
-        if "cc-session" in f.name or f.name == "ccorner.md":
+    for f in JOURNAL_DIR.glob("*.md"):
+        if "session-" in f.name or f.name == "index.md":
             continue
         content = f.read_text()
         if "type: insight" in content[:500]:
@@ -167,7 +167,7 @@ def post_discord(msg):
                     k, v = line.split("=", 1)
                     os.environ.setdefault(k.strip(), v.strip())
 
-        webhook = os.environ.get("DISCORD_WEBHOOK_CC", "").strip()
+        webhook = os.environ.get("NOTIFY_WEBHOOK_URL", "").strip()
         if not webhook:
             return
 

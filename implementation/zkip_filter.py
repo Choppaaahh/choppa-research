@@ -2,7 +2,7 @@
 # 1. The downstream vault-retrieval guard's import and invocation contract is unknown.
 # 2. Production embedding-cosine availability is unknown; this file uses only its fallback.
 # 3. The repository's preferred JSON output schema beyond this CLI demo is unknown.
-# ROUTED_FROM: scripts/mech_code_offload.py slug=zkip_filter model=<model> cycle-89
+# ROUTED_FROM: the mechanical code-offload dispatcher (slug=zkip_filter, model=<model>)
 
 """ZKIP counterfactual retrieval-poison anomaly scorer.
 
@@ -145,12 +145,12 @@ if __name__ == "__main__":
 # CONSUME: queued for next-touch integration with tiered high-stakes retrievals.
 # COMPOSITION: commit-gate and downstream retrieval wrapper are the catching layers.
 #
-# Relevant Notes:
-# extends [[pattern-validation-vs-deployment-input-shape-mismatch]]
-# same mechanism as [[pattern-cited-not-invoked]]
-# extends [[pattern-build-capacity-without-wiring-consumers]]
-# validates [[pattern-asymmetric-preferences]]
-# extends [[pattern-compile-pass-not-module-loadable-not-semantically-correct]]
+# Related failure classes this guard sits next to:
+# - a validator whose input shape differs between validation and deployment
+# - a rule that gets quoted in prose but never actually fires
+# - capacity built without wiring the consumer that would use it
+# - a gate that is cheap to pass and expensive to fail, on purpose
+# - code that compiles, imports, and is still semantically wrong
 # RESIDUAL UNCERTAINTY:
 # 1. No production retrieval log or embedding provider was available for T3 smoke.
 # 2. Consumer wiring and its expected signal serialization remain unverified.

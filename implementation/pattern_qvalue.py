@@ -10,15 +10,15 @@ Q(pattern, context) = exponentially weighted mean of rewards.
 Context = regime (trading) or operation_type (scaffold).
 
 High-Q patterns promote faster. Low-Q patterns need more evidence or get demoted.
-Regime-conditional: a pattern that works in CHOP but not TRENDING gets
-promoted for CHOP reasoning only.
+Context-conditional: a pattern that works in REGIME_A but not REGIME_B gets
+promoted for REGIME_A reasoning only. Substitute your own context labels.
 
 Usage:
     python3 scripts/pattern_qvalue.py                    # show all Q-values
     python3 scripts/pattern_qvalue.py --trading           # trading channel only
     python3 scripts/pattern_qvalue.py --scaffold          # scaffold channel only
     python3 scripts/pattern_qvalue.py --promote           # show promotion candidates
-    python3 scripts/pattern_qvalue.py --regime CHOP       # Q-values for specific regime
+    python3 scripts/pattern_qvalue.py --regime REGIME_A   # Q-values for one context
 """
 
 import argparse
@@ -29,8 +29,8 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
 CHAINS_FILE = REPO_ROOT / "logs" / "reasoning_chains.jsonl"
-TRADES_FILE = REPO_ROOT / "logs" / "orchestrator_dryrun_30s_clock.log"
-PROMOTED_DIR = REPO_ROOT / "knowledge" / "notes" / "cc-operational"
+TRADES_FILE = REPO_ROOT / "logs" / "outcomes.log"
+PROMOTED_DIR = REPO_ROOT / "knowledge" / "notes" / "operational"
 
 # ─── Config ─────────────────────────────────────────────────────────────────
 
@@ -213,48 +213,51 @@ def load_trading_rewards():
     """
     pattern_rewards = defaultdict(list)
 
-    # Read ALL orchestrator logs (dry-run + live) and the patience journal
-    # When active_patterns logging is added to orchestrator, parse those too
-    log_files = sorted(REPO_ROOT.glob("logs/orchestrator_dryrun*.log"))
-    journal = REPO_ROOT / "logs" / "patience_journal.jsonl"
+    # Read every outcome log plus the structured outcome journal. Point these
+    # at whatever your domain writes; the learner only needs the tuple below.
+    log_files = sorted(REPO_ROOT.glob("logs/outcomes*.log"))
+    journal = REPO_ROOT / "logs" / "outcomes.jsonl"
     if journal.exists():
         log_files.append(journal)
     if not log_files:
         return pattern_rewards
 
-    # Parse trade lines: "[17:26:14] CHOP MEAN EXIT: SHORT COIN_A +41.1bp gross, +38.2bp net"
-    trade_pattern = re.compile(
-        r'(CHOP|PATIENCE) (MEAN|CUT|TRAIL|FLIP) (?:EXIT|CLOSE).*?([+-]\d+\.?\d*)bp net'
+    # Parse outcome lines. The learner needs exactly three fields:
+    #   (context, action, signed numeric outcome)
+    # Example shape: "[17:26:14] REGIME_A ACTION_1 EXIT: <subject> +41.1 net"
+    outcome_pattern = re.compile(
+        r'(REGIME_A|REGIME_B) (ACTION_1|ACTION_2|ACTION_3|ACTION_4) (?:EXIT|CLOSE).*?([+-]\d+\.?\d*) net'
     )
 
     for log_file in log_files:
       with open(log_file, encoding="utf-8", errors="replace") as f:
         for line in f:
-            # Handle JSONL (patience_journal) and plain text (orchestrator logs)
+            # Handle JSONL (outcome journal) and plain text (outcome logs)
             if line.strip().startswith("{"):
                 try:
                     entry = json.loads(line)
-                    if "pnl_bp" in entry:
-                        pnl_bp = float(entry["pnl_bp"])
-                        strategy = entry.get("strategy", "patience")
+                    if "outcome" in entry:
+                        outcome = float(entry["outcome"])
+                        strategy = entry.get("context", "regime_a")
                         exit_type = entry.get("reason", "UNKNOWN")
                     else:
                         continue
                 except (json.JSONDecodeError, ValueError):
                     continue
             else:
-                m = trade_pattern.search(line)
+                m = outcome_pattern.search(line)
                 if not m:
                     continue
                 strategy = m.group(1).lower()
                 exit_type = m.group(2)
-                pnl_bp = float(m.group(3))
+                outcome = float(m.group(3))
 
-            # Normalize reward: bp/100 so ±50bp = ±0.5 reward
-            reward = pnl_bp / 100.0
+            # Normalise the outcome into a bounded reward. Scale for your
+            # own units so a typical good result lands near +0.5.
+            reward = outcome / 100.0
 
             # Determine context from strategy
-            context = "CHOP" if strategy == "chop" else "TRENDING"
+            context = "REGIME_A" if strategy == "regime_a" else "REGIME_B"
 
             # Precise attribution: if JSONL trade has active_patterns, use those
             active = []
@@ -268,14 +271,14 @@ def load_trading_rewards():
                     pattern_rewards[pat].append({
                         "context": context,
                         "reward": reward,
-                        "outcome": f"{exit_type} {pnl_bp:+.1f}bp",
+                        "outcome": f"{exit_type} {outcome:+.1f}",
                     })
             else:
                 # Fallback: attribute to regime-level pattern
                 pattern_rewards["entry-only-regime-gating"].append({
                     "context": context,
                     "reward": reward,
-                    "outcome": f"{exit_type} {pnl_bp:+.1f}bp",
+                    "outcome": f"{exit_type} {outcome:+.1f}",
                 })
 
     return pattern_rewards

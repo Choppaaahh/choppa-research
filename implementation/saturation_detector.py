@@ -1,5 +1,5 @@
 # KNOWLEDGE-GAP DECLARATION: The dispatch-escalation consumer schema is not available here; the office routing integration point is deferred. Threshold units and caller-side validation conventions are also unknown.
-# ROUTED_FROM: scripts/mech_code_offload.py slug=saturation-detector model=<dispatch-model> cycle-89
+# ROUTED_FROM: the mechanical code-offload dispatcher (slug=saturation-detector, model=<dispatch-model>)
 """Detect rolling success-rate saturation and attribute repeated failures.
 
 Output contract:

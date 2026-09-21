@@ -8,7 +8,7 @@ small improvements to the scaffold infrastructure.
 
 Three modes:
 1. GAP FILLER: reads probe QA failures + thin domains -> proposes vault notes
-2. INSIGHT ROUTER: reads recent ccorner/breadcrumbs for actionable insights -> adds to todo.md
+2. INSIGHT ROUTER: reads recent journal notes + breadcrumbs for actionable insights -> adds to todo.md
 3. METRIC IMPROVER: reads fidelity/chord/coverage scores -> proposes experiments
 
 Fires daily at 4am UTC (midnight EDT) via cron. Uses claude -p for execution.
@@ -94,7 +94,7 @@ def mode_gap_filler():
 
 
 def mode_insight_router():
-    """Read recent breadcrumbs/ccorner for actionable insights -> route to todo."""
+    """Read recent breadcrumbs + journal notes for actionable insights."""
     print("  [INSIGHT] Scanning for unactioned insights...")
     proposals = []
 
@@ -176,8 +176,8 @@ def mode_metric_improver():
     except Exception:
         pass
 
-    # Bug-patterns growth
-    bug_dir = REPO / "knowledge" / "bug-patterns"
+    # Bug-note growth
+    bug_dir = REPO / "knowledge" / "bugs"
     if bug_dir.exists():
         n_bugs = len(list(bug_dir.glob("*.md")))
         metrics["bug_patterns"] = n_bugs
@@ -211,13 +211,15 @@ def execute_proposals(proposals):
 
     print(f"\n  Added {len(top)} proposals to todo.md")
 
-    # Post summary to Discord
+    # Post summary to the notification channel
     try:
         import sys
         sys.path.insert(0, str(REPO / "scripts"))
         summary = f"Scaffold Builder: {len(proposals)} proposals\n" + "\n".join(f"  {p[:80]}" for p in top)
-        post(summary, "cc")
-        print("  Posted to Discord")
+        # NOTE: `post` is supplied by the host scaffold's notification
+        # module; wire your own. The except below swallows its absence.
+        post(summary, "notifications")
+        print("  Posted notification")
     except Exception:
         pass
 

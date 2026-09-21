@@ -285,7 +285,7 @@ def main():
                 f.write(f'summary: "AUTO-REPAIR stub: {r["probe"][:60]}"\n')
                 f.write(f"type: finding\n")
                 f.write(f"status: stub\n")
-                f.write(f'domains: ["cc-operational"]\n')
+                f.write(f'domains: ["operational"]\n')
                 f.write(f"date: {ts[:10]}\n")
                 f.write(f"---\n\n")
                 f.write(f"# {r['probe'][:60]}\n\n")

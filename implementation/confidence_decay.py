@@ -54,15 +54,15 @@ DECAY_CLASSES = {
 
 DEFAULT_CLASS = ("default", 30)
 
-# Domain maps / MOCs to skip
+# Domain maps / MOCs to skip. These are navigation pages, not content, so
+# decay scoring on them is meaningless. Substitute your own vault's MOC stems —
+# the list below is generic stems plus numbered placeholders.
 SKIP_STEMS = {
-    'index', 'grid-mechanics', 'fee-model', 'bug-patterns', 'coin-evaluation',
-    'safety-systems', 'microstructure-signals', 'regime-detection',
-    'operational-procedures', 'lessons-learned', 'build-roadmap',
-    'consciousness-trading', 'wallet-research', 'momoscalp', 'ccorner',
-    'scheduled-reports', 'research-trading', 'geopol', 'operator',
-    'navigation', 'dashboard', 'session-log', 'agent-coordination',
-    'market-sessions', 'cc-operational',
+    'index', 'navigation', 'dashboard', 'session-log',
+    'operational', 'operational-procedures', 'lessons-learned',
+    'build-roadmap', 'scheduled-reports', 'agent-coordination',
+    'domain-1', 'domain-2', 'domain-3', 'domain-4',
+    'domain-5', 'domain-6', 'domain-7', 'domain-8',
 }
 
 

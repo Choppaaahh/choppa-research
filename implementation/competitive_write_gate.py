@@ -1,6 +1,6 @@
 # KNOWLEDGE-GAP DECLARATION: I do not know whether callers require unrounded theta or
 # whether vectors are guaranteed to have matching dimensions and nonzero norms.
-# ROUTED_FROM: scripts/mech_code_offload.py slug=competitive-write-gate model={{MODEL}} cycle-89
+# ROUTED_FROM: the mechanical code-offload dispatcher (slug=competitive-write-gate, model={{MODEL}})
 """Corpus-calibrated vault deduplication threshold.
 
 Output contract:

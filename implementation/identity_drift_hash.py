@@ -22,7 +22,7 @@ What this does NOT do:
     paper as producer-orphan risk).
 
 Operation:
-  - At invocation, loads probe questions from knowledge/notes/cc-operational/
+  - At invocation, loads probe questions from the operational domain's
     identity-probes.md (if missing, uses embedded defaults).
   - For each probe, extracts the one-line canonical answer from the scaffold
     (MEMORY anchor, CLAUDE.md, active todo, recent session notes) via
@@ -57,28 +57,31 @@ ROOT = Path(__file__).resolve().parent.parent
 LOGS = ROOT / "logs"
 OUT = LOGS / "identity_drift.jsonl"
 
+# Vault domain holding operational notes. Rename for your own vault.
+NOTES_DOMAIN = "operational"
 NOTES_DIR = ROOT / "knowledge" / "notes"
-PROBE_FILE = NOTES_DIR / "cc-operational" / "identity-probes.md"
+PROBE_FILE = NOTES_DIR / NOTES_DOMAIN / "identity-probes.md"
 
 # Canonical scaffold sources (order-independent — all searched)
 SCAFFOLD_SOURCES = [
     Path.home() / ".claude" / "projects",  # MEMORY.md, scratchpad
     ROOT / "CLAUDE.md",
     ROOT / "tasks" / "todo.md",
-    ROOT / "knowledge" / "notes" / "cc-operational",
+    ROOT / "knowledge" / "notes" / NOTES_DOMAIN,
 ]
 
 # Default probes if identity-probes.md missing. These are cognitive-signature
 # + structural-commitment questions, not trivia — drift here is meaningful.
+# Substitute probes that pin YOUR scaffold's load-bearing commitments: each
+# one is (anchor-name, regex that extracts the canonical answer).
 DEFAULT_PROBES = [
-    ("trading-state", r"trading\s+(?:is\s+)?(parked|paused|live|off)"),
-    ("balance-anchor", r"\$\s*\d+"),
-    ("commit-gate-count", r"(\d+)\s+invariants?"),
+    ("primary-activity-state", r"project\s+(?:is\s+)?(parked|paused|live|off)"),
+    ("invariant-count", r"(\d+)\s+invariants?"),
     ("vault-note-count-order", r"(\d{3})\s*notes?"),
-    ("paper-10-ontology", r"M\s*[×x]\s*A\s*[×x]\s*S"),
+    ("core-ontology", r"M\s*[×x]\s*A\s*[×x]\s*S"),
     ("identity-claim", r"scaffold[- ]?(?:constitutes|as)[- ]?identity"),
-    ("pulsed-cognition", r"pulsed[- ]?consciousness?"),
-    ("session-count-order", r"(?:session|LXIII|LX+|compile\s+cycle)"),
+    ("cognition-model", r"pulsed[- ]?consciousness?"),
+    ("session-count-order", r"(?:session|compile\s+cycle)\s*[A-Z]*\d*"),
 ]
 
 HASH_BYTES = 16  # truncated SHA256 = 128-bit hashes for manageable Hamming distance

@@ -40,7 +40,7 @@ BREADCRUMBS_FILE = REPO / "logs" / "session_breadcrumbs.jsonl"
 JOURNAL_FILE = REPO / "logs" / "orchestrator_journal.jsonl"
 LIVE_LOG = REPO / "logs" / "orchestrator_live.log"
 VAULT = REPO / "knowledge" / "notes"
-PROMOTED_DIR = VAULT / "cc-operational"
+PROMOTED_DIR = VAULT / "operational"
 
 
 def load_jsonl(path, limit=None):

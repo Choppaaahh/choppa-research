@@ -119,7 +119,7 @@ def alert_discord(issues):
     webhook = ""
     if env_file.exists():
         for line in env_file.read_text().splitlines():
-            if "DISCORD_WEBHOOK_DATA" in line and "=" in line and not line.startswith("#"):
+            if "NOTIFY_WEBHOOK_URL" in line and "=" in line and not line.startswith("#"):
                 webhook = line.split("=", 1)[1].strip()
     if not webhook:
         return

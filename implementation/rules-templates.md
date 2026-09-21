@@ -68,7 +68,7 @@ description: Keep living documents current
 ---
 
 Update these when their content changes:
-- MEMORY.md — config, balance, state changes
+- MEMORY.md — config, current state, recent changes
 - CLAUDE.md — quick status, current state
 - todo.md — task completed or discovered
 - Agent configs — context goes stale

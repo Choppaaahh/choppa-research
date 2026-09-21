@@ -11,7 +11,7 @@ Runs after each metacog compile. Computes:
 - Chains per day
 
 Appends metrics to logs/metacog_metrics.jsonl for longitudinal tracking.
-Posts summary to Discord #cc if webhook available.
+Posts a summary to a chat channel if a notification webhook is configured.
 
 Usage:
     python3 scripts/metacog_tracker.py                 # compute + log
@@ -28,7 +28,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent.parent
 CHAINS_FILE = REPO_ROOT / "logs" / "reasoning_chains.jsonl"
 METRICS_FILE = REPO_ROOT / "logs" / "metacog_metrics.jsonl"
-PATTERNS_DIR = REPO_ROOT / "knowledge" / "notes" / "cc-operational"
+PATTERNS_DIR = REPO_ROOT / "knowledge" / "notes" / "operational"
 ENV_FILE = REPO_ROOT / ".env"
 
 
@@ -158,7 +158,7 @@ def post_discord(msg):
                     k, v = line.split("=", 1)
                     os.environ.setdefault(k.strip(), v.strip())
 
-        webhook = os.environ.get("DISCORD_WEBHOOK_CC", "").strip()
+        webhook = os.environ.get("NOTIFY_WEBHOOK_URL", "").strip()
         if not webhook:
             return
 

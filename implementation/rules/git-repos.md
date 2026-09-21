@@ -34,7 +34,7 @@ grep -rnEi 'balance|\$[0-9]+|webhook|wallet|0x[0-9a-f]{8}|api.key|secret' /path/
 ```
 
 Adapt the pattern list to your domain. The key categories to exclude:
-- Account balances, position sizes, P&L numbers
+- Financial figures of any kind — holdings, order sizes, realised results
 - API keys, webhook URLs, wallet addresses
 - Strategy parameters specific to your system
 - Internal note titles and domain names

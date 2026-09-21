@@ -9,7 +9,8 @@ Third member of the retrieval-quality telemetry triple:
   - retrieval_reuse_tracker.py (here) — session-scoped: are notes REVISITED within
                                        a session/task, or is every query fresh?
 
-Source: cycle-16 Brutus Deepdive #4 (arXiv 2508.13171 Cognitive Workspace) — the paper
+Source: an adversarial-review deep-dive on arXiv 2508.13171 (Cognitive
+Workspace) — the paper
 reports 54-57% reuse-rate vs 0% for stateless RAG. Our scaffold should show non-trivial
 reuse within a session because related-topic queries should hit overlapping notes. If
 reuse rate is effectively zero, either (a) query topics are too diverse for within-session
@@ -40,8 +41,7 @@ Caveat: upstream retrieval_log.jsonl is populated as vault_search.py runs. If th
 is empty or sparse, reuse-rate computation is not meaningful. Will accumulate data over
 time (producer-orphan-free by design — this is the consumer of an existing writer).
 
-Reference: cycle-16 Brutus Deepdive #4 vault note:
-  research-consciousness/cognitive-workspace-active-memory-deepdive.md
+Reference: the vault deep-dive note on cognitive workspace / active memory.
 """
 from __future__ import annotations
 

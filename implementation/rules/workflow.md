@@ -23,10 +23,10 @@ WHY: Build momentum makes models skip design review. The cost of planning is 5 m
 
 ## Self-Improvement Loop
 After ANY bug fix or correction:
-1. Update `knowledge/bug-patterns/` with a new note (or update existing)
+1. Update the vault's bug-note domain with a new note (or update an existing one)
 2. Include: what broke, root cause, fix applied, how to detect if it recurs
 3. Wikilink to affected systems
-4. Review `knowledge/bug-patterns/` at session start before making changes
+4. Review the bug notes at session start before making changes
 
 Never fix the same bug twice. If you are — the lesson wasn't captured.
 
@@ -40,7 +40,7 @@ Ask: "What would prove this fix actually works?" Then do that thing.
 
 ## Autonomous Bug Fixing
 When given a bug report:
-1. Check `knowledge/bug-patterns/` first — has this been seen before?
+1. Check the bug notes first — has this been seen before?
 2. Grep for the symptom in logs and code
 3. Trace root cause before proposing fix
 4. Fix it. Don't ask permission, don't hand-hold.

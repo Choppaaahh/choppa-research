@@ -2,7 +2,7 @@
 """
 Chain-to-Vault Exporter — convert reasoning chains into Obsidian-visible vault notes.
 
-Creates one note per day in knowledge/notes/cc-operational/chains/
+Creates one note per day in knowledge/notes/<domain>/chains/
 Each note contains all chains from that day with wikilinks to promoted patterns.
 
 Usage:
@@ -19,8 +19,10 @@ from pathlib import Path
 
 REPO = Path(__file__).resolve().parent.parent
 CHAINS_FILE = REPO / "logs" / "reasoning_chains.jsonl"
-OUTPUT_DIR = REPO / "knowledge" / "notes" / "cc-operational" / "chains"
-PROMOTED_DIR = REPO / "knowledge" / "notes" / "cc-operational"
+# Vault domain this exporter writes into. Rename for your own vault.
+NOTES_DOMAIN = "operational"
+OUTPUT_DIR = REPO / "knowledge" / "notes" / NOTES_DOMAIN / "chains"
+PROMOTED_DIR = REPO / "knowledge" / "notes" / NOTES_DOMAIN
 
 
 def load_promoted_patterns():
@@ -103,7 +105,7 @@ def export_day(day, chains, promoted):
 summary: "{len(chains)} reasoning chains from {day}. {len(patterns_seen)} unique patterns, {reusable} reusable."
 type: insight
 status: current
-domains: ["cc-operational"]
+domains: ["{NOTES_DOMAIN}"]
 date: {day}
 ---
 
@@ -118,7 +120,7 @@ Promoted Patterns Referenced:
 {chr(10).join(linked_patterns) if linked_patterns else "- none"}
 
 Domains:
-- [[cc-operational-moc]]
+- [[{NOTES_DOMAIN}-moc]]
 """
 
     filepath.write_text(content, encoding="utf-8")

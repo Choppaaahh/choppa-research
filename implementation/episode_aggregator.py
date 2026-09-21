@@ -36,8 +36,8 @@ CLI:
     python3 scripts/episode_aggregator.py --jsonl         # also append to logs/episodes.jsonl
     python3 scripts/episode_aggregator.py --last 20       # only process last 20 breadcrumbs (smoke)
 
-Source: research-consciousness/xmemory-deep-dive.md;
-        knowledge/notes/cc-operational/xmemory-bounded-coherent-stream-applied-to-breadcrumbs-produces-episode-hierarchy.md
+Source: a vault deep-dive note on bounded coherent streams, and the
+        operational note applying it to breadcrumbs.
 """
 from __future__ import annotations
 

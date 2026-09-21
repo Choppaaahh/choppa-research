@@ -29,9 +29,9 @@ Usage:
     python3 query_shape_telemetry.py --report         # print latest row
     python3 query_shape_telemetry.py --history 10     # last 10 rows
 
-Source: addresses query-shape drift meta-pattern surfaced in cycle-14 retrieval-fix
-sprint (P6 BM25+IDF landed, P8 query-shape classification added, but rolling
-telemetry on shape distribution was missing — this closes that gap).
+Source: addresses query-shape drift, surfaced during an earlier retrieval-fix
+sprint. BM25+IDF ranking and query-shape classification both landed then, but
+rolling telemetry on the shape distribution was missing — this closes that gap.
 """
 from __future__ import annotations
 

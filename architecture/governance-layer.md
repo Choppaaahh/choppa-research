@@ -19,7 +19,7 @@ learnable: false   # core safety definitions — only the human modifies
 
 ```yaml
 ---
-name: pattern-check-what-scaled.md
+name: pattern-check-scope.md
 learnable: true    # promoted reasoning pattern — compile cycle may update
 ---
 ```
@@ -53,7 +53,7 @@ Every learnable resource gets immutable per-resource snapshots on change:
 │   ├── v1.0.0.md
 │   ├── v1.0.1.md
 │   └── .index.json  (hash, mtime, version, ancestor)
-├── pattern-check-what-scaled.md/
+├── pattern-check-scope.md/
 │   ├── v1.0.0.md
 │   └── .index.json
 ...

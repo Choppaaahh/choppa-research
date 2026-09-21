@@ -9,15 +9,14 @@ from pathlib import Path
 VAULT = Path(__file__).resolve().parent.parent / "knowledge" / "notes"
 LOG = Path(__file__).resolve().parent.parent / "logs"
 
+# Domain maps / MOCs to skip — navigation pages, not content. Substitute your
+# own vault's MOC stems; these are generic stems plus numbered placeholders.
 SKIP_STEMS = {
-    'index', 'grid-mechanics', 'fee-model', 'bug-patterns', 'coin-evaluation',
-    'safety-systems', 'microstructure-signals', 'regime-detection',
-    'operational-procedures', 'lessons-learned', 'build-roadmap',
+    'index', 'navigation', 'dashboard', 'session-log',
+    'operational', 'operational-procedures', 'lessons-learned',
+    'build-roadmap', 'scheduled-reports', 'agent-coordination',
     'domain-1', 'domain-2', 'domain-3', 'domain-4',
-    'scheduled-reports', 'research-trading', 'geopol', 'operator',
-    'navigation', 'dashboard', 'session-log', 'agent-coordination',
-    'market-sessions', 'cc-operational', 'consciousness-framework',
-    'consciousness-empirical', 'consciousness-identity', 'consciousness-literature',
+    'domain-5', 'domain-6', 'domain-7', 'domain-8',
 }
 
 

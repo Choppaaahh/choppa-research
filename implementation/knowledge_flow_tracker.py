@@ -25,7 +25,8 @@ CHAINS = BASE / "logs" / "reasoning_chains.jsonl"
 WIKILINK_RE = re.compile(r"\[\[(.+?)\]\]")
 
 # Known agents — expand as team grows
-AGENTS = {"team-lead", "brutus", "scout", "archivist", "qa", "observer", "metacognizer", "wallet-dive", "auditor"}
+AGENTS = {"team-lead", "reviewer", "researcher", "archivist", "qa",
+          "observer", "metacognizer", "analyst", "auditor"}
 
 
 def scan_provenance():
@@ -74,16 +75,16 @@ def scan_provenance():
 def infer_agent_from_path(path):
     """Infer which agent likely created a note based on its path."""
     path_lower = path.lower()
-    if "scout-findings" in path_lower:
-        return "scout"
-    if "cc-session" in path_lower or "claudius-corner" in path_lower:
+    if "research-findings" in path_lower:
+        return "researcher"
+    if "session-notes" in path_lower or "introspective" in path_lower:
         return "team-lead"
     if "pattern-" in path_lower:
         return "metacognizer"
     if "bug-" in path_lower:
         return "qa"
-    if "wallet-" in path_lower:
-        return "wallet-dive"
+    if "analysis-" in path_lower:
+        return "analyst"
     if "experiment-" in path_lower:
         return "team-lead"
     return None

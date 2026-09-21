@@ -557,13 +557,14 @@ def check_frontmatter_schema(scope: str) -> tuple[bool, list[dict], dict]:
 def _priority_sort_key(source: str) -> tuple[int, str]:
     """Priority ordering for grandfathering triage: lower = more important.
 
-    cc-operational / research-consciousness > session-notes > auto-repair > other.
+    Operational and research domains rank above session notes, which rank
+    above auto-repair stubs. Substitute your own domain names below.
     """
-    if "/cc-operational/" in source:
+    if "/operational/" in source:
         return (0, source)
     if "/research-consciousness/" in source or "/consciousness/" in source:
         return (1, source)
-    if "/cc-session-notes/" in source or "/session-notes/" in source:
+    if "/session-notes/" in source:
         return (2, source)
     if "/auto-repair/" in source:
         return (3, source)
@@ -575,7 +576,7 @@ def seed_frontmatter_exceptions(dry_run: bool = False) -> dict:
 
     Each grandfathered entry gets action_needed:true so a future cleanup
     dispatch can triage them. Entries are sorted by priority so high-value
-    notes (cc-operational, consciousness) appear first.
+    notes from the priority domains appear first.
 
     Returns a stats dict.
     """
