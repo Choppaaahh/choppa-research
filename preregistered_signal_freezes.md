@@ -16,3 +16,4 @@ Content is revealed selectively later; any reveal is verifiable against its hash
 | 2026-W34 | 2026-08-28T18:20:02Z | 5 | `f6eff6dcf7fc0c4713caafa4f1ee3d3a1a656c15f0fad9d386478b7a55a75d35` |
 | 2026-W36 | 2026-09-11T18:20:02Z | 5 | `8bb98dbface9882f5f0a0d12356a8a77068868c0c68fb2f4b1a98b6d28917c7f` |
 | 2026-W37 | 2026-09-18T18:20:02Z | 5 | `3cbc5d19b8c9bb50b849bef4a034577e7e65c08f542b06be475a6ca635eb620c` |
+| 2026-W38 | 2026-09-25T18:20:02Z | 5 | `bda5269fe068b2f8dabec1ad29a15c083ed5ecf813ef389bd2f2360887a09b20` |
